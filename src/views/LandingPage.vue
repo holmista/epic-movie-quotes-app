@@ -36,6 +36,7 @@
         <BaseButton class="bg-[#E31221] border-[#E31221]" text="Get started" />
       </div>
     </div>
+    <SignupModal />
     <LandingImage
       image="interstellar"
       quote="“You have to leave somethig 
@@ -64,6 +65,7 @@ and leave it that”"
 import BaseButton from "@/components/base/BaseButton.vue";
 import DropDown from "@/components/icons/landing-page/DropDown.vue";
 import LandingImage from "@/components/landing/LandingImage.vue";
+import SignupModal from "./SignupModal.vue";
 import { ref } from "vue";
 
 const locale = ref("en");
