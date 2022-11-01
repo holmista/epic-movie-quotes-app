@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 // eslint-disable-next-line no-undef
 module.exports = {
+  // eslint-disable-next-line no-undef
+
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
   theme: {
     extend: {
@@ -12,5 +14,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line no-undef
+    require("@tailwindcss/forms"),
+    // ...
+  ],
 };

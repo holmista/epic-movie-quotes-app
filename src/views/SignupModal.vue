@@ -26,15 +26,16 @@
       />
       <BaseInput
         name="password"
-        type="text"
+        type="password"
         rules="required|min:8|max:15|lower"
         placeholder="At least 8 & max.15 lower case characters"
         class="max-w-96 w-full"
+        @password="setPassword"
       />
       <BaseInput
         name="repeat-password"
         type="text"
-        rules="required|same:password"
+        :rules="`required|same:${password}`"
         placeholder="Confirm password"
         class="max-w-96 w-full"
       />
@@ -46,7 +47,11 @@
 import { Form as VeeForm } from "vee-validate";
 import BaseModal from "@/components/base/BaseModal.vue";
 import BaseInput from "../components/base/BaseInput.vue";
-
 import { ref } from "vue";
+
 const active = ref(true);
+const password = ref("");
+const setPassword = (val) => {
+  password.value = val;
+};
 </script>
