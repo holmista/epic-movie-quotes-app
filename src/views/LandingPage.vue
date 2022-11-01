@@ -3,11 +3,19 @@
     v-if="showSignup"
     class="left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   />
+  <SigninModal
+    v-if="showSignin"
+    class="left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+  />
   <div
-    :class="showSignup ? 'overflow-x-hidden' : ''"
-    @click="setShowSignup($event, false)"
+    :class="showSignup || showSignin ? 'overflow-x-hidden' : ''"
+    @click="setInactivity"
   >
-    <div :class="showSignup ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'">
+    <div
+      :class="
+        showSignup || showSignin ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'
+      "
+    >
       <div id="get-started" class="h-4/5">
         <nav class="text-white flex px-16 justify-between pt-7">
           <p class="text-[#DDCCAA] font-medium">MOVIE QUOTES</p>
@@ -35,6 +43,7 @@
               class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
             />
             <BaseButton
+              @click="setShowSignin($event, true)"
               text="Log In"
               class="border-white border w-[109px] h-10"
             />
@@ -83,11 +92,13 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import DropDown from "@/components/icons/landing-page/DropDown.vue";
 import LandingImage from "@/components/landing/LandingImage.vue";
 import SignupModal from "./SignupModal.vue";
+import SigninModal from "./SigninModal.vue";
 import { ref } from "vue";
 
 const locale = ref("en");
 const showLocale = ref(false);
 const showSignup = ref(false);
+const showSignin = ref(false);
 
 const setShowLocale = () => {
   showLocale.value = !showLocale.value;
@@ -100,6 +111,18 @@ const setLocale = (value) => {
 const setShowSignup = (e, val) => {
   e.stopPropagation();
   showSignup.value = val;
+};
+
+const setShowSignin = (e, val) => {
+  e.stopPropagation();
+  console.log("signin clicked");
+  showSignin.value = val;
+  console.log(showSignin.value);
+};
+
+const setInactivity = () => {
+  showSignup.value = false;
+  showSignin.value = false;
 };
 
 const upperFirst = (str) => {
