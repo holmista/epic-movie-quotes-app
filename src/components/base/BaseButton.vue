@@ -1,6 +1,9 @@
 <template>
-  <button class="py-2 px-4 w-32 h-12 text-white rounded">
+  <button
+    class="py-2 px-4 text-white rounded flex items-center flex-row-reverse justify-center gap-2"
+  >
     {{ text }}
+    <slot></slot>
   </button>
 </template>
 

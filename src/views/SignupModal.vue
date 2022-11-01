@@ -37,7 +37,23 @@
         placeholder="Confirm password"
         class="max-w-96 w-full"
       />
+      <BaseButton
+        text="Get started"
+        class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
+      />
+      <BaseButton
+        type="button"
+        text="Sign up with Google"
+        class="border-white border w-[384px] h-10 text-white"
+        ><GoogleLogo
+      /></BaseButton>
     </VeeForm>
+    <p class="text-[#6C757D] mt-8">
+      Already have an account?
+      <RouterLink to="/login" class="text-[#0D6EFD] underline"
+        >Log in</RouterLink
+      >
+    </p>
   </div>
 </template>
 
@@ -45,6 +61,8 @@
 import { Form as VeeForm } from "vee-validate";
 // import BaseModal from "@/components/base/BaseModal.vue";
 import BaseInput from "../components/base/BaseInput.vue";
+import BaseButton from "../components/base/BaseButton.vue";
+import GoogleLogo from "../components/icons/landing-page/GoogleLogo.vue";
 import { ref } from "vue";
 
 const active = ref(true);
