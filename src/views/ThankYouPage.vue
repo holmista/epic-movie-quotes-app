@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[538px] max-h-[414px] w-full h-full flex flex-col items-center rounded-lg"
+    class="absolute bg-[#222030] max-w-[538px] max-h-[414px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-20 gap-3">
       <SendCheck />

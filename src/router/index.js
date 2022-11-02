@@ -18,6 +18,19 @@ const router = createRouter({
           name: "signup",
           component: () => import("@/views/SignupModal.vue"),
         },
+        {
+          path: "thank-you",
+          name: "thank-you",
+          component: () => import("@/views/ThankYouPage.vue"),
+          beforeEnter: (to, from, next) => {
+            const isRedirected = from.name === "login";
+            if (isRedirected) {
+              next();
+            } else {
+              next({ name: "login" });
+            }
+          },
+        },
       ],
     },
   ],

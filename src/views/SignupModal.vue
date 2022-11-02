@@ -71,9 +71,11 @@ import { Form as VeeForm } from "vee-validate";
 import BaseInput from "../components/base/BaseInput.vue";
 import BaseButton from "../components/base/BaseButton.vue";
 import GoogleLogo from "../components/icons/landing-page/GoogleLogo.vue";
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 import axios from "axios";
 
+const router = useRouter();
 const password = ref("");
 const setPassword = (val) => {
   password.value = val;
@@ -82,7 +84,9 @@ const onSubmit = async (values) => {
   try {
     // console.log(values);
     const res = await axios.post("http://localhost:8000/api/signup", values);
-    console.log(res.data.message);
+    if (res.status === 201) {
+      router.push("/thank-you");
+    }
   } catch (e) {
     console.log(e.message);
   }
