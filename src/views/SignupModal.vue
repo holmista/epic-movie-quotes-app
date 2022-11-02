@@ -1,7 +1,6 @@
 <template>
   <div
-    :active="active"
-    class="absolute bg-[#222030] max-w-[601px] max-h-[704px] w-full h-full flex flex-col items-center rounded-lg"
+    class="absolute bg-[#222030] max-w-[601px] max-h-[704px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="text-white text-3xl font-medium">Create an account</h1>
@@ -75,7 +74,6 @@ import GoogleLogo from "../components/icons/landing-page/GoogleLogo.vue";
 import { ref } from "vue";
 import axios from "axios";
 
-const active = ref(true);
 const password = ref("");
 const setPassword = (val) => {
   password.value = val;

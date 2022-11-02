@@ -1,7 +1,6 @@
 <template>
   <div
-    :active="active"
-    class="absolute bg-[#222030] max-w-[601px] max-h-[601px] w-full h-full flex flex-col items-center rounded-lg"
+    class="absolute bg-[#222030] max-w-[601px] max-h-[601px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="w-96 text-center text-white text-3xl font-medium">
@@ -60,11 +59,8 @@
 <script setup>
 import { Form as VeeForm } from "vee-validate";
 // import BaseModal from "@/components/base/BaseModal.vue";
-import BaseInput from "../components/base/BaseInput.vue";
-import BaseButton from "../components/base/BaseButton.vue";
-import GoogleLogo from "../components/icons/landing-page/GoogleLogo.vue";
-import { ref } from "vue";
+import BaseInput from "@/components/base/BaseInput.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
+import GoogleLogo from "@/components/icons/landing-page/GoogleLogo.vue";
 import { Field } from "vee-validate";
-
-const active = ref(true);
 </script>

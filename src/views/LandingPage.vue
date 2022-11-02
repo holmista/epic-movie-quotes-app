@@ -1,23 +1,10 @@
 <template>
-  <SignupModal
-    v-if="showSignup"
-    class="left-0 right-0 ml-auto mr-auto top-[150px] z-10"
-  />
-  <SigninModal
-    v-if="showSignin"
-    class="left-0 right-0 ml-auto mr-auto top-[150px] z-10"
-  />
+  <router-view />
   <div
-    :class="
-      showSignup || showSignin ? 'overflow-x-hidden overflow-y-hidden' : ''
-    "
-    @click="setInactivity"
+    :class="blur ? 'overflow-x-hidden overflow-y-hidden' : ''"
+    @click="goBack"
   >
-    <div
-      :class="
-        showSignup || showSignin ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'
-      "
-    >
+    <div :class="blur ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'">
       <div id="get-started" class="h-4/5">
         <nav class="text-white flex px-16 justify-between pt-7">
           <p class="text-[#DDCCAA] font-medium">MOVIE QUOTES</p>
@@ -39,18 +26,20 @@
                 </li>
               </ul>
             </div>
-            <RouterLink to="/login">
+            <RouterLink to="/signup">
               <BaseButton
-                @click="setShowSignup($event, true)"
+                @click="stopPropagation"
                 text="Sign Up"
                 class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
               />
             </RouterLink>
-            <BaseButton
-              @click="setShowSignin($event, true)"
-              text="Log In"
-              class="border-white border w-[109px] h-10"
-            />
+            <RouterLink to="/login">
+              <BaseButton
+                @click="stopPropagation"
+                text="Log In"
+                class="border-white border w-[109px] h-10"
+              />
+            </RouterLink>
           </div>
         </nav>
         <div class="flex justify-center items-center flex-col gap-7 mt-60">
@@ -95,14 +84,15 @@ and leave it that”"
 import BaseButton from "@/components/base/BaseButton.vue";
 import DropDown from "@/components/icons/landing-page/DropDown.vue";
 import LandingImage from "@/components/landing/LandingImage.vue";
-import SignupModal from "./SignupModal.vue";
-import SigninModal from "./SigninModal.vue";
-import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+
+const route = useRoute();
+const router = useRouter();
 
 const locale = ref("en");
 const showLocale = ref(false);
-const showSignup = ref(false);
-const showSignin = ref(false);
+const blur = ref(false);
 
 const setShowLocale = () => {
   showLocale.value = !showLocale.value;
@@ -112,26 +102,23 @@ const setLocale = (value) => {
   setShowLocale();
 };
 
-const setShowSignup = (e, val) => {
+const stopPropagation = (e) => {
   e.stopPropagation();
-  showSignup.value = val;
 };
 
-const setShowSignin = (e, val) => {
-  e.stopPropagation();
-  console.log("signin clicked");
-  showSignin.value = val;
-  console.log(showSignin.value);
-};
-
-const setInactivity = () => {
-  showSignup.value = false;
-  showSignin.value = false;
+const goBack = () => {
+  blur.value = false;
+  router.push("/");
 };
 
 const upperFirst = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+onMounted(() => {
+  if (route.fullPath.length > 1) {
+    blur.value = true;
+  }
+});
 </script>
 
 <style scoped>
