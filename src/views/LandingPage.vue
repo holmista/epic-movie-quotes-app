@@ -8,7 +8,9 @@
     class="left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   />
   <div
-    :class="showSignup || showSignin ? 'overflow-x-hidden' : ''"
+    :class="
+      showSignup || showSignin ? 'overflow-x-hidden overflow-y-hidden' : ''
+    "
     @click="setInactivity"
   >
     <div
