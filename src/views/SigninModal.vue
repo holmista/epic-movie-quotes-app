@@ -12,6 +12,7 @@
     <VeeForm class="max-w-sm w-full flex gap-4 flex-col items-center mt-6">
       <BaseInput
         name="email"
+        label="Email"
         type="text"
         rules="required|email"
         placeholder="Enter your email"
@@ -19,6 +20,7 @@
       />
       <BaseInput
         name="password"
+        label="Password"
         type="password"
         rules="required|min:8|max:15|lower"
         placeholder="At least 8 & max.15 lower case characters"

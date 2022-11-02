@@ -39,11 +39,13 @@
                 </li>
               </ul>
             </div>
-            <BaseButton
-              @click="setShowSignup($event, true)"
-              text="Sign Up"
-              class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
-            />
+            <RouterLink to="/login">
+              <BaseButton
+                @click="setShowSignup($event, true)"
+                text="Sign Up"
+                class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
+              />
+            </RouterLink>
             <BaseButton
               @click="setShowSignin($event, true)"
               text="Log In"

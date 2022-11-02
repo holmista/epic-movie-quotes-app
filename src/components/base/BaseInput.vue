@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <label :for="name" class="block text-sm font-medium text-white mb-2"
-      >{{ name }}<span class="text-red-600"> *</span></label
+      >{{ label }}<span class="text-red-600"> *</span></label
     >
     <div class="relative mt-1 rounded-md shadow-sm">
       <Field
@@ -57,6 +57,7 @@ export default {
   },
   props: {
     name: { type: String, required: true },
+    label: { type: String, required: true },
     type: { type: String, required: true },
     rules: { type: String, required: true },
     placeholder: { type: String, required: true },
