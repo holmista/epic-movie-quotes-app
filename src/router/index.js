@@ -19,11 +19,11 @@ const router = createRouter({
           component: () => import("@/views/SignupModal.vue"),
         },
         {
-          path: "thank-you",
-          name: "thank-you",
-          component: () => import("@/views/ThankYouPage.vue"),
+          path: "activation-email-sent",
+          name: "activation-email-sent",
+          component: () => import("@/views/EmailSentPage.vue"),
           beforeEnter: (to, from, next) => {
-            const isRedirected = from.name === "login";
+            const isRedirected = from.name === "signup";
             if (isRedirected) {
               next();
             } else {

@@ -82,10 +82,9 @@ const setPassword = (val) => {
 };
 const onSubmit = async (values) => {
   try {
-    // console.log(values);
     const res = await axios.post("http://localhost:8000/api/signup", values);
     if (res.status === 201) {
-      router.push("/thank-you");
+      router.push("/activation-email-sent");
     }
   } catch (e) {
     console.log(e.message);
