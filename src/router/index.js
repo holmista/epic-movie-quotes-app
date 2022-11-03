@@ -31,6 +31,11 @@ const router = createRouter({
             }
           },
         },
+        {
+          path: "account-activated",
+          name: "account-activated",
+          component: () => import("@/views/AccountActivated.vue"),
+        },
       ],
     },
   ],
