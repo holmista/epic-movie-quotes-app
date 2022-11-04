@@ -69,10 +69,16 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import GoogleLogo from "@/components/icons/landing-page/GoogleLogo.vue";
 import { Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
+import { set } from "@/hooks/useCookie";
 
 const onSubmit = async (values) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
+  set(
+    "access_token",
+    state.response.value.access_token,
+    state.response.value.expires_in
+  );
   console.log(state.response.value.access_token);
 };
 </script>
