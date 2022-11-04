@@ -79,6 +79,5 @@ const onSubmit = async (values) => {
     state.response.value.access_token,
     state.response.value.expires_in
   );
-  console.log(state.response.value.access_token);
 };
 </script>
