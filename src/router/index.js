@@ -21,7 +21,7 @@ const router = createRouter({
         {
           path: "activation-email-sent",
           name: "activation-email-sent",
-          component: () => import("@/views/EmailSentPage.vue"),
+          component: () => import("@/views/VerificationEmailSentPage.vue"),
           beforeEnter: (to, from, next) => {
             const isRedirected = from.name === "signup";
             if (isRedirected) {
@@ -41,6 +41,11 @@ const router = createRouter({
           path: "forgot-password",
           name: "forgot-password",
           component: () => import("@/views/ForgotPasswordPage.vue"),
+        },
+        {
+          path: "reset-email-sent",
+          name: "reset-email-sent",
+          component: () => import("@/views/ResetPasswordEmailSentPage.vue"),
         },
       ],
     },

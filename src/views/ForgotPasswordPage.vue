@@ -42,4 +42,10 @@ import { Form as VeeForm } from "vee-validate";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import BackArrow from "@/components/icons/landing-page/BackArrow.vue";
+import useFetch from "@/hooks/useFetch";
+
+const onSubmit = async (values) => {
+  const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/forgot-password`;
+  useFetch({ method: "post", url: backUrl, data: values });
+};
 </script>
