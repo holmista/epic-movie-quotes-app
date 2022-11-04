@@ -16,4 +16,13 @@
 <script setup>
 import AccountActivatedCheck from "@/components/icons/landing-page/AccountActivatedCheck.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+import useFetch from "@/hooks/useFetch";
+
+onMounted(() => {
+  const route = useRoute();
+  const backUrl = import.meta.env.VITE_BACK_BASE_URL + route.fullPath;
+  useFetch({ method: "get", url: backUrl });
+});
 </script>

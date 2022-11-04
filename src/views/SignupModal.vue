@@ -68,12 +68,12 @@
 <script setup>
 import { Form as VeeForm } from "vee-validate";
 // import BaseModal from "@/components/base/BaseModal.vue";
-import BaseInput from "../components/base/BaseInput.vue";
-import BaseButton from "../components/base/BaseButton.vue";
-import GoogleLogo from "../components/icons/landing-page/GoogleLogo.vue";
+import BaseInput from "@/components/base/BaseInput.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
+import GoogleLogo from "@/components/icons/landing-page/GoogleLogo.vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import axios from "axios";
+import useFetch from "@/hooks/useFetch";
 
 const router = useRouter();
 const password = ref("");
@@ -81,13 +81,10 @@ const setPassword = (val) => {
   password.value = val;
 };
 const onSubmit = async (values) => {
-  try {
-    const res = await axios.post("http://localhost:8000/api/signup", values);
-    if (res.status === 201) {
-      router.push("/activation-email-sent");
-    }
-  } catch (e) {
-    console.log(e.message);
+  const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signup`;
+  const state = await useFetch({ method: "post", url: backUrl, data: values });
+  if (state.status.value == 201) {
+    router.push("/activation-email-sent");
   }
 };
 </script>

@@ -32,7 +32,8 @@ const router = createRouter({
           },
         },
         {
-          path: "account-activated",
+          // match all routes
+          path: ":email(.*)*",
           name: "account-activated",
           component: () => import("@/views/AccountActivated.vue"),
         },

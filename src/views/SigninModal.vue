@@ -8,44 +8,49 @@
       </h1>
       <h4 class="text-[#6C757D]">Welcome back! Please enter your details.</h4>
     </header>
-    <VeeForm class="max-w-sm w-full flex gap-4 flex-col items-center mt-6">
-      <BaseInput
-        name="email"
-        label="Email"
-        type="text"
-        rules="required|email"
-        placeholder="Enter your email"
-        class="max-w-96 w-full"
-      />
-      <BaseInput
-        name="password"
-        label="Password"
-        type="password"
-        rules="required|min:8|max:15|lower"
-        placeholder="At least 8 & max.15 lower case characters"
-        class="max-w-96 w-full"
-      />
-      <div class="flex justify-between w-full">
-        <div
-          class="flex flex-row-reverse items-center text-white gap-2 w-full justify-end"
-        >
-          <label for="remember-me">Rememer me</label>
-          <Field type="checkbox" :value="true" name="remember-me" />
+    <VeeForm v-slot="{ handleSubmit }" as="div">
+      <form
+        @submit="handleSubmit($event, onSubmit)"
+        class="max-w-sm w-full flex gap-4 flex-col items-center mt-6"
+      >
+        <BaseInput
+          name="email"
+          label="Email"
+          type="text"
+          rules="required|email"
+          placeholder="Enter your email"
+          class="max-w-96 w-full"
+        />
+        <BaseInput
+          name="password"
+          label="Password"
+          type="password"
+          rules="required|min:8|max:15|lower"
+          placeholder="At least 8 & max.15 lower case characters"
+          class="max-w-96 w-full"
+        />
+        <div class="flex justify-between w-full">
+          <div
+            class="flex flex-row-reverse items-center text-white gap-2 w-full justify-end"
+          >
+            <label for="remember-me">Rememer me</label>
+            <Field type="checkbox" :value="true" name="remember-me" />
+          </div>
+          <p class="w-full text-right text-[#0D6EFD] underline">
+            Forgot password
+          </p>
         </div>
-        <p class="w-full text-right text-[#0D6EFD] underline">
-          Forgot password
-        </p>
-      </div>
-      <BaseButton
-        text="Sign in"
-        class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
-      />
-      <BaseButton
-        type="button"
-        text="Sign up with Google"
-        class="border-white border w-[384px] h-10 text-white"
-        ><GoogleLogo
-      /></BaseButton>
+        <BaseButton
+          text="Sign in"
+          class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
+        />
+        <BaseButton
+          type="button"
+          text="Sign up with Google"
+          class="border-white border w-[384px] h-10 text-white"
+          ><GoogleLogo
+        /></BaseButton>
+      </form>
     </VeeForm>
     <p class="text-[#6C757D] mt-8">
       Already have an account?
@@ -63,4 +68,11 @@ import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import GoogleLogo from "@/components/icons/landing-page/GoogleLogo.vue";
 import { Field } from "vee-validate";
+import useFetch from "@/hooks/useFetch";
+
+const onSubmit = async (values) => {
+  const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
+  const state = await useFetch({ method: "post", url: backUrl, data: values });
+  console.log(state.response.value.access_token);
+};
 </script>
