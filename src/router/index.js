@@ -35,7 +35,7 @@ const router = createRouter({
           // match all routes
           path: ":email(.*)*",
           name: "account-activated",
-          component: () => import("@/views/AccountActivated.vue"),
+          component: () => import("@/views/AccountActivatedPage.vue"),
         },
         {
           path: "forgot-password",
@@ -46,6 +46,11 @@ const router = createRouter({
           path: "reset-email-sent",
           name: "reset-email-sent",
           component: () => import("@/views/ResetPasswordEmailSentPage.vue"),
+        },
+        {
+          path: "reset-password",
+          name: "reset-password",
+          component: () => import("@/views/NewPasswordPage.vue"),
         },
       ],
     },
