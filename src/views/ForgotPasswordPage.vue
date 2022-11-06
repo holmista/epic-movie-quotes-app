@@ -39,13 +39,20 @@
 
 <script setup>
 import { Form as VeeForm } from "vee-validate";
+import { useRouter } from "vue-router";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import BackArrow from "@/components/icons/landing-page/BackArrow.vue";
 import useFetch from "@/hooks/useFetch";
 
+const router = useRouter();
+
 const onSubmit = async (values) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/forgot-password`;
-  useFetch({ method: "post", url: backUrl, data: values });
+  const state = await useFetch({ method: "post", url: backUrl, data: values });
+  console.log(state.response.value.message);
+  if (state.response.value.message === "passwords.sent") {
+    router.push({ name: "reset-email-sent" });
+  }
 };
 </script>

@@ -36,9 +36,11 @@
             <label for="remember-me">Rememer me</label>
             <Field type="checkbox" :value="true" name="remember-me" />
           </div>
-          <p class="w-full text-right text-[#0D6EFD] underline">
-            Forgot password
-          </p>
+          <RouterLink :to="{ name: 'forgot-password' }" class="w-full">
+            <p class="w-full text-right text-[#0D6EFD] underline">
+              Forgot password
+            </p>
+          </RouterLink>
         </div>
         <BaseButton
           text="Sign in"
@@ -53,7 +55,7 @@
       </form>
     </VeeForm>
     <p class="text-[#6C757D] mt-8">
-      Already have an account?
+      Don't have an account?
       <RouterLink to="/login" class="text-[#0D6EFD] underline"
         >Sign up</RouterLink
       >

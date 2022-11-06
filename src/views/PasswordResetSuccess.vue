@@ -6,7 +6,7 @@
       <AccountActivatedCheck />
       <h1 class="text-white text-3xl font-medium mt-5">Success!</h1>
       <h4 class="text-[#6C757D] text-center mt-8">
-        Your Email changed successfully
+        Your password changed successfully
       </h4>
     </header>
     <BaseButton
