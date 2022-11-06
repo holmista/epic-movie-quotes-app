@@ -59,6 +59,11 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/feed",
+      name: "feed",
+      component: () => import("@/views/NewsFeedPage.vue"),
+    },
   ],
 });
 
