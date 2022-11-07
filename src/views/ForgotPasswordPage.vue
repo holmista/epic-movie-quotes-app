@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[402px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute bg-[#222030] max-w-[601px] max-h-[422px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-28 gap-3">
       <h1 class="text-white text-3xl font-medium">Forgot password?</h1>
@@ -29,7 +29,9 @@
       </form>
     </VeeForm>
     <RouterLink :to="{ name: 'login' }">
-      <div class="flex justify-center items-center text-[#6C757D] gap-3 mt-8">
+      <div
+        class="flex justify-center items-center text-[#6C757D] gap-3 mt-8 mb-4"
+      >
         <BackArrow />
         <p>Back to log in</p>
       </div>

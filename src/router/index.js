@@ -46,6 +46,14 @@ const router = createRouter({
           path: "reset-email-sent",
           name: "reset-email-sent",
           component: () => import("@/views/ResetPasswordEmailSentPage.vue"),
+          // beforeEnter: (to, from, next) => {
+          //   const isRedirected = from.name === "forgot-password";
+          //   if (isRedirected) {
+          //     next();
+          //   } else {
+          //     next({ name: "feed" });
+          //   }
+          // },
         },
         {
           path: "/reset-password/:token",

@@ -85,7 +85,7 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import DropDown from "@/components/icons/landing-page/DropDown.vue";
 import LandingImage from "@/components/landing/LandingImage.vue";
 import { useRoute, useRouter } from "vue-router";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, provide } from "vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -93,6 +93,7 @@ const router = useRouter();
 const locale = ref("en");
 const showLocale = ref(false);
 const blur = ref(false);
+provide("blur", blur);
 
 const setShowLocale = () => {
   showLocale.value = !showLocale.value;
@@ -117,6 +118,7 @@ const upperFirst = (str) => {
 onMounted(() => {
   if (route.fullPath.length > 1) {
     blur.value = true;
+    console.log(route.fullPath);
   }
 });
 </script>

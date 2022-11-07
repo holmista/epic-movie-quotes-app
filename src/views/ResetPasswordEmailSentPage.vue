@@ -10,14 +10,26 @@
       </h4>
     </header>
     <BaseButton
+      @click="handleClick"
       class="max-w-[360px] w-full h-[38px] bg-[#E31221] mt-10"
       text="Go to my email"
     />
-    <p class="text-[#6C757D] mt-10">Skip, I'll confirm later</p>
+    <p class="text-[#6C757D] mt-10" @click="handleClick">
+      Skip, I'll confirm later
+    </p>
   </div>
 </template>
 
 <script setup>
+import { inject } from "vue";
+import { useRouter } from "vue-router";
 import SendCheck from "@/components/icons/landing-page/SendCheck.vue";
 import BaseButton from "../components/base/BaseButton.vue";
+const blur = inject("blur");
+
+const router = useRouter();
+const handleClick = () => {
+  blur.value = false;
+  router.push({ name: "landing" });
+};
 </script>
