@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[601px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute bg-[#222030] max-w-[601px] max-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="w-96 text-center text-white text-3xl font-medium">
@@ -55,9 +55,9 @@
         /></BaseButton>
       </form>
     </VeeForm>
-    <p class="text-[#6C757D] mt-8">
+    <p class="text-[#6C757D] mt-8 mb-4">
       Don't have an account?
-      <RouterLink to="/login" class="text-[#0D6EFD] underline"
+      <RouterLink :to="{ name: 'signup' }" class="text-[#0D6EFD] underline"
         >Sign up</RouterLink
       >
     </p>
