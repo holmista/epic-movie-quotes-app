@@ -9,10 +9,12 @@
         Your password changed successfully
       </h4>
     </header>
-    <BaseButton
-      class="max-w-[360px] w-full h-[38px] bg-[#E31221] mt-10"
-      text="Go to my news feed"
-    />
+    <RouterLink :to="{ name: 'feed' }" class="max-w-[360px] w-full">
+      <BaseButton
+        class="max-w-[360px] w-full h-[38px] bg-[#E31221] mt-10"
+        text="Go to my news feed"
+      />
+    </RouterLink>
   </div>
 </template>
 
