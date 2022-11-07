@@ -46,14 +46,14 @@ const router = createRouter({
           path: "reset-email-sent",
           name: "reset-email-sent",
           component: () => import("@/views/ResetPasswordEmailSentPage.vue"),
-          // beforeEnter: (to, from, next) => {
-          //   const isRedirected = from.name === "forgot-password";
-          //   if (isRedirected) {
-          //     next();
-          //   } else {
-          //     next({ name: "feed" });
-          //   }
-          // },
+          beforeEnter: (to, from, next) => {
+            const isRedirected = from.name === "forgot-password";
+            if (isRedirected) {
+              next();
+            } else {
+              next({ name: "feed" });
+            }
+          },
         },
         {
           path: "/reset-password/:token",
@@ -64,6 +64,14 @@ const router = createRouter({
           path: "reset-password-success",
           name: "reset-password-success",
           component: () => import("@/views/PasswordResetSuccess.vue"),
+          beforeEnter: (to, from, next) => {
+            const isRedirected = from.name === "reset-password";
+            if (isRedirected) {
+              next();
+            } else {
+              next({ name: "feed" });
+            }
+          },
         },
         {
           path: "/auth/google/callback",
