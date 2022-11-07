@@ -10,7 +10,12 @@
         Your account has been activated.
       </h4>
     </header>
-    <BaseButton class="w-96 h-9 bg-[#E31221] mt-8" text="Go to my news feed" />
+    <RouterLink :to="{ name: 'feed' }">
+      <BaseButton
+        class="w-96 h-9 bg-[#E31221] mt-8"
+        text="Go to my news feed"
+      />
+    </RouterLink>
   </div>
 </template>
 
