@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[704px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute bg-[#222030] max-w-[601px] max-h-[780px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="text-white text-3xl font-medium">Create an account</h1>
@@ -49,6 +49,7 @@
           class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
         />
         <BaseButton
+          @click="googleClick"
           type="button"
           text="Sign up with Google"
           class="border-white border w-[384px] h-10 text-white"
@@ -56,7 +57,7 @@
         /></BaseButton>
       </form>
     </VeeForm>
-    <p class="text-[#6C757D] mt-8">
+    <p class="text-[#6C757D] mt-8 mb-4">
       Already have an account?
       <RouterLink to="/login" class="text-[#0D6EFD] underline"
         >Log in</RouterLink
@@ -74,6 +75,15 @@ import GoogleLogo from "@/components/icons/landing-page/GoogleLogo.vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import useFetch from "@/hooks/useFetch";
+
+const googleClick = async () => {
+  const state = await useFetch({
+    method: "get",
+    url: `${import.meta.env.VITE_BACK_BASE_URL}/auth/redirect`,
+  });
+  console.log(state.response.value.url);
+  window.open(state.response.value.url, "_blank");
+};
 
 const router = useRouter();
 const password = ref("");
