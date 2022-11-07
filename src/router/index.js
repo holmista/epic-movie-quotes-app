@@ -32,8 +32,8 @@ const router = createRouter({
           },
         },
         {
-          // match all routes
-          path: ":email(.*)*",
+          // match all routes after this
+          path: "/email/verify/(.*)*",
           name: "account-activated",
           component: () => import("@/views/AccountActivatedPage.vue"),
         },
@@ -56,6 +56,11 @@ const router = createRouter({
           path: "reset-password-success",
           name: "reset-password-success",
           component: () => import("@/views/PasswordResetSuccess.vue"),
+        },
+        {
+          path: "/auth/google/callback",
+          name: "google-callback",
+          component: () => import("@/views/GoogleCallbackPage.vue"),
         },
       ],
     },

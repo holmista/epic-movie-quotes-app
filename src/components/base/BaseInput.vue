@@ -14,7 +14,14 @@
         <input
           v-bind="field"
           :value="field.value"
-          class="py-2 px-5 block w-full rounded-md pr-10 text-[#212529] focus:outline-none"
+          class="py-2 px-5 block w-full rounded-md pr-10 text-[#212529] border-[2px] focus:outline-none"
+          :class="
+            !meta.valid && meta.dirty
+              ? 'border-[#E31221]'
+              : meta.valid
+              ? 'border-[#198754]'
+              : ''
+          "
           :placeholder="placeholder"
           :onchange="handleChange"
         />

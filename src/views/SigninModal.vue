@@ -47,6 +47,7 @@
           class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
         />
         <BaseButton
+          @click="googleClick"
           type="button"
           text="Sign up with Google"
           class="border-white border w-[384px] h-10 text-white"
@@ -75,6 +76,15 @@ import { set } from "@/hooks/useCookie";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+
+const googleClick = async () => {
+  const state = await useFetch({
+    method: "get",
+    url: `${import.meta.env.VITE_BACK_BASE_URL}/auth/redirect`,
+  });
+  console.log(state.response.value.url);
+  window.open(state.response.value.url, "_blank");
+};
 
 const onSubmit = async (values) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
