@@ -23,7 +23,7 @@
 <script setup>
 import { inject } from "vue";
 import { useRouter } from "vue-router";
-import SendCheck from "@/components/icons/landing-page/SendCheck.vue";
+import SendCheck from "@/assets/icons/landing/SendCheck.vue";
 import BaseButton from "../components/base/BaseButton.vue";
 const blur = inject("blur");
 

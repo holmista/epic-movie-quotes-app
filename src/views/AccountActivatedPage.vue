@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import AccountActivatedCheck from "@/components/icons/landing-page/AccountActivatedCheck.vue";
+import AccountActivatedCheck from "@/assets/icons/landing/AccountActivatedCheck.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";

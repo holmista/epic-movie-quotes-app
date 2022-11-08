@@ -24,7 +24,7 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 import BaseButton from "@/components/base/BaseButton.vue";
-import AccountActivatedCheck from "@/components/icons/landing-page/AccountActivatedCheck.vue";
+import AccountActivatedCheck from "@/assets/icons/landing/AccountActivatedCheck.vue";
 import { set } from "@/hooks/useCookie";
 
 const route = useRoute();

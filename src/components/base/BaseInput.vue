@@ -52,8 +52,8 @@
 
 <script>
 import { Field, ErrorMessage } from "vee-validate";
-import ExclamationMark from "@/components/icons/landing-page/ExclamationMark.vue";
-import CheckMark from "@/components/icons/landing-page/CheckMark.vue";
+import ExclamationMark from "@/assets/icons/landing/ExclamationMark.vue";
+import CheckMark from "@/assets/icons/landing/CheckMark.vue";
 
 export default {
   components: {

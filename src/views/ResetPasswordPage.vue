@@ -52,7 +52,7 @@ import { Form as VeeForm } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import BackArrow from "@/components/icons/landing-page/BackArrow.vue";
+import BackArrow from "@/assets/icons/landing/BackArrow.vue";
 
 const route = useRoute();
 

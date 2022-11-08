@@ -14,5 +14,5 @@
 </template>
 
 <script setup>
-import SendCheck from "@/components/icons/landing-page/SendCheck.vue";
+import SendCheck from "@/assets/icons/landing/SendCheck.vue";
 </script>
