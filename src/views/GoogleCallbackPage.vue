@@ -25,6 +25,7 @@ import { useRoute } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 import BaseButton from "@/components/base/BaseButton.vue";
 import AccountActivatedCheck from "@/components/icons/landing-page/AccountActivatedCheck.vue";
+import { set } from "@/hooks/useCookie";
 
 const route = useRoute();
 const success = ref(false);
@@ -36,7 +37,13 @@ onMounted(async () => {
   }/auth/callback?${queryString}`;
   console.log(backUrl);
   const state = await useFetch({ method: "get", url: backUrl });
-  console.log(state.error.value);
-  state.response.value && (success.value = true);
+  if (state.response.value) {
+    success.value = true;
+    set(
+      "access_token",
+      state.response.value.access_token,
+      state.response.value.expires_in
+    );
+  }
 });
 </script>

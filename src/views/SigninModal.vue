@@ -49,7 +49,7 @@
         <BaseButton
           @click="googleClick"
           type="button"
-          text="Sign up with Google"
+          text="Sign in with Google"
           class="border-white border w-[384px] h-10 text-white"
           ><GoogleLogo
         /></BaseButton>
