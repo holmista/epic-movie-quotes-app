@@ -33,7 +33,7 @@ const router = createRouter({
         },
         {
           // match all routes after this
-          path: "/email/verify/(.*)*",
+          path: "/email/verify/:id(.*)",
           name: "account-activated",
           component: () => import("@/views/AccountActivatedPage.vue"),
         },
