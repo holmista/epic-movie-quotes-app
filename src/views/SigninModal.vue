@@ -17,7 +17,7 @@
           name="email"
           label="Email"
           type="text"
-          rules="required|email"
+          rules="required"
           placeholder="Enter your email"
           class="max-w-96 w-full"
         />
