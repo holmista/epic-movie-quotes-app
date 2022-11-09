@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import ProfilePage from "@/views/ProfilePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -84,6 +85,11 @@ const router = createRouter({
       path: "/feed",
       name: "feed",
       component: () => import("@/views/NewsFeedPage.vue"),
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: ProfilePage,
     },
   ],
 });
