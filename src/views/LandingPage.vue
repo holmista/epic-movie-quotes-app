@@ -1,7 +1,7 @@
 <template>
   <router-view />
   <div
-    :class="blur ? 'overflow-x-hidden overflow-y-hidden' : ''"
+    :class="blur ? 'overflow-x-hidden overflow-y-hidden h-screen' : 'h-screen'"
     @click="goBack"
   >
     <div :class="blur ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'">
