@@ -90,6 +90,13 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: ProfilePage,
+      children: [
+        {
+          path: "add-email",
+          name: "add-email",
+          component: () => import("@/components/profile/AddEmail.vue"),
+        },
+      ],
     },
   ],
 });

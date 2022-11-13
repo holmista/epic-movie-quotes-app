@@ -1,5 +1,11 @@
 <template>
-  <div class="ml-24 mt-8">
+  <router-view />
+  <div
+    class="ml-24 mt-8"
+    :class="
+      blur ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden ' : ''
+    "
+  >
     <h1 class="text-2xl">My profile</h1>
     <div class="flex flex-col items-center mt-10">
       <img
@@ -8,7 +14,12 @@
         alt=""
       />
       <div
-        class="flex flex-col gap-6 mt-14 max-w-[998px] bg-[#11101a] max-h-[800px] h-full px-20"
+        class="flex flex-col gap-6 mt-14 max-w-[998px] max-h-[800px] h-full px-20"
+        :class="
+          blur
+            ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden'
+            : 'bg-[#11101a]'
+        "
       >
         <ProfileInput class="mt-40">
           <template #input>
@@ -72,4 +83,6 @@ import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import EmailAddIcon from "@/assets/icons/profile/EmailAddIcon.vue";
 import ProfileInput from "@/components/profile/ProfileInput.vue";
+import { ref } from "vue";
+const blur = ref(true);
 </script>
