@@ -5,7 +5,7 @@
     >
     <div class="relative mt-1 rounded-md shadow-sm">
       <Field
-        :value="initialValue"
+        v-model="initialValue"
         v-slot="{ field, meta }"
         :name="name"
         :type="type"
