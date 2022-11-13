@@ -52,9 +52,11 @@
               <p class="w-[150px] mt-12 px-4 py-2">Primary Email</p>
             </template>
           </ProfileInput>
-          <BaseButton text="Add new email" class="border-white border w-44"
-            ><EmailAddIcon
-          /></BaseButton>
+          <RouterLink :to="{ name: 'add-email' }">
+            <BaseButton text="Add new email" class="border-white border w-44"
+              ><EmailAddIcon
+            /></BaseButton>
+          </RouterLink>
         </div>
         <ProfileInput class="pb-10">
           <template #input>
@@ -83,6 +85,16 @@ import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import EmailAddIcon from "@/assets/icons/profile/EmailAddIcon.vue";
 import ProfileInput from "@/components/profile/ProfileInput.vue";
-import { ref } from "vue";
-const blur = ref(true);
+import { ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const blur = ref(false);
+watchEffect(() => {
+  if (route.fullPath === "/profile") {
+    blur.value = false;
+  } else {
+    blur.value = true;
+  }
+});
 </script>

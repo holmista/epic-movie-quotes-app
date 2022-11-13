@@ -11,11 +11,13 @@
         label="Email"
         type="text"
         rules="required|email"
-        placeholder="Enter your email"
+        placeholder="Enter new email"
         class="max-w-[360px] w-full"
       />
       <div class="flex mt-8 justify-end max-w-[360px] w-full">
-        <BaseButton text="Cancel" class="" />
+        <RouterLink :to="{ name: 'profile' }">
+          <BaseButton text="Cancel" class="" />
+        </RouterLink>
         <BaseButton text="Add" class="bg-[#E31221]" />
       </div>
     </Form>
