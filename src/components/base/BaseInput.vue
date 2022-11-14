@@ -25,6 +25,7 @@
           "
           :placeholder="placeholder"
           :onchange="handleChange"
+          :disabled="disabled"
         />
 
         <div
@@ -70,6 +71,7 @@ export default {
     rules: { type: String, required: true },
     placeholder: { type: String, required: false },
     initialValue: { type: String, required: false },
+    disabled: { type: Boolean, required: false },
   },
   setup(props, ctx) {
     const handleChange = (e) => {

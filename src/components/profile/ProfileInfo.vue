@@ -54,6 +54,7 @@
                 <p class="w-[150px] mt-12 px-4 py-2">Primary Email</p>
               </template>
             </ProfileInput>
+            <SecondaryEmails :data="secondaryEmails" />
             <RouterLink :to="{ name: 'add-email' }">
               <BaseButton text="Add new email" class="border-white border w-44"
                 ><EmailAddIcon
@@ -97,6 +98,7 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import EmailAddIcon from "@/assets/icons/profile/EmailAddIcon.vue";
 import ProfileInput from "@/components/profile/ProfileInput.vue";
 import EditPassword from "@/components/profile/EditPassword.vue";
+import SecondaryEmails from "./SecondaryEmails.vue";
 import { ref, watchEffect, reactive, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { Form } from "vee-validate";
@@ -140,10 +142,9 @@ onMounted(async () => {
   if (state.status.value === 200) {
     name.value = state.response.value.name;
     email.value = state.response.value.email;
-    secondaryEmails.value = state.response.value.socondary_emails;
-    console.log(state.response.value.email);
+    secondaryEmails.push(...state.response.value.socondary_emails);
+    console.log(secondaryEmails);
   }
-  console.log(state.error.value);
 });
 
 const route = useRoute();
