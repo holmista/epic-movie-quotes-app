@@ -20,9 +20,10 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 
-onMounted(() => {
+onMounted(async () => {
   const route = useRoute();
   const backUrl = import.meta.env.VITE_BACK_BASE_URL + route.fullPath;
-  useFetch({ method: "get", url: backUrl });
+  const state = await useFetch({ method: "get", url: backUrl });
+  console.log(state.error.value);
 });
 </script>

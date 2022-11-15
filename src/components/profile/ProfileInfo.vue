@@ -12,6 +12,7 @@
         src="https://image.tmdb.org/t/p/w500/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg"
         class="w-[188px] h-[188px] rounded-full object-cover absolute top-40"
         alt=""
+        ref="avatarRef"
       />
       <Form v-slot="{ meta, handleSubmit }" as="div">
         <form
@@ -23,7 +24,21 @@
               : 'bg-[#11101a]'
           "
         >
-          <ProfileInput class="mt-40">
+          <Field
+            name="avatar"
+            type="file"
+            id="actual-btn"
+            hidden
+            @change="handleImageChange"
+            accept="image/*"
+          />
+
+          <div class="flex justify-center pt-28">
+            <label for="actual-btn" class="hover:cursor-pointer"
+              >Upload new photo</label
+            >
+          </div>
+          <ProfileInput class="">
             <template #input>
               <BaseInput
                 name="name"
@@ -81,7 +96,10 @@
             </template>
           </ProfileInput>
           <EditPassword v-if="showEditPassword" />
-          <div v-if="meta.touched" class="flex justify-end">
+          <div
+            v-if="meta.touched || imageInputTouched"
+            class="flex justify-end"
+          >
             <BaseButton type="button" text="Cancel" />
             <BaseButton text="Save changes" class="bg-[#E31221]" />
           </div>
@@ -99,11 +117,23 @@ import EmailAddIcon from "@/assets/icons/profile/EmailAddIcon.vue";
 import ProfileInput from "@/components/profile/ProfileInput.vue";
 import EditPassword from "@/components/profile/EditPassword.vue";
 import SecondaryEmails from "./SecondaryEmails.vue";
-import { ref, watchEffect, reactive, onMounted } from "vue";
+import { ref, watchEffect, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { Form } from "vee-validate";
+import { Form, Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
 import { useProfileStore } from "@/stores/profile";
+
+const imageInputTouched = ref(false);
+const avatarRef = ref(null);
+const avatar = ref(null);
+const handleImageChange = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    avatar.value = file;
+    avatarRef.value.src = URL.createObjectURL(file);
+    imageInputTouched.value = true;
+  }
+};
 
 const store = useProfileStore();
 const showEditPassword = ref(false);
@@ -113,6 +143,7 @@ const setShowEditPassword = (value) => {
 
 const name = ref("");
 const email = ref("");
+
 // const secondaryEmails = reactive([]);
 
 const onSubmit = async (values) => {
@@ -120,6 +151,7 @@ const onSubmit = async (values) => {
     name: values.name,
     password: values.password,
     confirmPassword: values.confirmPassword,
+    avatar: avatar.value,
   };
   console.log(values.name);
   if (body.name === name.value) {
@@ -134,9 +166,10 @@ const onSubmit = async (values) => {
   const state = await useFetch({
     url: "/user",
     method: "patch",
-    data: body,
+    data: new FormData(body),
   });
   console.log(state.error.value);
+  console.log(body);
 };
 
 onMounted(async () => {
@@ -146,8 +179,6 @@ onMounted(async () => {
     email.value = state.response.value.email;
     store.setSecondaryEmails(state.response.value.socondary_emails);
     store.primaryEmail = state.response.value.email;
-    // secondaryEmails.push(...state.response.value.socondary_emails);
-    // console.log(secondaryEmails);
   }
 });
 
