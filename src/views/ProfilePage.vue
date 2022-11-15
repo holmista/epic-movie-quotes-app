@@ -3,7 +3,8 @@
     <TopPanel />
     <div class="flex">
       <SidePanel class="ml-[70px] mt-8" />
-      <ProfileInfo />
+      <ProfileInfo v-if="isGoogleUser !== false" />
+      <GoogleProfileInfo v-else />
     </div>
   </div>
 </template>
@@ -11,7 +12,20 @@
 <script setup>
 import SidePanel from "@/components/profile/SidePanel.vue";
 import TopPanel from "@/components/profile/TopPanel.vue";
+import { onMounted, ref } from "vue";
 import ProfileInfo from "../components/profile/ProfileInfo.vue";
+import GoogleProfileInfo from "../components/profile/GoogleProfileInfo.vue";
+import useFetch from "@/hooks/useFetch";
+
+const isGoogleUser = ref(false);
+
+onMounted(async () => {
+  const state = await useFetch({ url: "/user", method: "get" });
+  console.log(state.status.value, state.response.value.google_id);
+  if (state.status.value === 200 && state.response.value.google_id) {
+    isGoogleUser.value = true;
+  }
+});
 </script>
 
 <style scoped>
