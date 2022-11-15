@@ -25,7 +25,6 @@
           "
           :placeholder="placeholder"
           :onchange="handleChange"
-          :disabled="disabled"
         />
 
         <div

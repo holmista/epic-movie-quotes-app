@@ -46,7 +46,7 @@
                   label="Email"
                   type="email"
                   rules="email|required"
-                  :initialValue="email"
+                  :initialValue="store.primaryEmail"
                   class="w-[360px] border-t-2 border-[#CED4DA] pt-5"
                 />
               </template>
@@ -54,7 +54,7 @@
                 <p class="w-[150px] mt-12 px-4 py-2">Primary Email</p>
               </template>
             </ProfileInput>
-            <SecondaryEmails :data="secondaryEmails" />
+            <SecondaryEmails :data="store.secondaryEmails" />
             <RouterLink :to="{ name: 'add-email' }">
               <BaseButton text="Add new email" class="border-white border w-44"
                 ><EmailAddIcon
@@ -103,7 +103,9 @@ import { ref, watchEffect, reactive, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { Form } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
+import { useProfileStore } from "@/stores/profile";
 
+const store = useProfileStore();
 const showEditPassword = ref(false);
 const setShowEditPassword = (value) => {
   showEditPassword.value = value;
@@ -111,7 +113,7 @@ const setShowEditPassword = (value) => {
 
 const name = ref("");
 const email = ref("");
-const secondaryEmails = reactive([]);
+// const secondaryEmails = reactive([]);
 
 const onSubmit = async (values) => {
   const body = {
@@ -142,8 +144,10 @@ onMounted(async () => {
   if (state.status.value === 200) {
     name.value = state.response.value.name;
     email.value = state.response.value.email;
-    secondaryEmails.push(...state.response.value.socondary_emails);
-    console.log(secondaryEmails);
+    store.setSecondaryEmails(state.response.value.socondary_emails);
+    store.primaryEmail = state.response.value.email;
+    // secondaryEmails.push(...state.response.value.socondary_emails);
+    // console.log(secondaryEmails);
   }
 });
 

@@ -36,11 +36,14 @@ import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
 import { useRouter } from "vue-router";
+import { useProfileStore } from "@/stores/profile";
 
+const store = useProfileStore();
 const router = useRouter();
 const onSubmit = async (values) => {
   const state = await useFetch({ method: "post", url: "/email", data: values });
   if (state.status.value === 201) {
+    store.addSecondaryEmail(state.response.value.email);
     router.push({ name: "profile" });
   }
 };
