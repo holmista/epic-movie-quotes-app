@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ProfilePage from "@/views/ProfilePage.vue";
+import { get } from "@/hooks/useCookie.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -90,6 +91,13 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: ProfilePage,
+      beforeEnter: (to, from, next) => {
+        if (get("access_token")) {
+          next();
+        } else {
+          next({ name: "login" });
+        }
+      },
       children: [
         {
           path: "add-email",
