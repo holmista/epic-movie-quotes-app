@@ -89,11 +89,20 @@ const password = ref("");
 const setPassword = (val) => {
   password.value = val;
 };
-const onSubmit = async (values) => {
+const onSubmit = async (values, actions) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signup`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
   if (state.status.value == 201) {
     router.push("/activation-email-sent");
+  }
+  console.log(state.error.value);
+  if (state.status.value == 422) {
+    if (state.error.value.response.data.errors.name) {
+      actions.setFieldError("name", state.error.value.response.data.message);
+    }
+    if (state.error.value.response.data.errors.email) {
+      actions.setFieldError("email", state.error.value.response.data.message);
+    }
   }
 };
 </script>
