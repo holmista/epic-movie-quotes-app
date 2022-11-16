@@ -6,7 +6,11 @@
     <div class="flex items-center space-x-4">
       <BellIcon />
       <LanguageDropDown />
-      <BaseButton text="Log out" class="border-white border w-[109px] h-10" />
+      <BaseButton
+        @click="logout"
+        text="Log out"
+        class="border-white border w-[109px] h-10"
+      />
     </div>
   </div>
 </template>
@@ -15,4 +19,12 @@
 import LanguageDropDown from "@/components/base/LanguageDropDown.vue";
 import BellIcon from "@/assets/icons/profile/BellIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
+import { remove } from "@/hooks/useCookie";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const logout = () => {
+  remove("access_token");
+  router.push({ name: "landing" });
+};
 </script>

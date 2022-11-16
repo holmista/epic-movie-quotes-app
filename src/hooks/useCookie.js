@@ -9,3 +9,7 @@ export const set = (name, value, expire) => {
   expires.setTime(expires.getTime() + expire * 1000);
   document.cookie = `${name}=${value};expires=${expires.toUTCString()}`;
 };
+
+export const remove = (name) => {
+  document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+};
