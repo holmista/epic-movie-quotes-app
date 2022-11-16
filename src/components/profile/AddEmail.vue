@@ -40,11 +40,14 @@ import { useProfileStore } from "@/stores/profile";
 
 const store = useProfileStore();
 const router = useRouter();
-const onSubmit = async (values) => {
+const onSubmit = async (values, actions) => {
   const state = await useFetch({ method: "post", url: "/email", data: values });
   if (state.status.value === 201) {
     store.addSecondaryEmail(state.response.value.email);
     router.push({ name: "profile" });
+  }
+  if (state.error.value.response.data.message) {
+    actions.setFieldError("email", state.error.value.response.data.message);
   }
 };
 </script>
