@@ -1,7 +1,7 @@
 <template>
   <router-view />
   <div
-    class="ml-24 mt-8"
+    class="ml-56 mt-8"
     :class="
       blur ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden ' : ''
     "

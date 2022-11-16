@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[#11101A] rounded-xl w-[400px] h-[300px] absolute left-[23%] right-0 ml-auto mr-auto z-10 top-72"
+    class="bg-[#11101A] rounded-xl w-[400px] h-[300px] absolute left-0 right-0 ml-auto mr-auto z-10 top-72"
   >
     <div class="w-[400px]">
       <p class="text-2xl py-3 pl-5 border-b-2">Add new Email</p>
