@@ -1,5 +1,5 @@
 <template>
-  <div id="parent" class="text-white h-screen">
+  <div id="parent" class="text-white min-h-screen">
     <TopPanel />
     <div class="flex">
       <SidePanel class="ml-[70px] mt-8" />
