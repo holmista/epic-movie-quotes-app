@@ -9,7 +9,7 @@
     <h1 class="text-2xl">My profile</h1>
     <div class="flex flex-col items-center mt-10">
       <img
-        src="https://image.tmdb.org/t/p/w500/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg"
+        :src="store.avatarSrc"
         class="w-[188px] h-[188px] rounded-full object-cover absolute top-40"
         alt=""
         ref="avatarRef"
@@ -45,7 +45,7 @@
                 label="Name"
                 type="email"
                 rules="required|min:3|max:15"
-                :initialValue="name"
+                :initialValue="store.name"
                 class="w-[360px]"
               />
             </template>
@@ -141,9 +141,6 @@ const setShowEditPassword = (value) => {
   showEditPassword.value = value;
 };
 
-const name = ref("");
-const email = ref("");
-
 // const secondaryEmails = reactive([]);
 
 const onSubmit = async (values) => {
@@ -153,32 +150,40 @@ const onSubmit = async (values) => {
     confirmPassword: values.confirmPassword,
     avatar: avatar.value,
   };
-  console.log(values.name);
-  if (body.name === name.value) {
+  console.log(body.name, store.name);
+  if (body.name === store.name) {
     delete body.name;
   }
-
   for (let [k, v] of Object.entries(body)) {
     if (!v) {
       delete body[k];
     }
   }
+  const form = new FormData();
+  body.name && form.append("name", body.name);
+  body.password && form.append("password", body.password);
+  body.confirmPassword && form.append("confirmPassword", body.confirmPassword);
+  body.avatar && form.append("avatar", avatar.value);
   const state = await useFetch({
     url: "/user",
-    method: "patch",
-    data: new FormData(body),
+    method: "post",
+    data: form,
   });
+  if (state.status.value === 200) {
+    store.setName(state.response.value.user.name);
+    store.setEmail(state.response.value.user.email);
+    store.setAvatarSrc(state.response.value.user.avatar);
+  }
   console.log(state.error.value);
-  console.log(body);
 };
 
 onMounted(async () => {
   const state = await useFetch({ method: "get", url: "/user" });
   if (state.status.value === 200) {
-    name.value = state.response.value.name;
-    email.value = state.response.value.email;
+    store.setName(state.response.value.name);
     store.setSecondaryEmails(state.response.value.socondary_emails);
-    store.primaryEmail = state.response.value.email;
+    store.setPrimaryEmail(state.response.value.email);
+    store.setAvatarSrc(state.response.value.avatar);
   }
 });
 

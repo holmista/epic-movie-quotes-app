@@ -3,7 +3,7 @@
     <TopPanel />
     <div class="flex">
       <SidePanel class="ml-[70px] mt-8" />
-      <ProfileInfo v-if="isGoogleUser !== false" />
+      <ProfileInfo v-if="isGoogleUser === false" />
       <GoogleProfileInfo v-else />
     </div>
   </div>
