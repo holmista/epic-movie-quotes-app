@@ -14,7 +14,11 @@
         alt=""
         ref="avatarRef"
       />
-      <Form v-slot="{ meta, handleSubmit }" as="div">
+      <Form
+        v-slot="{ meta, handleSubmit }"
+        :initial-values="formValues"
+        as="div"
+      >
         <form
           @submit="handleSubmit($event, onSubmit)"
           class="flex flex-col gap-6 mt-14 max-w-[998px] h-full px-20"
@@ -43,8 +47,8 @@
               <BaseInput
                 name="name"
                 label="Name"
-                type="email"
-                rules="required|min:3|max:15"
+                type="text"
+                rules="required|min:3|max:15|lower"
                 :initialValue="store.name"
                 class="w-[360px]"
               />
@@ -54,21 +58,25 @@
             </template>
           </ProfileInput>
           <div class="flex flex-col gap-8">
-            <ProfileInput>
-              <template #input>
-                <BaseInput
+            <div class="flex items-center">
+              <div class="flex flex-col">
+                <label class="text-sm font-medium text-white mb-2"
+                  >Email<span class="text-red-600"> *</span></label
+                >
+                <input
                   name="email"
                   label="Email"
                   type="email"
-                  rules="email|required"
-                  :initialValue="store.primaryEmail"
-                  class="w-[360px] border-t-2 border-[#CED4DA] pt-5"
+                  :value="store.primaryEmail"
+                  class="w-[360px] border-t-2 border-[#CED4DA] text-black rounded mt-1"
+                  readonly
                 />
-              </template>
-              <template #button>
-                <p class="w-[150px] mt-12 px-4 py-2">Primary Email</p>
-              </template>
-            </ProfileInput>
+              </div>
+              <BaseButton
+                text="Primary email"
+                class="mt-7 hover:cursor-default"
+              />
+            </div>
             <SecondaryEmails :data="store.secondaryEmails" />
             <RouterLink :to="{ name: 'add-email' }">
               <BaseButton text="Add new email" class="border-white border w-44"
@@ -100,7 +108,11 @@
             v-if="meta.touched || imageInputTouched"
             class="flex justify-end"
           >
-            <BaseButton type="button" text="Cancel" />
+            <BaseButton
+              @click="showEditPassword = false"
+              text="Cancel"
+              type="reset"
+            />
             <BaseButton text="Save changes" class="bg-[#E31221]" />
           </div>
         </form>
@@ -117,7 +129,7 @@ import EmailAddIcon from "@/assets/icons/profile/EmailAddIcon.vue";
 import ProfileInput from "@/components/profile/ProfileInput.vue";
 import EditPassword from "@/components/profile/EditPassword.vue";
 import SecondaryEmails from "./SecondaryEmails.vue";
-import { ref, watchEffect, onMounted } from "vue";
+import { ref, watchEffect, onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { Form, Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
@@ -175,6 +187,10 @@ const onSubmit = async (values) => {
   }
 };
 
+const formValues = reactive({
+  name: "",
+});
+
 onMounted(async () => {
   const state = await useFetch({ method: "get", url: "/user" });
   if (state.status.value === 200) {
@@ -182,6 +198,7 @@ onMounted(async () => {
     store.setSecondaryEmails(state.response.value.socondary_emails);
     store.setPrimaryEmail(state.response.value.email);
     store.setAvatarSrc(state.response.value.avatar);
+    formValues.name = state.response.value.name;
   }
 });
 

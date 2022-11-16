@@ -7,7 +7,7 @@ export const get = (name) => {
 export const set = (name, value, expire) => {
   const expires = new Date();
   expires.setTime(expires.getTime() + expire * 1000);
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()}`;
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
 };
 
 export const remove = (name) => {

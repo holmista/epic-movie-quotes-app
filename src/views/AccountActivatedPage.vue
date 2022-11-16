@@ -23,6 +23,6 @@ import useFetch from "@/hooks/useFetch";
 onMounted(async () => {
   const route = useRoute();
   const backUrl = import.meta.env.VITE_BACK_BASE_URL + route.fullPath;
-  const state = await useFetch({ method: "get", url: backUrl });
+  await useFetch({ method: "get", url: backUrl });
 });
 </script>

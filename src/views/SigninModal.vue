@@ -82,7 +82,6 @@ const googleClick = async () => {
     method: "get",
     url: `${import.meta.env.VITE_BACK_BASE_URL}/auth/redirect`,
   });
-  console.log(state.response.value.url);
   window.open(state.response.value.url, "_blank");
 };
 

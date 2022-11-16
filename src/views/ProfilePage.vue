@@ -21,7 +21,6 @@ const isGoogleUser = ref(false);
 
 onMounted(async () => {
   const state = await useFetch({ url: "/user", method: "get" });
-  console.log(state.error.value, state.response.value.google_id);
   if (state.status.value === 200 && state.response.value.google_id) {
     isGoogleUser.value = true;
   }

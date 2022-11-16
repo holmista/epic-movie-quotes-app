@@ -30,7 +30,6 @@ import ProfileInput from "@/components/profile/ProfileInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
 import { useProfileStore } from "@/stores/profile";
-import { watchEffect } from "vue";
 
 const store = useProfileStore();
 
@@ -58,7 +57,7 @@ const handleMakePrimary = async (email) => {
   }
 };
 
-const props = defineProps({
+defineProps({
   data: { type: Array, required: true },
 });
 </script>

@@ -118,7 +118,6 @@ const upperFirst = (str) => {
 onMounted(() => {
   if (route.fullPath.length > 1) {
     blur.value = true;
-    console.log(route.fullPath);
   }
 });
 </script>
