@@ -24,6 +24,5 @@ onMounted(async () => {
   const route = useRoute();
   const backUrl = import.meta.env.VITE_BACK_BASE_URL + route.fullPath;
   const state = await useFetch({ method: "get", url: backUrl });
-  console.log(state.error.value);
 });
 </script>

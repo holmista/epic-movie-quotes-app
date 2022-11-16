@@ -52,7 +52,6 @@ const router = useRouter();
 const onSubmit = async (values) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/forgot-password`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
-  console.log(state.response.value.message);
   if (state.response.value.message === "passwords.sent") {
     router.push({ name: "reset-email-sent" });
   }

@@ -61,8 +61,4 @@ const handleMakePrimary = async (email) => {
 const props = defineProps({
   data: { type: Array, required: true },
 });
-watchEffect(() => {
-  console.log(props.data);
-});
-console.log("secondary emails component", props.data.value);
 </script>

@@ -150,7 +150,6 @@ const onSubmit = async (values) => {
     confirmPassword: values.confirmPassword,
     avatar: avatar.value,
   };
-  console.log(body.name, store.name);
   if (body.name === store.name) {
     delete body.name;
   }
@@ -174,7 +173,6 @@ const onSubmit = async (values) => {
     store.setEmail(state.response.value.user.email);
     store.setAvatarSrc(state.response.value.user.avatar);
   }
-  console.log(state.error.value);
 };
 
 onMounted(async () => {

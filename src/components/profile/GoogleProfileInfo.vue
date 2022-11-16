@@ -106,8 +106,6 @@ const onSubmit = async (values) => {
     method: "patch",
     data: body,
   });
-  console.log(state.error.value);
-  console.log(body);
 };
 
 onMounted(async () => {
