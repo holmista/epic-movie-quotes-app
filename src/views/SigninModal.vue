@@ -66,7 +66,6 @@
 
 <script setup>
 import { Form as VeeForm } from "vee-validate";
-// import BaseModal from "@/components/base/BaseModal.vue";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import GoogleLogo from "@/assets/icons/landing/GoogleLogo.vue";

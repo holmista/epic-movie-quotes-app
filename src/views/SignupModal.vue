@@ -68,7 +68,6 @@
 
 <script setup>
 import { Form as VeeForm } from "vee-validate";
-// import BaseModal from "@/components/base/BaseModal.vue";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import GoogleLogo from "@/assets/icons/landing/GoogleLogo.vue";
@@ -95,7 +94,6 @@ const onSubmit = async (values, actions) => {
   if (state.status.value == 201) {
     router.push("/activation-email-sent");
   }
-  console.log(state.error.value);
   if (state.status.value == 422) {
     if (state.error.value.response.data.errors.name) {
       actions.setFieldError("name", state.error.value.response.data.message);

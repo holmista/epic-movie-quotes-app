@@ -122,7 +122,6 @@
 </template>
 
 <script setup>
-// import { Form, Field } from "vee-validate";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import EmailAddIcon from "@/assets/icons/profile/EmailAddIcon.vue";
@@ -152,8 +151,6 @@ const showEditPassword = ref(false);
 const setShowEditPassword = (value) => {
   showEditPassword.value = value;
 };
-
-// const secondaryEmails = reactive([]);
 
 const onSubmit = async (values) => {
   const body = {

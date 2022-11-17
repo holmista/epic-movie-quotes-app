@@ -70,7 +70,6 @@
 </template>
 
 <script setup>
-// import { Form, Field } from "vee-validate";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import ProfileInput from "@/components/profile/ProfileInput.vue";
@@ -93,8 +92,6 @@ const handleImageChange = (e) => {
   }
 };
 
-// const secondaryEmails = reactive([]);
-
 const onSubmit = async (values) => {
   const body = {
     name: values.name,
@@ -116,7 +113,6 @@ const onSubmit = async (values) => {
     method: "post",
     data: form,
   });
-  console.log(state.error.value);
   if (state.status.value === 200) {
     store.setName(state.response.value.user.name);
     store.setEmail(state.response.value.user.email);
