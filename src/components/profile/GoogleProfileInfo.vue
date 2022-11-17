@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-56 mt-8">
+  <div class="ml-56 mt-8 pb-20">
     <h1 class="text-2xl">My profile</h1>
     <div class="flex flex-col items-center mt-10">
       <img
