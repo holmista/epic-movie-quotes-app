@@ -7,13 +7,14 @@
       />
     </template>
     <template #button>
-      <div class="flex divide-x-2">
+      <div class="flex items-center">
         <BaseButton
           :text="email.email_verified_at ? 'Make this primary' : 'Not verified'"
           type="button"
           class="whitespace-nowrap"
           @click="handleMakePrimary(email.email)"
         />
+        <DivideLine />
         <BaseButton
           class="rounded-none"
           text="Remove"
@@ -30,6 +31,7 @@ import ProfileInput from "@/components/profile/ProfileInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
 import { useProfileStore } from "@/stores/profile";
+import DivideLine from "@/assets/icons/profile/DivideLine.vue";
 
 const store = useProfileStore();
 
