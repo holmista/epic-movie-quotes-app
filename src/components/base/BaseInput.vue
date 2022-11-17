@@ -5,6 +5,7 @@
     >
     <div class="relative mt-1 rounded-md shadow-sm">
       <Field
+        v-model="initialValue"
         v-slot="{ field, meta }"
         :name="name"
         :type="type"
@@ -67,7 +68,9 @@ export default {
     label: { type: String, required: true },
     type: { type: String, required: true },
     rules: { type: String, required: true },
-    placeholder: { type: String, required: true },
+    placeholder: { type: String, required: false },
+    initialValue: { type: String, required: false },
+    disabled: { type: Boolean, required: false },
   },
   setup(props, ctx) {
     const handleChange = (e) => {

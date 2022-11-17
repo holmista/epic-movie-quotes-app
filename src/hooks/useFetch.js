@@ -1,5 +1,5 @@
 import { reactive, toRefs } from "vue";
-import axios from "axios";
+import axios from "@/config/axios/index";
 
 const useFetch = async (options) => {
   const state = reactive({

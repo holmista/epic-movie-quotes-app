@@ -82,7 +82,7 @@ and leave it that”"
 
 <script setup>
 import BaseButton from "@/components/base/BaseButton.vue";
-import DropDown from "@/assets/icons/landing/DropDown.vue";
+import DropDown from "@/assets/icons/common/DropDown.vue";
 import LandingImage from "@/components/landing/LandingImage.vue";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, provide } from "vue";
@@ -118,7 +118,6 @@ const upperFirst = (str) => {
 onMounted(() => {
   if (route.fullPath.length > 1) {
     blur.value = true;
-    console.log(route.fullPath);
   }
 });
 </script>

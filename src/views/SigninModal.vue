@@ -66,7 +66,6 @@
 
 <script setup>
 import { Form as VeeForm } from "vee-validate";
-// import BaseModal from "@/components/base/BaseModal.vue";
 import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import GoogleLogo from "@/assets/icons/landing/GoogleLogo.vue";
@@ -82,11 +81,10 @@ const googleClick = async () => {
     method: "get",
     url: `${import.meta.env.VITE_BACK_BASE_URL}/auth/redirect`,
   });
-  console.log(state.response.value.url);
   window.open(state.response.value.url, "_blank");
 };
 
-const onSubmit = async (values) => {
+const onSubmit = async (values, actions) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
   if (state.status.value === 200) {
@@ -96,6 +94,9 @@ const onSubmit = async (values) => {
       state.response.value.expires_in
     );
     router.push({ name: "feed" });
+  }
+  if (state.error.value.response.data.message) {
+    actions.setFieldError("email", state.error.value.response.data.message);
   }
 };
 </script>

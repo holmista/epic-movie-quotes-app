@@ -35,7 +35,6 @@ onMounted(async () => {
   const backUrl = `${
     import.meta.env.VITE_BACK_BASE_URL
   }/auth/callback?${queryString}`;
-  console.log(backUrl);
   const state = await useFetch({ method: "get", url: backUrl });
   if (state.response.value) {
     success.value = true;
