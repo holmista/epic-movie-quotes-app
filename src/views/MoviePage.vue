@@ -1,11 +1,14 @@
 <template>
   <div id="parent" class="min-h-screen">
-    <MovieInfo />
+    <SideTopPanels>
+      <MovieInfo />
+    </SideTopPanels>
   </div>
 </template>
 
 <script setup>
 import MovieInfo from "@/components/movie/MovieInfo.vue";
+import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
 </script>
 
 <style scoped>

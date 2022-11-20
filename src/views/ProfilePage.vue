@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-import SidePanel from "@/components/profile/SidePanel.vue";
-import TopPanel from "@/components/profile/TopPanel.vue";
+import SidePanel from "@/components/base/SidePanel.vue";
+import TopPanel from "@/components/base/TopPanel.vue";
 import { onMounted, ref } from "vue";
 import ProfileInfo from "../components/profile/ProfileInfo.vue";
 import GoogleProfileInfo from "../components/profile/GoogleProfileInfo.vue";
