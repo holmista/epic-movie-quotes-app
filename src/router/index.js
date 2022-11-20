@@ -111,6 +111,18 @@ const router = createRouter({
       path: "/movies",
       name: "movies",
       component: movies,
+      // children: [
+      //   {
+      //     path: "/add",
+      //     name: "add",
+      //     component: () => import("@/components/movies/AddMovie.vue"),
+      //   },
+      // ],
+    },
+    {
+      path: "/add-movie",
+      name: "add-movie",
+      component: () => import("@/components/movie/AddMovie.vue"),
     },
   ],
 });
