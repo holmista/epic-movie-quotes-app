@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <div v-if="movies.length > 0">
-      <MovieCard
-        v-for="movie in movies"
-        :title="movie.title.en"
-        :releaseYear="movie.release_year"
-        :image="movie.avatar"
-        :quoteAmount="movie.quotes.length"
-        :key="movie.id"
-      />
-    </div>
+  <div
+    v-if="movies.length"
+    class="grid grid-cols-1 gap-x-[50px] gap-y-[60px] max-w-[1420px] sm:grid-cols-3"
+  >
+    <MovieCard
+      v-for="movie in movies"
+      :title="movie.title.en"
+      :releaseYear="movie.release_year"
+      :image="movie.avatar"
+      :quoteAmount="movie.quotes.length"
+      :key="movie.id"
+    />
   </div>
 </template>
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-  <div id="parent">
+  <div id="parent" class="min-h-screen">
     <MovieInfo />
   </div>
 </template>
