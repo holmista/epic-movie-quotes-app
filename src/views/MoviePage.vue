@@ -1,4 +1,5 @@
 <template>
+  <RouterView />
   <div id="parent" class="min-h-screen">
     <SideTopPanels>
       <MovieInfo />

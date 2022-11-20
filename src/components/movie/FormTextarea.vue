@@ -4,7 +4,6 @@
     <div class="relative mt-1 rounded-md shadow-sm">
       <Field
         v-slot="{ field }"
-        :type="type"
         :name="name"
         :placeholder="placeholder"
         :rules="rules"

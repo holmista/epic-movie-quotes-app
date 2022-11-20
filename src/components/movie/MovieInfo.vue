@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="blur ? 'opacity-20' : ''">
     <div class="text-white flex items-center justify-between mb-14">
       <h1 class="text-2xl font-medium">
         My list of movies (Total {{ movies.length }})
@@ -14,9 +14,11 @@
             v-model="search"
           />
         </div>
-        <BaseButton class="w-[154px] h-12 bg-[#E31221]" text="Add movie">
-          <AddIcon />
-        </BaseButton>
+        <RouterLink :to="{ name: 'add-movie' }">
+          <BaseButton class="w-[154px] h-12 bg-[#E31221]" text="Add movie">
+            <AddIcon />
+          </BaseButton>
+        </RouterLink>
       </div>
     </div>
     <div
@@ -41,6 +43,7 @@ import AddIcon from "@/assets/icons/movie/AddIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
 import { onMounted, reactive, ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
 
 const movies = reactive([]);
 let filteredMovies = reactive({ value: [] });
@@ -58,18 +61,15 @@ watchEffect(() => {
   }
 });
 
-// const searchMovies = (e) => {
-//   const searchValue = e.target.value;
-//   if (searchValue) {
-//     console.log("seaarched");
-//     filteredMovies = movies.filter((movie) =>
-//       movie.title.en.toLowerCase().includes(searchValue.toLowerCase())
-//     );
-//     console.log(filteredMovies);
-//   } else {
-//     filteredMovies = movies;
-//   }
-// };
+const route = useRoute();
+const blur = ref(false);
+watchEffect(() => {
+  if (route.fullPath === "/movies") {
+    blur.value = false;
+  } else {
+    blur.value = true;
+  }
+});
 
 onMounted(async () => {
   const state = await useFetch({

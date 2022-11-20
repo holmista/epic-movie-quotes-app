@@ -1,12 +1,16 @@
 <template>
-  <div class="max-w-xl w-full bg-[#11101A] text-white">
+  <div
+    class="max-w-xl w-full bg-[#11101A] text-white absolute left-0 right-0 ml-auto mr-auto z-10 top-16"
+  >
     <section
       class="flex items-center justify-between py-5 border-[#EFEFEF] border-b-2"
     >
       <div class="w-1 h-1"></div>
       <h1>Add movie</h1>
-      <div class="pr-6">
-        <CrossIcon />
+      <div class="pr-6 hover:cursor-pointer">
+        <RouterLink :to="{ name: 'movies' }">
+          <CrossIcon />
+        </RouterLink>
       </div>
     </section>
     <div class="px-6">
@@ -49,14 +53,12 @@
           placeholder="რეჟისორი"
         />
         <FormTextarea
-          type="textarea"
           name="description_en"
           language="Eng"
           rules="required"
           placeholder="Movie discription"
         />
         <FormTextarea
-          type="textarea"
           name="title_ka"
           language="ქარ"
           rules="required"
