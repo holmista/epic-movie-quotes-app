@@ -5,6 +5,7 @@ export const useMovieStore = defineStore("movie", {
     movies: [],
     chosenCategories: [],
     availableCategories: [],
+    categoriesError: false,
   }),
   actions: {
     setMovies(payload) {
@@ -30,6 +31,9 @@ export const useMovieStore = defineStore("movie", {
         (category) => category.id !== payload.id
       );
       this.availableCategories.push(payload);
+    },
+    setCategoriesError(payload) {
+      this.categoriesError = payload;
     },
   },
 });

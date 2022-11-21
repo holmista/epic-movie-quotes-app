@@ -82,21 +82,30 @@
             rules="required"
             placeholder="ფილმის აღწერა"
           />
-          <div
-            class="border border-gray-500 pl-7 pr-12 bg-transparent rounded-md h-[64px] flex items-center"
-          >
-            <label for="avatar" class="flex items-center gap-1">
-              <CameraIcon /> Drag & drop your image here or
-              <span class="p-2 bg-[#9747FF]">Choose file</span>
-            </label>
-            <Field
-              name="avatar"
-              id="avatar"
-              type="file"
-              hidden
-              @change="handleImageChange"
-              accept="image/*"
-            />
+          <div>
+            <div
+              class="border border-gray-500 pl-7 pr-12 bg-transparent rounded-md h-[64px] flex items-center"
+            >
+              <label for="avatar" class="flex items-center gap-1">
+                <CameraIcon /> Drag & drop your image here or
+                <span class="p-2 bg-[#9747FF]">Choose file</span>
+              </label>
+              <Field
+                name="avatar"
+                id="avatar"
+                type="file"
+                hidden
+                @change="handleImageChange"
+                accept="image/*"
+                rules="required"
+              />
+            </div>
+            <div>
+              <ErrorMessage
+                name="avatar"
+                class="text-[#F15524] text-center font-light"
+              />
+            </div>
           </div>
           <BaseButton
             type="submit"
@@ -112,7 +121,7 @@
 <script setup>
 import CrossIcon from "@/assets/icons/movie/CrossIcon.vue";
 import SelectedCategories from "./SelectedCategories.vue";
-import { Form as VeeForm, Field } from "vee-validate";
+import { Form as VeeForm, Field, ErrorMessage } from "vee-validate";
 import { useMovieStore } from "@/stores/movie";
 import FormInput from "@/components/movie/FormInput.vue";
 import FormTextarea from "./FormTextarea.vue";
@@ -135,6 +144,10 @@ const handleImageChange = (e) => {
 };
 
 const onSubmit = async (values) => {
+  if (store.chosenCategories.length === 0) {
+    store.setCategoriesError(true);
+    return;
+  }
   const form = new FormData();
   form.append(
     "title",
