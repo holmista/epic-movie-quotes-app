@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-5 text-white ml-8">
     <div class="flex gap-6 hover:cursor-pointer">
       <img
         :src="store.avatarSrc"

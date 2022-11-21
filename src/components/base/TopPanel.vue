@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-[86px] bg-[#24222f] px-16 justify-between">
+  <div class="flex h-[86px] bg-[#24222f] px-16 justify-between text-white">
     <div class="flex items-center">
       <p class="text-[#DDCCAA] font-medium">MOVIE QUOTES</p>
     </div>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ProfilePage from "@/views/ProfilePage.vue";
 import { get } from "@/hooks/useCookie.js";
+import movies from "@/views/MoviePage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -103,6 +104,18 @@ const router = createRouter({
           path: "add-email",
           name: "add-email",
           component: () => import("@/components/profile/AddEmail.vue"),
+        },
+      ],
+    },
+    {
+      path: "/movies",
+      name: "movies",
+      component: movies,
+      children: [
+        {
+          path: "add",
+          name: "add-movie",
+          component: () => import("@/components/movie/AddMovie.vue"),
         },
       ],
     },
