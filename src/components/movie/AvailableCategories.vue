@@ -23,10 +23,8 @@ onMounted(async () => {
     url: "/category",
     method: "get",
   });
-  console.log("categories", state.response.value.categories[0]);
   if (state.status.value === 200) {
     store.setAvailableCategories(state.response.value.categories);
   }
-  console.log(state.response.value.categories[0].name.en);
 });
 </script>

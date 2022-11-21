@@ -52,11 +52,9 @@ const search = ref("");
 
 watchEffect(() => {
   if (search.value) {
-    console.log(search.value);
     filteredMovies.value = store.movies.filter((movie) =>
       movie.title.en.toLowerCase().includes(search.value.toLowerCase())
     );
-    console.log(filteredMovies);
   } else {
     filteredMovies.value = store.movies;
   }

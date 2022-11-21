@@ -182,7 +182,6 @@ const onSubmit = async (values, actions) => {
     method: "post",
     data: form,
   });
-  console.log(state.error.value);
   if (state.status.value === 201) {
     router.push({ name: "movies" });
     store.addMovie(state.response.value.movie);
@@ -202,7 +201,6 @@ const onSubmit = async (values, actions) => {
         }
       }
     }
-    console.log(state.error.value);
   }
 };
 </script>
