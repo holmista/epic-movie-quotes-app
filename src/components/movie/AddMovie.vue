@@ -143,7 +143,7 @@ const handleImageChange = (e) => {
   }
 };
 
-const onSubmit = async (values) => {
+const onSubmit = async (values, actions) => {
   if (store.chosenCategories.length === 0) {
     store.setCategoriesError(true);
     return;
@@ -187,6 +187,21 @@ const onSubmit = async (values) => {
     router.push({ name: "movies" });
     store.addMovie(state.response.value.movie);
   } else {
+    const titleError = state.error.value.response.data.errors.title;
+    if (titleError) {
+      if (titleError.length === 2) {
+        const [enError, kaError] = titleError;
+        actions.setFieldError("movie_title_en", enError);
+        actions.setFieldError("movie_title_ka", kaError);
+      } else {
+        const [error] = titleError;
+        if (error.includes("Georgian")) {
+          actions.setFieldError("movie_title_ka", error);
+        } else {
+          actions.setFieldError("movie_title_en", error);
+        }
+      }
+    }
     console.log(state.error.value);
   }
 };
