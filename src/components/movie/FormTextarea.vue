@@ -22,11 +22,17 @@
         <span class="text-gray-500">{{ language }}</span>
       </div>
     </div>
+    <div class="flex items-center justify-start">
+      <ErrorMessage
+        :name="name"
+        class="text-[#F15524] text-center font-light"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { Field } from "vee-validate";
+import { Field, ErrorMessage } from "vee-validate";
 defineProps({
   name: {
     type: String,

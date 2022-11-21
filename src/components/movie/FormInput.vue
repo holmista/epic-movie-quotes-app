@@ -14,6 +14,7 @@
           :value="field.value"
           class="block w-full rounded-md border border-gray-500 pl-7 pr-12 bg-transparent h-12"
           :placeholder="placeholder"
+          :type="type"
         />
       </Field>
       <div
@@ -22,11 +23,17 @@
         <span class="text-gray-500">{{ language }}</span>
       </div>
     </div>
+    <div class="flex items-center justify-start">
+      <ErrorMessage
+        :name="name"
+        class="text-[#F15524] text-center font-light"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { Field } from "vee-validate";
+import { Field, ErrorMessage } from "vee-validate";
 defineProps({
   type: {
     type: String,

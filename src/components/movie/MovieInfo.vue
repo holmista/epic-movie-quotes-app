@@ -2,7 +2,7 @@
   <div :class="blur ? 'opacity-20' : ''">
     <div class="text-white flex items-center justify-between mb-14">
       <h1 class="text-2xl font-medium">
-        My list of movies (Total {{ movies.length }})
+        My list of movies (Total {{ store.movies.length }})
       </h1>
       <div class="flex gap-5">
         <div class="flex items-center max-w-[100px]">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div
-      v-if="movies.length"
+      v-if="store.movies.length"
       class="grid grid-cols-1 gap-x-[50px] gap-y-[60px] max-w-[1420px] sm:grid-cols-3"
     >
       <MovieCard
@@ -30,7 +30,7 @@
         :title="movie.title.en"
         :releaseYear="movie.release_year"
         :image="movie.avatar"
-        :quoteAmount="movie.quotes.length"
+        :quoteAmount="movie.quotes?.length || 0"
         :key="movie.id"
       />
     </div>
@@ -44,20 +44,21 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
 import { onMounted, reactive, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
+import { useMovieStore } from "@/stores/movie";
 
-const movies = reactive([]);
+const store = useMovieStore();
 let filteredMovies = reactive({ value: [] });
 const search = ref("");
 
 watchEffect(() => {
   if (search.value) {
     console.log(search.value);
-    filteredMovies.value = movies.filter((movie) =>
+    filteredMovies.value = store.movies.filter((movie) =>
       movie.title.en.toLowerCase().includes(search.value.toLowerCase())
     );
     console.log(filteredMovies);
   } else {
-    filteredMovies.value = movies;
+    filteredMovies.value = store.movies;
   }
 });
 
@@ -77,7 +78,8 @@ onMounted(async () => {
     method: "get",
   });
   if (state.status.value === 200) {
-    movies.push(...state.response.value.movies);
+    // movies.push(...state.response.value.movies);
+    store.setMovies(state.response.value.movies);
   }
 });
 </script>
