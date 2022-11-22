@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ProfilePage from "@/views/ProfilePage.vue";
-import { get } from "@/hooks/useCookie.js";
 import movies from "@/views/MoviePage.vue";
+import { useAuthStore } from "@/stores/auth";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -113,6 +116,20 @@ const router = createRouter({
       ],
     },
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  const authStore = useAuthStore();
+
+  if (authStore.authenticated === null) {
+    try {
+      await axios.get(`${import.meta.env.VITE_BASE_BACKEND_URL}/me`);
+      authStore.authenticated = true;
+    } catch (err) {
+      authStore.authenticated = false;
+    }
+  }
+  return next();
 });
 
 export default router;
