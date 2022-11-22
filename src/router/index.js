@@ -92,13 +92,6 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: ProfilePage,
-      beforeEnter: (to, from, next) => {
-        if (get("access_token")) {
-          next();
-        } else {
-          next({ name: "login" });
-        }
-      },
       children: [
         {
           path: "add-email",
