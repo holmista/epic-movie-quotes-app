@@ -71,7 +71,6 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import GoogleLogo from "@/assets/icons/landing/GoogleLogo.vue";
 import { Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
-import { set } from "@/hooks/useCookie";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -88,14 +87,9 @@ const onSubmit = async (values, actions) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
   if (state.status.value === 200) {
-    set(
-      "access_token",
-      state.response.value.access_token,
-      state.response.value.expires_in
-    );
     router.push({ name: "feed" });
   }
-  if (state.error.value.response.data.message) {
+  if (state.error.value && state.error.value.response.data.message) {
     actions.setFieldError("email", state.error.value.response.data.message);
   }
 };
