@@ -25,9 +25,11 @@ import { useRoute } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 import BaseButton from "@/components/base/BaseButton.vue";
 import AccountActivatedCheck from "@/assets/icons/landing/AccountActivatedCheck.vue";
+import { useAuthStore } from "@/stores/auth";
 
 const route = useRoute();
 const success = ref(false);
+const store = useAuthStore();
 
 onMounted(async () => {
   const queryString = new URLSearchParams(route.query).toString();
@@ -37,13 +39,12 @@ onMounted(async () => {
   const state = await useFetch({ method: "get", url: backUrl });
   console.log(state.response.value);
   if (state.status.value === 200) {
+    store.authenticated = true;
     console.log(state.response.value);
     success.value = true;
-    // set(
-    //   "access_token",
-    //   state.response.value.access_token,
-    //   state.response.value.expires_in
-    // );
+  } else {
+    store.authenticated = false;
+    success.value = false;
   }
 });
 </script>

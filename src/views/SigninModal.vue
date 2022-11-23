@@ -72,8 +72,11 @@ import GoogleLogo from "@/assets/icons/landing/GoogleLogo.vue";
 import { Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+import axios from "axios";
 
 const router = useRouter();
+const store = useAuthStore();
 
 const googleClick = async () => {
   const state = await useFetch({
@@ -85,12 +88,16 @@ const googleClick = async () => {
 
 const onSubmit = async (values, actions) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
-  const state = await useFetch({ method: "post", url: backUrl, data: values });
-  if (state.status.value === 200) {
+  try {
+    await axios.post(backUrl, values, {
+      withCredentials: true,
+    });
+    store.authenticated = true;
     router.push({ name: "feed" });
-  }
-  if (state.error.value && state.error.value.response.data.message) {
-    actions.setFieldError("email", state.error.value.response.data.message);
+  } catch (error) {
+    if (error.response.status === 401) {
+      actions.setErrors({ email: "Invalid email or password" });
+    }
   }
 };
 </script>

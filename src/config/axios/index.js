@@ -4,22 +4,21 @@ import router from "@/router/index";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BACK_BASE_URL,
+  withCredentials: true,
   headers: {
     Accept: "application/json",
   },
 });
-
-axiosInstance.defaults.withCredentials = true;
 
 axiosInstance.interceptors.response.use(
   function (response) {
     return response;
   },
   function (error) {
+    console.log(error);
     if (error.response.status == 401) {
       const authStore = useAuthStore();
       authStore.setAuthenticated(false);
-      // this should redirect on 401 error page
       router.push("/");
     }
     return Promise.reject(error);
