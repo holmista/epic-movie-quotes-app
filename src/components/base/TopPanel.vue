@@ -19,12 +19,14 @@
 import LanguageDropDown from "@/components/base/LanguageDropDown.vue";
 import BellIcon from "@/assets/icons/profile/BellIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import { remove } from "@/hooks/useCookie";
 import { useRouter } from "vue-router";
+import useFetch from "@/hooks/useFetch";
 
 const router = useRouter();
-const logout = () => {
-  remove("access_token");
-  router.push({ name: "landing" });
+const logout = async () => {
+  const state = await useFetch({ url: "/signout", method: "get" });
+  if (state.status.value === 200) {
+    router.push({ name: "landing" });
+  }
 };
 </script>
