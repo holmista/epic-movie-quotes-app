@@ -97,6 +97,8 @@ const onSubmit = async (values, actions) => {
   } catch (error) {
     if (error.response.status === 401) {
       actions.setErrors({ email: "Invalid email or password" });
+    } else if (error.response.status === 422) {
+      actions.setErrors({ email: "email not verified" });
     }
   }
 };
