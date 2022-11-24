@@ -4,5 +4,7 @@
   "dont_have_an_account": "არ გაქვს ანგარიში?",
   "forgot_password": "დაგავიწყდა პაროლი?",
   "sign_in": "შესვლა",
-  "sign_in_with_google": "გუგლით შესვლა"
+  "sign_in_with_google": "გუგლით შესვლა",
+  "back_to_log_in": "შესვლაზე დაბრუნება",
+  "remember_me": "დამახსოვრება"
 }

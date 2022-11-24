@@ -4,6 +4,7 @@ import language from "./language.json";
 import signup from "./signup.json";
 import input from "./input.json";
 import signin from "./signin.json";
+import accountActivity from "./accountActivity.json";
 
 export default {
   landing,
@@ -12,4 +13,5 @@ export default {
   signup,
   input,
   signin,
+  accountActivity,
 };
