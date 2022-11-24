@@ -4,9 +4,11 @@
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="w-96 text-center text-white text-3xl font-medium">
-        Log in to your account
+        {{ $t("signin.log_in_to_your_account") }}
       </h1>
-      <h4 class="text-[#6C757D]">Welcome back! Please enter your details.</h4>
+      <h4 class="text-[#6C757D]">
+        {{ $t("signin.welcome_back_please_enter_your_details") }}
+      </h4>
     </header>
     <VeeForm v-slot="{ handleSubmit }" as="div">
       <form
@@ -15,18 +17,18 @@
       >
         <BaseInput
           name="email"
-          label="Email"
+          :label="$t('input.fields.email')"
           type="text"
           rules="required"
-          placeholder="Enter your email"
+          :placeholder="$t('input.placeholders.enter_your_email')"
           class="max-w-96 w-full"
         />
         <BaseInput
           name="password"
-          label="Password"
+          :label="$t('input.fields.password')"
           type="password"
           rules="required|min:8|max:15|lower"
-          placeholder="At least 8 & max.15 lower case characters"
+          :placeholder="$t('input.placeholders.min_8_max_15_lower')"
           class="max-w-96 w-full"
         />
         <div class="flex justify-between w-full">
@@ -38,28 +40,28 @@
           </div>
           <RouterLink :to="{ name: 'forgot-password' }" class="w-full">
             <p class="w-full text-right text-[#0D6EFD] underline">
-              Forgot password
+              {{ $t("signin.forgot_password") }}
             </p>
           </RouterLink>
         </div>
         <BaseButton
-          text="Sign in"
+          :text="$t('signin.sign_in')"
           class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
         />
         <BaseButton
           @click="googleClick"
           type="button"
-          text="Sign in with Google"
+          :text="$t('signin.sign_in_with_google')"
           class="border-white border w-[384px] h-10 text-white"
           ><GoogleLogo
         /></BaseButton>
       </form>
     </VeeForm>
     <p class="text-[#6C757D] mt-8 mb-4">
-      Don't have an account?
-      <RouterLink :to="{ name: 'signup' }" class="text-[#0D6EFD] underline"
-        >Sign up</RouterLink
-      >
+      {{ $t("signin.dont_have_an_account") }}
+      <RouterLink :to="{ name: 'signup' }" class="text-[#0D6EFD] underline">{{
+        $t("landing.sign_up")
+      }}</RouterLink>
     </p>
   </div>
 </template>

@@ -14,20 +14,16 @@
             <div class="pr-6">
               <LanguageDropDown />
             </div>
-            <RouterLink to="/signup">
-              <BaseButton
-                @click="stopPropagation"
-                :text="$t('landing.sign_up')"
-                class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
-              />
-            </RouterLink>
-            <RouterLink to="/login">
-              <BaseButton
-                @click="stopPropagation"
-                :text="$t('landing.log_in')"
-                class="border-white border w-[109px] h-10"
-              />
-            </RouterLink>
+            <BaseButton
+              @click="signupClick"
+              :text="$t('landing.sign_up')"
+              class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
+            />
+            <BaseButton
+              @click="signinClick"
+              :text="$t('landing.log_in')"
+              class="border-white border w-[109px] h-10"
+            />
           </div>
         </nav>
         <div class="flex justify-center items-center flex-col gap-7 mt-60">
@@ -78,13 +74,21 @@ const router = useRouter();
 const blur = ref(false);
 provide("blur", blur);
 
-const stopPropagation = (e) => {
-  e.stopPropagation();
-};
-
 const goBack = () => {
   blur.value = false;
   router.push("/");
+};
+
+const signupClick = (e) => {
+  router.push("/signup");
+  blur.value = true;
+  e.stopPropagation();
+};
+
+const signinClick = (e) => {
+  router.push("/login");
+  blur.value = true;
+  e.stopPropagation();
 };
 
 onMounted(() => {
