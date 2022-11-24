@@ -10,5 +10,6 @@
   "confirm_later": "Skip, I'll confirm later",
   "reset_password": "Reset password",
   "password_changed_successfully": "Your password changed successfully",
-  "go_to_feed": "Go to my news feed"
+  "go_to_feed": "Go to my news feed",
+  "activate_account": "Please check your email and follow the instructions to activate your account."
 }
