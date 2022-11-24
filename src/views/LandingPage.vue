@@ -7,24 +7,12 @@
     <div :class="blur ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'">
       <div id="get-started" class="h-4/5">
         <nav class="text-white flex px-16 justify-between pt-7">
-          <p class="text-[#DDCCAA] font-medium">MOVIE QUOTES</p>
+          <p class="text-[#DDCCAA] font-medium">
+            {{ $t("landing.movie_quotes") }}
+          </p>
           <div class="flex items-center space-x-4">
             <div class="pr-6">
-              <div
-                @click="setShowLocale"
-                class="flex items-center space-x-1 hover:cursor-crosshair w-10"
-              >
-                <p>{{ upperFirst(locale) }}</p>
-                <DropDown />
-              </div>
-              <ul v-if="showLocale" class="absolute">
-                <li @click="setLocale('en')" class="hover:cursor-default">
-                  En
-                </li>
-                <li @click="setLocale('ka')" class="hover:cursor-default">
-                  Ka
-                </li>
-              </ul>
+              <LanguageDropDown />
             </div>
             <RouterLink to="/signup">
               <BaseButton
@@ -82,26 +70,16 @@ and leave it that”"
 
 <script setup>
 import BaseButton from "@/components/base/BaseButton.vue";
-import DropDown from "@/assets/icons/common/DropDown.vue";
 import LandingImage from "@/components/landing/LandingImage.vue";
+import LanguageDropDown from "@/components/base/LanguageDropDown.vue";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, provide } from "vue";
 
 const route = useRoute();
 const router = useRouter();
 
-const locale = ref("en");
-const showLocale = ref(false);
 const blur = ref(false);
 provide("blur", blur);
-
-const setShowLocale = () => {
-  showLocale.value = !showLocale.value;
-};
-const setLocale = (value) => {
-  locale.value = value;
-  setShowLocale();
-};
 
 const stopPropagation = (e) => {
   e.stopPropagation();
@@ -112,9 +90,6 @@ const goBack = () => {
   router.push("/");
 };
 
-const upperFirst = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
 onMounted(() => {
   if (route.fullPath.length > 1) {
     blur.value = true;

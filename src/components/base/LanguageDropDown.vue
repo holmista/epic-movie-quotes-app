@@ -4,7 +4,7 @@
       @click="setShowLocale"
       class="flex items-center space-x-1 hover:cursor-crosshair w-10"
     >
-      <p>{{ upperFirst(locale) }}</p>
+      <p>{{ upperFirst(currentLocale) }}</p>
       <DropDown />
     </div>
     <ul v-if="showLocale" class="absolute">
@@ -17,16 +17,19 @@
 <script setup>
 import { ref } from "vue";
 import DropDown from "@/assets/icons/common/DropDown.vue";
+import i18n from "@/config/i18n/index.js";
 
-const locale = ref("en");
+const currentLocale = ref("en");
 const showLocale = ref(false);
 
 const setShowLocale = () => {
   showLocale.value = !showLocale.value;
 };
-const setLocale = (value) => {
-  locale.value = value;
-  setShowLocale();
+
+const setLocale = (locale) => {
+  i18n.global.locale = locale;
+  currentLocale.value = locale;
+  showLocale.value = false;
 };
 
 const upperFirst = (value) => {
