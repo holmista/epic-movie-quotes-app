@@ -5,7 +5,9 @@
       class="flex items-center space-x-1 hover:cursor-crosshair w-10"
     >
       <p>
-        {{ currentLocale === "en" ? $t("language.en") : $t("language.ka") }}
+        {{
+          i18n.global.locale === "en" ? $t("language.en") : $t("language.ka")
+        }}
       </p>
       <DropDown />
     </div>
@@ -24,8 +26,8 @@
 import { ref } from "vue";
 import DropDown from "@/assets/icons/common/DropDown.vue";
 import i18n from "@/config/i18n/index.js";
+import { set } from "@/hooks/useCookie";
 
-const currentLocale = ref("en");
 const showLocale = ref(false);
 
 const setShowLocale = () => {
@@ -34,7 +36,7 @@ const setShowLocale = () => {
 
 const setLocale = (locale) => {
   i18n.global.locale = locale;
-  currentLocale.value = locale;
+  set("locale", locale, 604800);
   showLocale.value = false;
 };
 </script>
