@@ -3,13 +3,13 @@
   "sign_up": "Sign up",
   "log_in": "Login",
   "find_any_quote": "Find any quote in millions of movie lines",
+  "rights_reserved": "2022 movie quotes. All rights reserved.",
   "movie_texts": {
-    "interstellar": "Interstellar",
+    "interstellar": "Interstellar, 2014",
     "interstellar_quote": "You have to leave somethig behind to go forward",
-    "the_royal_tenenbaums": "The Royal Tenenbaums",
+    "the_royal_tenenbaums": "The Royal Tenenbaums, 2001",
     "the_royal_tenenbaums_quote": "I think we're just gonna have to be secretly in love with earch other and leave it that",
-    "lotr": "The Lord of the Rings: The Fellowship of the Ring",
-    "lotr_quote": "You shall not pass",
-    "rights_reserved": "2022 movie quotes. All rights reserved."
+    "lotr": "The Lord of the Rings: The Fellowship of the Ring, 2001",
+    "lotr_quote": "You shall not pass"
   }
 }

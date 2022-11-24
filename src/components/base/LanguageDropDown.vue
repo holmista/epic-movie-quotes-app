@@ -4,12 +4,18 @@
       @click="setShowLocale"
       class="flex items-center space-x-1 hover:cursor-crosshair w-10"
     >
-      <p>{{ upperFirst(currentLocale) }}</p>
+      <p>
+        {{ currentLocale === "en" ? $t("language.en") : $t("language.ka") }}
+      </p>
       <DropDown />
     </div>
     <ul v-if="showLocale" class="absolute">
-      <li @click="setLocale('en')" class="hover:cursor-default">En</li>
-      <li @click="setLocale('ka')" class="hover:cursor-default">Ka</li>
+      <li @click="setLocale('en')" class="hover:cursor-default">
+        {{ $t("language.en") }}
+      </li>
+      <li @click="setLocale('ka')" class="hover:cursor-default">
+        {{ $t("language.ka") }}
+      </li>
     </ul>
   </div>
 </template>

@@ -17,14 +17,14 @@
             <RouterLink to="/signup">
               <BaseButton
                 @click="stopPropagation"
-                text="Sign Up"
+                :text="$t('landing.sign_up')"
                 class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
               />
             </RouterLink>
             <RouterLink to="/login">
               <BaseButton
                 @click="stopPropagation"
-                text="Log In"
+                :text="$t('landing.log_in')"
                 class="border-white border w-[109px] h-10"
               />
             </RouterLink>
@@ -34,35 +34,32 @@
           <h1
             class="text-[#DDCCAA] font-bold text-[60px] font-montserrat max-w-[703px] text-center"
           >
-            Find any quote in millions of movie lines
+            {{ $t("landing.find_any_quote") }}
           </h1>
           <BaseButton
             class="bg-[#E31221] border-[#E31221]"
-            text="Get started"
+            :text="$t('common.get_started')"
           />
         </div>
       </div>
 
       <LandingImage
         image="interstellar"
-        quote="“You have to leave somethig 
-behind to go forward”"
-        movie="Interstellar, 2014"
+        :quote="$t('landing.movie_texts.interstellar_quote')"
+        :movie="$t('landing.movie_texts.interstellar')"
       />
       <LandingImage
         image="royal"
-        quote="“I think we're just gonna have
-to be secretly in love with earch other
-and leave it that”"
-        movie="The Royal Tenenbaums,2001 "
+        :quote="$t('landing.movie_texts.the_royal_tenenbaums')"
+        :movie="$t('landing.movie_texts.the_royal_tenenbaums_quote')"
       />
       <LandingImage
         image="lotr"
-        quote="“You shall not pass”"
-        movie="The Lord of the Rings: The Fellowship of the Ring,2001 "
+        :quote="$t('landing.movie_texts.lotr_quote')"
+        :movie="$t('landing.movie_texts.lotr')"
       />
       <div class="bg-[#181623] text-[#DDCCAA]">
-        <p class="py-4 px-16">© 2022 movie quotes. All rights reserved.</p>
+        <p class="py-4 px-16">© {{ $t("landing.rights_reserved") }}</p>
       </div>
     </div>
   </div>
