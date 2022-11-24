@@ -16,6 +16,8 @@
     "min_8_characters": "8 or more characters",
     "15_lower_characters": "15 lowercase characters",
     "passwords_should_contain": "Passwords should contain:",
-    "enter_new_email": "Enter new email"
+    "enter_new_email": "Enter new email",
+    "genres": "ჟანრები",
+    "upload_image": "Drag & drop your image here or"
   }
 }

@@ -16,6 +16,8 @@
     "min_8_characters": "8 ან მეტი სიმბოლო",
     "15_lower_characters": "15 სიმბოლო",
     "passwords_should_contain": "პაროლი უნდა შეიცავდეს:",
-    "enter_new_email": "შეიყვანე ახალი იმეილი"
+    "enter_new_email": "შეიყვანე ახალი იმეილი",
+    "genres": "ჟანრები",
+    "upload_image": "ჩააგდე შენი ფოტო აქ ან"
   }
 }

@@ -7,6 +7,7 @@ import signin from "./signin.json";
 import accountActivity from "./accountActivity.json";
 import sidePanel from "./sidePanel.json";
 import profile from "./profile.json";
+import movie from "./movie.json";
 
 export default {
   landing,
@@ -18,4 +19,5 @@ export default {
   accountActivity,
   sidePanel,
   profile,
+  movie,
 };
