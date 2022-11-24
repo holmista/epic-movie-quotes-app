@@ -47,11 +47,14 @@ import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import BackArrow from "@/assets/icons/landing/BackArrow.vue";
 import useFetch from "@/hooks/useFetch";
+import { get } from "@hooks/useCookie";
 
 const router = useRouter();
 
 const onSubmit = async (values) => {
-  const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/forgot-password`;
+  const backUrl = `${
+    import.meta.env.VITE_BACK_BASE_URL
+  }/forgot-password?locale=${get("locale") || "en"}`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
   if (state.response.value.message === "passwords.sent") {
     router.push({ name: "reset-email-sent" });

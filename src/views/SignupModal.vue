@@ -76,6 +76,7 @@ import GoogleLogo from "@/assets/icons/landing/GoogleLogo.vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import useFetch from "@/hooks/useFetch";
+import { get } from "@/hooks/useCookie";
 
 const googleClick = async () => {
   const state = await useFetch({
@@ -91,7 +92,9 @@ const setPassword = (val) => {
   password.value = val;
 };
 const onSubmit = async (values, actions) => {
-  const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signup`;
+  const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signup?locale=${
+    get("locale") || "en"
+  }`;
   const state = await useFetch({ method: "post", url: backUrl, data: values });
   if (state.status.value == 201) {
     router.push("/activation-email-sent");
