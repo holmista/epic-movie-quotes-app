@@ -70,14 +70,14 @@ const router = createRouter({
           path: "reset-password-success",
           name: "reset-password-success",
           component: () => import("@/views/PasswordResetSuccess.vue"),
-          beforeEnter: (to, from, next) => {
-            const isRedirected = from.name === "reset-password";
-            if (isRedirected) {
-              next();
-            } else {
-              next({ name: "feed" });
-            }
-          },
+          // beforeEnter: (to, from, next) => {
+          //   const isRedirected = from.name === "reset-password";
+          //   if (isRedirected) {
+          //     next();
+          //   } else {
+          //     next({ name: "feed" });
+          //   }
+          // },
         },
         {
           path: "/auth/google/callback",

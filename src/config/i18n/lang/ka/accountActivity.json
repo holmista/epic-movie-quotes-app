@@ -8,5 +8,7 @@
   "password_recovery_instructions": "გამოგიგზავნეთ პაროლის აღდგენის ინსტრუქციები თქვენს იმეილზე",
   "go_to_my_email": "იმეილზე გადასვლა",
   "confirm_later": "გამოტოვება, მოგვიანებით დავადასტურებ",
-  "reset_password": "პაროლის აღდგენა"
+  "reset_password": "პაროლის აღდგენა",
+  "password_changed_successfully": "პაროლი წარმატებით შეიცვალა",
+  "go_to_feed": "ნიუს ფიდზე გადასვლა"
 }
