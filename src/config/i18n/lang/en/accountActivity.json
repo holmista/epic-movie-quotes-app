@@ -2,5 +2,6 @@
   "forgot_password_title": "Enter the email and we'll send an email with instructions to reset your password",
   "send_instructions": "Send instructions",
   "create_new_password": "Create new password",
-  "different_password": "Your new password must be different from previous used password"
+  "different_password": "Your new password must be different from previous used password",
+  "account_activated": "Your account has been activated"
 }
