@@ -3,9 +3,11 @@
     class="absolute bg-[#222030] max-w-[601px] max-h-[486px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-28 gap-3">
-      <h1 class="text-white text-3xl font-medium">Create new password</h1>
+      <h1 class="text-white text-3xl font-medium">
+        {{ $t("accountActivity.create_new_password") }}
+      </h1>
       <h4 class="text-[#6C757D] text-center">
-        Your new password must be different from previous used passwords
+        {{ $t("accountActivity.different_password") }}
       </h4>
     </header>
     <VeeForm v-slot="{ handleSubmit }" as="div" class="max-w-sm w-full">
@@ -15,19 +17,19 @@
       >
         <BaseInput
           name="password"
-          label="Password"
+          :label="$t('input.fields.password')"
           type="password"
           rules="required|min:8|max:15|lower"
-          placeholder="At least 8 & max.15 lower case characters"
+          :placeholder="$t('input.fields.min_8_max_15_lower')"
           class="max-w-96 w-full"
           @password="setPassword"
         />
         <BaseInput
           name="confirmPassword"
-          label="Repeat password"
+          :label="$t('input.fields.repeat_password')"
           type="text"
           :rules="`required|same:${password}`"
-          placeholder="Confirm password"
+          :placeholder="$t('input.placeholders.confirm_password')"
           class="max-w-96 w-full"
         />
         <BaseButton
@@ -39,7 +41,7 @@
     <RouterLink :to="{ name: 'login' }">
       <div class="flex justify-center items-center text-[#6C757D] gap-3 mt-8">
         <BackArrow />
-        <p>Back to log in</p>
+        <p>{{ $t("signin.back_to_log_in") }}</p>
       </div>
     </RouterLink>
   </div>
