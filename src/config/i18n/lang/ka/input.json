@@ -3,12 +3,19 @@
     "name": "სახელი",
     "email": "იმეილი",
     "password": "პაროლი",
-    "repeat_password": "გაიმეორე პაროლი"
+    "repeat_password": "გაიმეორე პაროლი",
+    "upload_new_photo": "ატვირთე ახალი ფოტო",
+    "new_password": "ახალი პაროლი",
+    "confirm_new_password": "დაადასტურე ახალი პაროლი"
   },
   "placeholders": {
     "min_3_max_15_lower": "მინიმუმ 3 & მაქს.15 სიმბოლო",
     "enter_your_email": "შეიყვანე იმეილი",
     "min_8_max_15_lower": "მინიმუმ 8 & მაქს.15 სიმბოლო",
-    "confirm_password": "დაადასტურე პაროლი"
+    "confirm_password": "დაადასტურე პაროლი",
+    "min_8_characters": "8 ან მეტი სიმბოლო",
+    "15_lower_characters": "15 სიმბოლო",
+    "passwords_should_contain": "პაროლი უნდა შეიცავდეს:",
+    "enter_new_email": "შეიყვანე ახალი იმეილი"
   }
 }

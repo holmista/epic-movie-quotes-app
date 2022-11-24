@@ -6,7 +6,7 @@
       blur ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden ' : ''
     "
   >
-    <h1 class="text-2xl">My profile</h1>
+    <h1 class="text-2xl">{{ $t("common.my_profile") }}</h1>
     <div class="flex flex-col items-center mt-10">
       <img
         :src="store.avatarSrc"
@@ -38,15 +38,15 @@
           />
 
           <div class="flex justify-center pt-28">
-            <label for="actual-btn" class="hover:cursor-pointer"
-              >Upload new photo</label
-            >
+            <label for="actual-btn" class="hover:cursor-pointer">{{
+              $t("input.fields.upload_new_photo")
+            }}</label>
           </div>
           <ProfileInput class="">
             <template #input>
               <BaseInput
                 name="name"
-                label="Name"
+                :label="$t('input.fields.name')"
                 type="text"
                 rules="required|min:3|max:15|lower"
                 :initialValue="store.name"
@@ -54,18 +54,19 @@
               />
             </template>
             <template #button>
-              <BaseButton text="edit" class="mt-7" />
+              <BaseButton :text="$t('profile.edit')" class="mt-7" />
             </template>
           </ProfileInput>
           <div class="flex flex-col gap-8">
             <div class="flex items-center">
               <div class="flex flex-col">
                 <label class="text-sm font-medium text-white mb-2"
-                  >Email<span class="text-red-600"> *</span></label
+                  >{{ $t("input.fields.email")
+                  }}<span class="text-red-600"> *</span></label
                 >
                 <input
                   name="email"
-                  label="Email"
+                  :label="$t('input.fields.email')"
                   type="email"
                   :value="store.primaryEmail"
                   class="w-[360px] border-t-2 border-[#CED4DA] text-black rounded mt-1"
@@ -73,13 +74,15 @@
                 />
               </div>
               <BaseButton
-                text="Primary email"
+                :text="$t('profile.primary_email')"
                 class="mt-7 hover:cursor-default"
               />
             </div>
             <SecondaryEmails :data="store.secondaryEmails" />
             <RouterLink :to="{ name: 'add-email' }">
-              <BaseButton text="Add new email" class="border-white border w-44"
+              <BaseButton
+                :text="$t('profile.add_email')"
+                class="border-white border w-44"
                 ><EmailAddIcon
               /></BaseButton>
             </RouterLink>
@@ -88,16 +91,16 @@
             <template #input>
               <BaseInput
                 name="password"
-                label="Password"
+                :label="$t('input.fields.password')"
                 type="password"
-                placeholder="At least 8 & max.15 lower case characters"
+                :placeholder="$t('input.placeholders.min_8_max_15_lower')"
                 class="w-[360px] border-[#CED4DA] border-t-2 pt-5"
               />
             </template>
             <template #button>
               <BaseButton
                 @click="setShowEditPassword(true)"
-                text="edit"
+                :text="$t('profile.edit')"
                 class="mt-12"
                 type="button"
               />

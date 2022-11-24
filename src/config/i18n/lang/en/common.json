@@ -1,5 +1,9 @@
 {
   "get_started": "Get started",
   "thank_you": "Thank you!",
-  "success": "Success!"
+  "success": "Success!",
+  "log_out": "Log out",
+  "my_profile": "My profile",
+  "add": "Add",
+  "cancel": "Cancel"
 }

@@ -1,14 +1,14 @@
 <template>
   <div class="flex h-[86px] bg-[#24222f] px-16 justify-between text-white">
     <div class="flex items-center">
-      <p class="text-[#DDCCAA] font-medium">MOVIE QUOTES</p>
+      <p class="text-[#DDCCAA] font-medium">{{ $t("landing.movie_quotes") }}</p>
     </div>
     <div class="flex items-center space-x-4">
       <BellIcon />
       <LanguageDropDown />
       <BaseButton
         @click="logout"
-        text="Log out"
+        :text="$t('common.log_out')"
         class="border-white border w-[109px] h-10"
       />
     </div>
