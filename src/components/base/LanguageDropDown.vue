@@ -37,8 +37,4 @@ const setLocale = (locale) => {
   currentLocale.value = locale;
   showLocale.value = false;
 };
-
-const upperFirst = (value) => {
-  return value.charAt(0).toUpperCase() + value.slice(1);
-};
 </script>

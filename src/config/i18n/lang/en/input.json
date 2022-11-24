@@ -1,0 +1,14 @@
+{
+  "fields": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "repeat_password": "Repeat Password"
+  },
+  "placeholders": {
+    "min_3_max_15_lower": "At least 3 & max.15 lower case characters",
+    "enter_your_email": "Enter your email",
+    "min_8_max_15_lower": "At least 8 & max.15 lower case characters",
+    "confirm_password": "Confirm password"
+  }
+}

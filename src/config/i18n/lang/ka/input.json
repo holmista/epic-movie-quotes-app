@@ -1,0 +1,14 @@
+{
+  "fields": {
+    "name": "სახელი",
+    "email": "იმეილი",
+    "password": "პაროლი",
+    "repeat_password": "გაიმეორე პაროლი"
+  },
+  "placeholders": {
+    "min_3_max_15_lower": "მინიმუმ 3 & მაქს.15 სიმბოლო",
+    "enter_your_email": "შეიყვანე იმეილი",
+    "min_8_max_15_lower": "მინიმუმ 8 & მაქს.15 სიმბოლო",
+    "confirm_password": "დაადასტურე პაროლი"
+  }
+}
