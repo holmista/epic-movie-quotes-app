@@ -20,7 +20,7 @@
           :label="$t('input.fields.password')"
           type="password"
           rules="required|min:8|max:15|lower"
-          :placeholder="$t('input.fields.min_8_max_15_lower')"
+          :placeholder="$t('input.placeholders.min_8_max_15_lower')"
           class="max-w-96 w-full"
           @password="setPassword"
         />
@@ -33,7 +33,7 @@
           class="max-w-96 w-full"
         />
         <BaseButton
-          text="Reset password"
+          :text="$t('accountActivity.reset_password')"
           class="bg-[#E31221] border-[#E31221] border w-full h-10 text-white mt-4"
         />
       </form>
