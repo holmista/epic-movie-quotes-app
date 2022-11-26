@@ -1,13 +1,54 @@
 <template>
   <div>
-    <MovieDescription :movie="movie" />
+    <MovieDescription
+      :movie="movie.value"
+      v-if="Object.keys(movie.value).length > 0"
+    />
+    <div class="flex text-white gap-4 mt-11 mb-14 items-center">
+      <p class="text-2xl">Quotes(total {{ quotes.value.length }})</p>
+      <BigDivideIcon />
+      <BaseButton class="text-xl bg-[#E31221]" text="Add quote">
+        <AddIcon />
+      </BaseButton>
+    </div>
+    <div v-if="Object.keys(quotes.value).length">
+      <QuoteCard v-for="quote in quotes" :quote="quote" :key="quote.id" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import MovieDescription from "@/components/movie/MovieDescription.vue";
+import QuoteCard from "@/components/quote/QuoteCard.vue";
+import BigDivideIcon from "@/assets/icons/movie/BigDivideIcon.vue";
+import BaseButton from "@/components/base/BaseButton.vue";
+import AddIcon from "@/assets/icons/movie/AddIcon.vue";
+import { onMounted, reactive } from "vue";
+import { useRoute } from "vue-router";
+import useFetch from "@/hooks/useFetch";
 
-const movie = {
+const route = useRoute();
+const movie = reactive({ value: {} });
+const quotes = reactive({ value: [] });
+console.log(Object.keys(movie.value).length);
+
+onMounted(async () => {
+  const state = await useFetch({
+    url: `/movies/${route.params.id}/quotes`,
+    method: "get",
+  });
+  movie.value = state.response.value.movie;
+  quotes.value = state.response.value.quotes;
+});
+
+const quote = {
+  id: 1,
+  title: { en: "I'm gonna make him an offer he can't refuse." },
+  likes: 7,
+  comments: 3,
+};
+
+const movie1 = {
   id: 1,
   title: {
     en: "The Shawshank Redemption",

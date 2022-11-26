@@ -7,10 +7,10 @@
         alt=""
         class="h-[350px] rounded-xl object-cover"
       />
-      <aside class="flex gap-5 flex-col pl-5 max-w-xl">
-        <div class="flex justify-between">
+      <aside class="flex gap-5 flex-col pl-5 w-[576px]">
+        <div class="flex justify-between w-full">
           <p class="text-[#DDCCAA] text-2xl font-medium">
-            {{ movie.title.en }} {{ movie.release_year }}
+            {{ movie.title.en }} ({{ movie.release_year }})
           </p>
           <div
             class="w-32 h-9 bg-[#24222F] opacity-60 rounded-lg flex justify-evenly items-center"
@@ -53,5 +53,5 @@ const props = defineProps({
     required: true,
   },
 });
-console.log(props.movie.categories);
+console.log(props.movie);
 </script>
