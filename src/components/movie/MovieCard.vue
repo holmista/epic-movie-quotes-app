@@ -4,6 +4,7 @@
       :src="image"
       alt="movie poster"
       class="h-[370px] rounded-xl object-cover"
+      @click="router.push({ name: 'movie', params: { id } })"
     />
     <p class="mt-2">
       <span>{{ title }}</span>
@@ -15,6 +16,9 @@
 
 <script setup>
 import QuoteIcon from "@/assets/icons/movie/QuoteIcon.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 defineProps({
   title: {
@@ -30,6 +34,10 @@ defineProps({
     required: true,
   },
   quoteAmount: {
+    type: Number,
+    required: true,
+  },
+  id: {
     type: Number,
     required: true,
   },

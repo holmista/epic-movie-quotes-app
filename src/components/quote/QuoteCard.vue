@@ -8,7 +8,7 @@
       <div class="flex h-full justify-center items-center">
         <p>"{{ quote.title.en }}"</p>
       </div>
-      <div class="flex justify-start h-full">
+      <div class="flex justify-end h-full w-full">
         <ThreeDotsIcon
           @blur="showQuoteOptionsModal = false"
           class="hover:cursor-pointer"
@@ -19,11 +19,11 @@
     </div>
     <div class="flex gap-5 items-center h-2/6 mt-3 text-xl">
       <div class="flex gap-2">
-        <p>{{ quote.comments }}</p>
+        <p>{{ quote.comments_count }}</p>
         <CommentIcon class="hover:cursor-pointer" />
       </div>
       <div class="flex gap-2">
-        <p>{{ quote.likes }}</p>
+        <p>{{ quote.likes_count }}</p>
         <LikeIcon class="hover:cursor-pointer" />
       </div>
     </div>
@@ -36,12 +36,12 @@ import CommentIcon from "@/assets/icons/common/CommentIcon.vue";
 import LikeIcon from "@/assets/icons/common/LikeIcon.vue";
 import QuoteOptionsModal from "@/components/quote/QuoteOptionsModal.vue";
 import { ref } from "vue";
-defineProps({
+const props = defineProps({
   quote: {
     type: Object,
     required: true,
   },
 });
-
+console.log(props.quote);
 const showQuoteOptionsModal = ref(false);
 </script>

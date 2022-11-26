@@ -47,11 +47,10 @@ import PencilIcon from "@/assets/icons/movie/PencilIcon.vue";
 import TrashIcon from "@/assets/icons/movie/TrashIcon.vue";
 import DividerIcon from "@/assets/icons/movie/DividerIcon.vue";
 
-const props = defineProps({
+defineProps({
   movie: {
     type: Object,
     required: true,
   },
 });
-console.log(props.movie);
 </script>

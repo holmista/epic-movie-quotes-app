@@ -32,6 +32,7 @@
         :image="movie.avatar"
         :quoteAmount="movie.quotes?.length || 0"
         :key="movie.id"
+        :id="movie.id"
       />
     </div>
   </div>

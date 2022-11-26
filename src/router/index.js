@@ -119,6 +119,13 @@ const router = createRouter({
       path: "/movie/:id",
       name: "movie",
       component: () => import("@/views/MoviePage.vue"),
+      children: [
+        {
+          path: "/movie/:id/create-quote",
+          name: "create-quote",
+          component: () => import("@/views/CreateQuoteModal.vue"),
+        },
+      ],
     },
   ],
 });
