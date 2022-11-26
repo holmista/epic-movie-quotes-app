@@ -1,14 +1,15 @@
 <template>
+  <RouterView />
   <div id="parent" class="min-h-screen">
     <SideTopPanels>
-      <MovieInfo />
+      <MoviesInfo />
     </SideTopPanels>
   </div>
 </template>
 
 <script setup>
+import MoviesInfo from "@/components/movie/MoviesInfo.vue";
 import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
-import MovieInfo from "@/components/movie/MovieInfo.vue";
 </script>
 
 <style scoped>

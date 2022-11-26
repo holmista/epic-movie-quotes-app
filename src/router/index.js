@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ProfilePage from "@/views/ProfilePage.vue";
-import movies from "@/views/MoviePage.vue";
+import movies from "@/views/MoviesPage.vue";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
 
@@ -114,6 +114,11 @@ const router = createRouter({
           component: () => import("@/components/movie/AddMovie.vue"),
         },
       ],
+    },
+    {
+      path: "/movie/:id",
+      name: "movie",
+      component: () => import("@/views/MoviePage.vue"),
     },
   ],
 });
