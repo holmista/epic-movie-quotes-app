@@ -4,15 +4,17 @@
   >
     <header class="flex justify-center items-center flex-col pt-14 px-20 gap-3">
       <AccountActivatedCheck />
-      <h1 class="text-white text-3xl font-medium mt-5">Success!</h1>
+      <h1 class="text-white text-3xl font-medium mt-5">
+        {{ $t("common.success") }}
+      </h1>
       <h4 class="text-[#6C757D] text-center mt-8">
-        Your password changed successfully
+        {{ $t("accountActivity.password_changed_successfully") }}
       </h4>
     </header>
     <RouterLink :to="{ name: 'feed' }" class="max-w-[360px] w-full">
       <BaseButton
         class="max-w-[360px] w-full h-[38px] bg-[#E31221] mt-10"
-        text="Go to my news feed"
+        :text="$t('accountActivity.go_to_feed')"
       />
     </RouterLink>
   </div>

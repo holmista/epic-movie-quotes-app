@@ -4,18 +4,20 @@
   >
     <header class="flex justify-center items-center flex-col pt-14 px-20 gap-3">
       <SendCheck />
-      <h1 class="text-white text-3xl font-medium mt-5">Check your email</h1>
+      <h1 class="text-white text-3xl font-medium mt-5">
+        {{ $t("accountActivity.check_email") }}
+      </h1>
       <h4 class="text-[#6C757D] text-center mt-8">
-        We have sent a password recover instructions to your email
+        {{ $t("accountActivity.password_recovery_instructions") }}
       </h4>
     </header>
     <BaseButton
       @click="handleClick"
       class="max-w-[360px] w-full h-[38px] bg-[#E31221] mt-10"
-      text="Go to my email"
+      :text="$t('accountActivity.go_to_my_email')"
     />
     <p class="text-[#6C757D] mt-10" @click="handleClick">
-      Skip, I'll confirm later
+      {{ $t("accountActivity.confirm_later") }}
     </p>
   </div>
 </template>

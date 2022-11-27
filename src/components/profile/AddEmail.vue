@@ -3,7 +3,7 @@
     class="bg-[#11101A] rounded-xl w-[400px] h-[300px] absolute left-0 right-0 ml-auto mr-auto z-10 top-72"
   >
     <div class="w-[400px]">
-      <p class="text-2xl py-3 pl-5 border-b-2">Add new Email</p>
+      <p class="text-2xl py-3 pl-5 border-b-2">{{ $t("profile.add_email") }}</p>
     </div>
     <VeeForm
       as="div"
@@ -13,17 +13,21 @@
       <form @submit="handleSubmit($event, onSubmit)">
         <BaseInput
           name="email"
-          label="Email"
+          :label="$t('input.fields.email')"
           type="text"
           rules="required|email"
-          placeholder="Enter new email"
+          :placeholder="$t('input.placeholders.enter_new_email')"
           class="max-w-[360px] w-full"
         />
         <div class="flex mt-8 justify-end max-w-[360px] w-full">
           <RouterLink :to="{ name: 'profile' }">
-            <BaseButton type="button" text="Cancel" class="" />
+            <BaseButton type="button" :text="$t('common.cancel')" class="" />
           </RouterLink>
-          <BaseButton type="submit" text="Add" class="bg-[#E31221]" />
+          <BaseButton
+            type="submit"
+            :text="$t('common.add')"
+            class="bg-[#E31221]"
+          />
         </div>
       </form>
     </VeeForm>

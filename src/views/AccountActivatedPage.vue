@@ -4,9 +4,11 @@
   >
     <header class="flex justify-center items-center flex-col pt-14 px-20 gap-3">
       <AccountActivatedCheck />
-      <h1 class="text-white text-3xl font-medium mt-10">Thank you!</h1>
+      <h1 class="text-white text-3xl font-medium mt-10">
+        {{ $t("common.thank_you") }}
+      </h1>
       <h4 class="text-[#6C757D] text-center mt-7">
-        Your account has been activated.
+        {{ $t("accountActivity.account_activated") }}
       </h4>
     </header>
     <BaseButton class="w-96 h-9 bg-[#E31221] mt-8" text="Go to my news feed" />

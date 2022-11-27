@@ -1,0 +1,15 @@
+{
+  "forgot_password_title": "Enter the email and we'll send an email with instructions to reset your password",
+  "send_instructions": "Send instructions",
+  "create_new_password": "Create new password",
+  "different_password": "Your new password must be different from previous used password",
+  "account_activated": "Your account has been activated",
+  "check_email": "Check your email",
+  "password_recovery_instructions": "We have sent a password recover instructions to your email",
+  "go_to_my_email": "Go to my email",
+  "confirm_later": "Skip, I'll confirm later",
+  "reset_password": "Reset password",
+  "password_changed_successfully": "Your password changed successfully",
+  "go_to_feed": "Go to my news feed",
+  "activate_account": "Please check your email and follow the instructions to activate your account."
+}

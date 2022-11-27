@@ -9,7 +9,11 @@
     <template #button>
       <div class="flex items-center">
         <BaseButton
-          :text="email.email_verified_at ? 'Make this primary' : 'Not verified'"
+          :text="
+            email.email_verified_at
+              ? $t('profile.make_primary')
+              : $t('profile.not_verified')
+          "
           type="button"
           class="whitespace-nowrap"
           @click="handleMakePrimary(email.email)"
@@ -17,7 +21,7 @@
         <DivideLine />
         <BaseButton
           class="rounded-none"
-          text="Remove"
+          :text="$t('profile.remove')"
           type="button"
           @click="handleRemove(email.email)"
         />

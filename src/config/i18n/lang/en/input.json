@@ -1,0 +1,23 @@
+{
+  "fields": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "repeat_password": "Repeat Password",
+    "upload_new_photo": "Upload new photo",
+    "confirm_new_password": "Confirm new password",
+    "new_password": "New password"
+  },
+  "placeholders": {
+    "min_3_max_15_lower": "At least 3 & max.15 lower case characters",
+    "enter_your_email": "Enter your email",
+    "min_8_max_15_lower": "At least 8 & max.15 lower case characters",
+    "confirm_new_password": "Confirm new password",
+    "min_8_characters": "8 or more characters",
+    "15_lower_characters": "15 lowercase characters",
+    "passwords_should_contain": "Passwords should contain:",
+    "enter_new_email": "Enter new email",
+    "genres": "ჟანრები",
+    "upload_image": "Drag & drop your image here or"
+  }
+}
