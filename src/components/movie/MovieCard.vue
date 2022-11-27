@@ -3,7 +3,7 @@
     <img
       :src="image"
       alt="movie poster"
-      class="h-[370px] rounded-xl object-cover"
+      class="h-[370px] rounded-xl object-cover hover:cursor-pointer"
       @click="router.push({ name: 'movie', params: { id } })"
     />
     <p class="mt-2">

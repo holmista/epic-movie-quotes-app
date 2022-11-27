@@ -1,6 +1,6 @@
 <template>
-  <div :class="blur ? 'opacity-20' : ''">
-    <div class="text-white flex items-center justify-between mb-14">
+  <div :class="blur ? 'opacity-20' : ''" class="w-full pr-20">
+    <div class="text-white flex items-center justify-between mb-14 w-full">
       <h1 class="text-2xl font-medium">
         My list of movies (Total {{ store.movies.length }})
       </h1>

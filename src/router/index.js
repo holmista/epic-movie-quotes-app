@@ -125,6 +125,11 @@ const router = createRouter({
           name: "create-quote",
           component: () => import("@/views/CreateQuoteModal.vue"),
         },
+        {
+          path: "/movie/:id/edit",
+          name: "edit-movie",
+          component: () => import("@/views/EditMoviePage.vue"),
+        },
       ],
     },
   ],

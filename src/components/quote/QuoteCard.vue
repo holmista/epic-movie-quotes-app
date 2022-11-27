@@ -1,10 +1,7 @@
 <template>
   <div class="bg-[#11101A] max-w-[525px] h-[268px] rounded-xl p-6 text-white">
     <div class="flex gap-4 items-start h-4/6 border-b-2 border-[#EFEFEF]">
-      <img
-        src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        class="h-[120px] object-cover"
-      />
+      <img :src="quote.avatar" class="h-[120px] object-cover" />
       <div class="flex h-full justify-center items-center">
         <p>"{{ quote.title.en }}"</p>
       </div>
@@ -36,12 +33,11 @@ import CommentIcon from "@/assets/icons/common/CommentIcon.vue";
 import LikeIcon from "@/assets/icons/common/LikeIcon.vue";
 import QuoteOptionsModal from "@/components/quote/QuoteOptionsModal.vue";
 import { ref } from "vue";
-const props = defineProps({
+defineProps({
   quote: {
     type: Object,
     required: true,
   },
 });
-console.log(props.quote);
 const showQuoteOptionsModal = ref(false);
 </script>

@@ -14,7 +14,7 @@
         </BaseButton>
       </RouterLink>
     </div>
-    <div v-if="Object.keys(quotes.value).length">
+    <div v-if="Object.keys(quotes.value).length" class="flex flex-col gap-5">
       <QuoteCard v-for="quote in quotes.value" :quote="quote" :key="quote.id" />
     </div>
   </div>

@@ -5,7 +5,7 @@
     v-if="Object.keys(movie.value).length > 0"
   >
     <div
-      class="min-h-[800px] w-[428px] bg-[#11101A] text-white sm:w-[650px] z-60 relative"
+      class="min-h-[800px] w-[428px] bg-[#11101A] text-white sm:w-[650px] z-60 relative rounded-xl"
     >
       <div
         class="grid grid-cols-3 border-b-[1px] border-[#EFEFEF] h-20 items-center"

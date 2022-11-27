@@ -3,7 +3,7 @@
     <h1 class="font-medium text-2xl">Movie description</h1>
     <div class="flex mt-6">
       <img
-        src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        :src="movie.avatar"
         alt=""
         class="h-[350px] rounded-xl object-cover"
       />
@@ -15,9 +15,13 @@
           <div
             class="w-32 h-9 bg-[#24222F] opacity-60 rounded-lg flex justify-evenly items-center"
           >
-            <PencilIcon class="hover:cursor-pointer" />
+            <RouterLink
+              :to="{ name: 'edit-movie', params: { id: route.params.id } }"
+            >
+              <PencilIcon class="hover:cursor-pointer" />
+            </RouterLink>
             <DividerIcon />
-            <TrashIcon class="hover:cursor-pointer" />
+            <TrashIcon class="hover:cursor-pointer" @click="deleteMovie" />
           </div>
         </div>
         <div class="flex gap-1 flex-wrap pl-3">
@@ -46,6 +50,21 @@ import CategoryBox from "@/components/movie/CategoryBox.vue";
 import PencilIcon from "@/assets/icons/movie/PencilIcon.vue";
 import TrashIcon from "@/assets/icons/movie/TrashIcon.vue";
 import DividerIcon from "@/assets/icons/movie/DividerIcon.vue";
+import { useRoute, useRouter } from "vue-router";
+import useFetch from "@/hooks/useFetch";
+
+const route = useRoute();
+const router = useRouter();
+
+const deleteMovie = async () => {
+  const state = await useFetch({
+    url: `movies/${route.params.id}`,
+    method: "delete",
+  });
+  if (state.status.value === 204) {
+    router.push({ name: "movies" });
+  }
+};
 
 defineProps({
   movie: {

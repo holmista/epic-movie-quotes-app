@@ -17,12 +17,14 @@
       </div>
       <p>news feed</p>
     </div>
-    <div class="flex gap-6 items-center hover:cursor-pointer">
-      <div class="p-[14px]">
-        <CameraIcon />
+    <RouterLink :to="{ name: 'movies' }">
+      <div class="flex gap-6 items-center hover:cursor-pointer">
+        <div class="p-[14px]">
+          <CameraIcon />
+        </div>
+        <p>List of movies</p>
       </div>
-      <p>List of movies</p>
-    </div>
+    </RouterLink>
   </div>
 </template>
 

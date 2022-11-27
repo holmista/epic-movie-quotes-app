@@ -17,6 +17,14 @@ export const useMovieStore = defineStore("movie", {
     removeMovie(payload) {
       this.movies = this.movies.filter((movie) => movie.id !== payload.id);
     },
+    updateMovie(payload) {
+      this.movies = this.movies.map((movie) => {
+        if (movie.id === payload.id) {
+          return payload;
+        }
+        return movie;
+      });
+    },
     setAvailableCategories(payload) {
       this.availableCategories = payload;
     },
@@ -34,6 +42,11 @@ export const useMovieStore = defineStore("movie", {
     },
     setCategoriesError(payload) {
       this.categoriesError = payload;
+    },
+    resetGenres() {
+      this.chosenCategories = [];
+      this.availableCategories = [];
+      this.categoriesError = false;
     },
   },
 });
