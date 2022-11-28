@@ -10,7 +10,9 @@
     </div>
     <div class="flex gap-2 items-center hover:cursor-pointer">
       <ModalPencilIcon />
-      <p>Edit</p>
+      <p @click="router.push(`/movie/${route.params.id}/quote/${id}/edit`)">
+        Edit
+      </p>
     </div>
     <div class="flex gap-2 items-center hover:cursor-pointer">
       <ModalTrashIcon />

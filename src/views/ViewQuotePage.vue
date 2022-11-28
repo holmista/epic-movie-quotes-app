@@ -11,7 +11,18 @@
         class="flex justify-between border-b-[1px] border-[#EFEFEF] h-20 items-center"
       >
         <div class="w-20 h-9 flex justify-between items-center ml-8">
-          <PencilIcon class="hover:cursor-pointer" />
+          <RouterLink
+            :to="{
+              name: 'edit-quote',
+              params: {
+                id: route.params.id,
+                quoteId: route.params.quoteId,
+                id: route.params.id,
+              },
+            }"
+          >
+            <PencilIcon class="hover:cursor-pointer" />
+          </RouterLink>
           <DividerIcon />
           <TrashIcon class="hover:cursor-pointer" @click="handleDelete" />
         </div>

@@ -28,10 +28,7 @@
         <p>{{ movie.value.user.name }}</p>
       </div>
       <div class="flex gap-6 px-8 mt-7">
-        <img
-          class="h-36 w-60 rounded-xl"
-          src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        />
+        <img class="h-36 w-60 rounded-xl" :src="movie.value.avatar" />
         <aside class="flex flex-col gap-4">
           <p class="text-base text-[#DDCCAA] sm:text-xl">
             {{ movie.value.title.en }} ({{ movie.value.release_year }})
@@ -53,7 +50,7 @@
           </p>
         </aside>
       </div>
-      <Form as="div" v-slot="{ handleSubmit }">
+      <Form v-slot="{ handleSubmit }">
         <form
           @submit="handleSubmit($event, onSubmit)"
           class="px-8 flex flex-col gap-6 mt-7"

@@ -135,6 +135,11 @@ const router = createRouter({
           name: "view-quote",
           component: () => import("@/views/ViewQuotePage.vue"),
         },
+        {
+          path: "quote/:quoteId/edit",
+          name: "edit-quote",
+          component: () => import("@/views/EditQuoteModal.vue"),
+        },
       ],
     },
   ],
