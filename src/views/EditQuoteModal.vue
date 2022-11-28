@@ -79,7 +79,7 @@ import CrossIcon from "@/assets/icons/quote/CrossIcon.vue";
 import FormTextarea from "@/components/quote/FormTextarea.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import ChangePhoto from "@/components/quote/ChangePhoto.vue";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, onUnmounted, reactive, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRoute, useRouter } from "vue-router";
 import { inject } from "vue";

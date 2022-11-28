@@ -1,9 +1,5 @@
 <template>
-  <div
-    id="parent"
-    class="h-screen w-full"
-    :class="overflow ? 'overflow-hidden' : ''"
-  >
+  <div id="parent" class="h-full">
     <SideTopPanels>
       <MovieInfo />
     </SideTopPanels>
@@ -21,6 +17,7 @@ const overflow = ref(false);
 
 watchEffect(() => {
   if (route.fullPath.includes("quote") || route.fullPath.includes("edit")) {
+    console.log("includes quote");
     overflow.value = true;
   } else {
     overflow.value = false;
@@ -28,7 +25,7 @@ watchEffect(() => {
 });
 </script>
 
-<style scoped>
+<style>
 #parent {
   background: linear-gradient(
     187.16deg,

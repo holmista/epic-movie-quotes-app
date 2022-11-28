@@ -123,7 +123,7 @@ const router = useRouter();
 const movie = reactive({ value: {} });
 const quotes = inject("quotes");
 
-const onSubmit = async (values, actions) => {
+const onSubmit = async (values) => {
   const form = new FormData();
   form.append(
     "title",
