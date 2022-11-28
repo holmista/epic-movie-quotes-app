@@ -1,11 +1,24 @@
 <template>
-  <div>
-    <QuoteCard v-for="quote in quotes.value" :quote="quote" :key="quote.id" />
+  <div id="parent">
+    <SideTopPanels>
+      <div class="flex flex-col gap-6">
+        <SearchPanel />
+        <div class="flex flex-col gap-10">
+          <QuoteCard
+            v-for="quote in quotes.value"
+            :quote="quote"
+            :key="quote.id"
+          />
+        </div>
+      </div>
+    </SideTopPanels>
   </div>
 </template>
 
 <script setup>
 import QuoteCard from "@/components/news-feed/QuoteCard.vue";
+import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
+import SearchPanel from "@/components/news-feed/SearchPanel.vue";
 import { onMounted, reactive } from "vue";
 import useFetch from "@/hooks/useFetch";
 
@@ -18,7 +31,17 @@ onMounted(async () => {
   });
   if (state.status.value === 200) {
     quotes.value = state.response.value.quotes;
-    console.log(quotes.value);
   }
 });
 </script>
+
+<style>
+#parent {
+  background: linear-gradient(
+    187.16deg,
+    #181623 0.07%,
+    #191725 51.65%,
+    #0d0b14 98.75%
+  );
+}
+</style>

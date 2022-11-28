@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-6 bg-[#11101A] w-[800px] text-white flex flex-col gap-5"
+    class="px-6 bg-[#11101A] w-[800px] text-white flex flex-col gap-5 rounded-xl"
     v-if="quote"
   >
     <div class="flex items-center gap-4 py-2">
@@ -27,7 +27,7 @@
         :key="comment.id"
       />
     </div>
-    <QuoteWriteComment class="w-full" />
+    <QuoteWriteComment class="w-full" :quoteId="quote.id" />
   </div>
 </template>
 
@@ -35,8 +35,11 @@
 import CommentLikePanel from "@/components/base/CommentLikePanel.vue";
 import QuoteComment from "@/components/base/QuoteComment.vue";
 import QuoteWriteComment from "@/components/base/QuoteWriteComment.vue";
+import { provide } from "vue";
 
-defineProps({
+provide("quote", props.quote);
+
+const props = defineProps({
   quote: {
     type: Object,
     required: true,
