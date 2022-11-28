@@ -27,7 +27,7 @@ import QuoteCard from "@/components/quote/QuoteCard.vue";
 import BigDivideIcon from "@/assets/icons/movie/BigDivideIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import AddIcon from "@/assets/icons/movie/AddIcon.vue";
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, provide } from "vue";
 import { useRoute } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 
@@ -35,6 +35,8 @@ const route = useRoute();
 const movie = reactive({ value: {} });
 const categories = reactive({ value: {} });
 const quotes = reactive({ value: [] });
+
+provide("quotes", quotes);
 
 const getCategories = async () => {
   const state = await useFetch({

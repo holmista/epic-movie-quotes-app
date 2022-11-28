@@ -13,7 +13,7 @@
         <div class="w-20 h-9 flex justify-between items-center ml-8">
           <PencilIcon class="hover:cursor-pointer" />
           <DividerIcon />
-          <TrashIcon class="hover:cursor-pointer" />
+          <TrashIcon class="hover:cursor-pointer" @click="handleDelete" />
         </div>
         <h1 class="text-2xl">View Quote</h1>
         <RouterLink :to="{ name: 'movie', params: { id: route.params.id } }">
@@ -44,6 +44,7 @@
           language="ქარ"
           :placeholder="'&#8220;' + quote.value.title.en + '&#8221;'"
           rules="required"
+          :readonly="true"
         />
       </div>
       <div class="px-8 mt-6">
@@ -74,19 +75,32 @@ import FormInput from "@/components/movie/FormInput.vue";
 import CommentLikePanel from "@/components/base/CommentLikePanel.vue";
 import QuoteComment from "@/components/base/QuoteComment.vue";
 import QuoteWriteComment from "@/components/base/QuoteWriteComment.vue";
-import { useRoute } from "vue-router";
-import { onMounted, provide, reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { onMounted, inject, reactive, provide } from "vue";
 import useFetch from "@/hooks/useFetch";
 
 const route = useRoute();
+const router = useRouter();
 
 const quote = reactive({ value: {} });
 provide("quote", quote);
+const quotes = inject("quotes");
 
 onMounted(async () => {
   const state = await useFetch({ url: `/quote/${route.params.quoteId}` });
   quote.value = state.response.value.quote;
 });
+
+const handleDelete = async () => {
+  const state = await useFetch({
+    url: `/quote/${quote.value.id}`,
+    method: "delete",
+  });
+  if (state.status.value === 204) {
+    quotes.value = quotes.value.filter((q) => q.id !== quote.value.id);
+    router.push({ name: "movie", params: { id: route.params.id } });
+  }
+};
 </script>
 
 <style scoped>

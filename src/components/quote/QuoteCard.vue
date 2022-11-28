@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#11101A] max-w-[525px] h-[268px] rounded-xl p-6 text-white">
     <div class="flex gap-4 items-start h-4/6 border-b-2 border-[#EFEFEF]">
-      <img :src="quote.avatar" class="h-[120px] object-cover" />
+      <img :src="quote.avatar" class="h-[120px] object-cover max-w-[300px]" />
       <div class="flex h-full justify-center items-center">
         <p>"{{ quote.title.en }}"</p>
       </div>

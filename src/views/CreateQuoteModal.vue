@@ -117,13 +117,14 @@ import FormTextarea from "@/components/quote/FormTextarea.vue";
 import CameraIcon from "@/assets/icons/quote/CameraIcon.vue";
 import { Field, ErrorMessage, Form } from "vee-validate";
 import BaseButton from "@/components/base/BaseButton.vue";
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, inject } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 
 const route = useRoute();
 const router = useRouter();
 const movie = reactive({ value: {} });
+const quotes = inject("quotes");
 
 const onSubmit = async (values, actions) => {
   const form = new FormData();
@@ -142,6 +143,7 @@ const onSubmit = async (values, actions) => {
     data: form,
   });
   if (state.status.value === 201) {
+    quotes.value.push(state.response.value.quote);
     router.push(`/movie/${route.params.id}`);
   }
 };
