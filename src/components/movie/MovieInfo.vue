@@ -3,6 +3,7 @@
     <RouterView />
     <MovieDescription
       :movie="movie.value"
+      :categories="categories.value"
       v-if="Object.keys(movie.value).length > 0"
     />
     <div class="flex text-white gap-4 mt-11 mb-14 items-center">
@@ -32,9 +33,19 @@ import useFetch from "@/hooks/useFetch";
 
 const route = useRoute();
 const movie = reactive({ value: {} });
+const categories = reactive({ value: {} });
 const quotes = reactive({ value: [] });
 
+const getCategories = async () => {
+  const state = await useFetch({
+    url: `/movies/${route.params.id}`,
+    method: "get",
+  });
+  categories.value = state.response.value.movie.categories;
+};
+
 onMounted(async () => {
+  getCategories();
   const state = await useFetch({
     url: `/movies/${route.params.id}/quotes`,
     method: "get",

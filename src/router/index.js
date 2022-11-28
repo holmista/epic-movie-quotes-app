@@ -121,14 +121,19 @@ const router = createRouter({
       component: () => import("@/views/MoviePage.vue"),
       children: [
         {
-          path: "/movie/:id/create-quote",
+          path: "create-quote",
           name: "create-quote",
           component: () => import("@/views/CreateQuoteModal.vue"),
         },
         {
-          path: "/movie/:id/edit",
+          path: "edit",
           name: "edit-movie",
           component: () => import("@/views/EditMoviePage.vue"),
+        },
+        {
+          path: "quote/:quoteId",
+          name: "view-quote",
+          component: () => import("@/views/ViewQuotePage.vue"),
         },
       ],
     },

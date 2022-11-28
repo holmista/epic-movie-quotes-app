@@ -10,11 +10,21 @@
         :rules="rules"
       >
         <input
+          v-if="!readonly"
           v-bind="field"
           :value="field.value"
           class="block w-full rounded-md border border-gray-500 pl-7 pr-12 bg-transparent h-12"
           :placeholder="placeholder"
           :type="type"
+        />
+        <input
+          v-else
+          v-bind="field"
+          :value="field.value"
+          class="block w-full rounded-md border border-gray-500 pl-7 pr-12 bg-transparent h-12"
+          :placeholder="placeholder"
+          :type="type"
+          readonly
         />
       </Field>
       <div
@@ -54,6 +64,11 @@ defineProps({
   placeholder: {
     type: String,
     required: true,
+  },
+  readonly: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
 });
 </script>

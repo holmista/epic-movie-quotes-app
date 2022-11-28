@@ -7,11 +7,14 @@
       </div>
       <div class="flex justify-end h-full w-full">
         <ThreeDotsIcon
-          @blur="showQuoteOptionsModal = false"
           class="hover:cursor-pointer"
           @click="showQuoteOptionsModal = !showQuoteOptionsModal"
         />
-        <QuoteOptionsModal class="mt-6" v-if="showQuoteOptionsModal" />
+        <QuoteOptionsModal
+          :id="quote.id"
+          class="mt-6"
+          v-if="showQuoteOptionsModal"
+        />
       </div>
     </div>
     <div class="flex gap-5 items-center h-2/6 mt-3 text-xl">

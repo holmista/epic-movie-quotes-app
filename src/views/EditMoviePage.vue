@@ -1,7 +1,7 @@
 <template>
   <div
     id="parent"
-    class="fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center overflow-y-hidden"
+    class="fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center overflow-y-scroll z-10"
   >
     <div
       class="max-w-xl w-full bg-[#11101A] text-white absolute left-0 right-0 ml-auto mr-auto z-10 top-0"
@@ -185,7 +185,6 @@ const getInitialValues = async () => {
     initialValues.description_en = data.description.en;
     initialValues.description_ka = data.description.ka;
   }
-  console.log(state.response.value);
 };
 
 const onSubmit = async (values, actions) => {

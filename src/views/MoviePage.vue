@@ -1,5 +1,9 @@
 <template>
-  <div id="parent" class="min-h-screen">
+  <div
+    id="parent"
+    class="h-screen w-full"
+    :class="overflow ? 'overflow-hidden' : ''"
+  >
     <SideTopPanels>
       <MovieInfo />
     </SideTopPanels>
@@ -9,6 +13,19 @@
 <script setup>
 import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
 import MovieInfo from "@/components/movie/MovieInfo.vue";
+import { watchEffect, ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const overflow = ref(false);
+
+watchEffect(() => {
+  if (route.fullPath.includes("quote") || route.fullPath.includes("edit")) {
+    overflow.value = true;
+  } else {
+    overflow.value = false;
+  }
+});
 </script>
 
 <style scoped>

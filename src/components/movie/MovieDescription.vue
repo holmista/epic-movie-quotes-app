@@ -26,7 +26,7 @@
         </div>
         <div class="flex gap-1 flex-wrap pl-3">
           <CategoryBox
-            v-for="category in movie.categories"
+            v-for="category in categories"
             :key="category.id"
             :category="category"
           />
@@ -69,6 +69,10 @@ const deleteMovie = async () => {
 defineProps({
   movie: {
     type: Object,
+    required: true,
+  },
+  categories: {
+    type: Array,
     required: true,
   },
 });
