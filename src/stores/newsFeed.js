@@ -11,6 +11,10 @@ const useNewsFeedStore = defineStore("news-feed", {
       this.quotes = payload;
       this.filteredQuotes = payload;
     },
+    appendQuote(payload) {
+      this.quotes = [...this.quotes, payload];
+      this.filteredQuotes = [...this.filteredQuotes, payload];
+    },
     filterByQuoteTitle(payload) {
       this.filteredQuotes = this.quotes.filter((quote) =>
         quote.title["en"].toLowerCase().includes(payload.toLowerCase())

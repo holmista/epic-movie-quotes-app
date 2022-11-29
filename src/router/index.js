@@ -90,6 +90,13 @@ const router = createRouter({
       path: "/feed",
       name: "feed",
       component: () => import("@/views/NewsFeedPage.vue"),
+      children: [
+        {
+          path: "add-quote",
+          name: "add-quote",
+          component: () => import("@/views/FeedCreateQuoteModal.vue"),
+        },
+      ],
     },
     {
       path: "/profile",

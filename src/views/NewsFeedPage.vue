@@ -1,5 +1,6 @@
 <template>
   <div id="parent">
+    <RouterView />
     <SideTopPanels>
       <div class="flex flex-col gap-6">
         <SearchPanel />

@@ -1,11 +1,12 @@
 <template>
   <div class="w-[800px] text-white flex items-center gap-6">
-    <div
+    <RouterLink
+      :to="{ name: 'add-quote' }"
       class="h-[52px] w-full bg-[#24222F] opacity-60 rounded-xl grid grid-cols-8 items-center pl-4"
     >
       <PencilSquareIcon />
       <p class="col-span-7">Write new quote</p>
-    </div>
+    </RouterLink>
     <div class="flex items-center">
       <SearchIcon />
       <input
@@ -45,3 +46,9 @@ watchEffect(() => {
 
 const focused = ref(false);
 </script>
+
+<style scoped>
+* {
+  transition: all 0.3s ease;
+}
+</style>

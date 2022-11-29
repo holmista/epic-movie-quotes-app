@@ -33,7 +33,6 @@ const quote = inject("quote");
 //     required: true,
 //   },
 // });
-console.log(quote);
 const handleCreateLike = async () => {
   const state = await useFetch({
     url: `/like`,
