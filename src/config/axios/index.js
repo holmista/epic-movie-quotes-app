@@ -19,6 +19,8 @@ axiosInstance.interceptors.response.use(
     if (error.response.status == 401) {
       const authStore = useAuthStore();
       authStore.setAuthenticated(false);
+      authStore.setName(null);
+      authStore.setId(null);
       router.push("/");
     }
     return Promise.reject(error);

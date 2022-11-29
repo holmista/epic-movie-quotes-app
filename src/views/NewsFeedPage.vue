@@ -3,12 +3,13 @@
     <SideTopPanels>
       <div class="flex flex-col gap-6">
         <SearchPanel />
-        <div class="flex flex-col gap-10">
-          <QuoteCard
+        <div class="flex flex-col gap-10" v-if="newsFeedStore.quotes.length">
+          <!-- <QuoteCard
             v-for="quote in newsFeedStore.filteredQuotes"
             :quote="quote"
             :key="quote.id"
-          />
+          /> -->
+          <QuoteCard :quote="newsFeedStore.filteredQuotes[0]" />
         </div>
       </div>
     </SideTopPanels>

@@ -41,7 +41,7 @@ const printToConsole = async (e) => {
   });
   if (state.status.value === 201) {
     comment.value = "";
-    quote.value.comments.push(state.response.value.comment);
+    quote.comments.push(state.response.value.comment);
   }
 };
 </script>

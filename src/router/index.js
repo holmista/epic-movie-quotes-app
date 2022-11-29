@@ -150,8 +150,10 @@ router.beforeEach(async (to, from, next) => {
 
   if (authStore.authenticated === null) {
     try {
-      await axios.get(`${import.meta.env.VITE_BACK_BASE_URL}/user`);
-      authStore.authenticated = true;
+      const res = await axios.get(`${import.meta.env.VITE_BACK_BASE_URL}/user`);
+      authStore.setAuthenticated(true);
+      authStore.setName(res.data.name);
+      authStore.setId(res.data.id);
     } catch (err) {
       authStore.authenticated = false;
     }
