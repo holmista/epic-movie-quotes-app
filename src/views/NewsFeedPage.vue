@@ -5,7 +5,7 @@
         <SearchPanel />
         <div class="flex flex-col gap-10">
           <QuoteCard
-            v-for="quote in quotes.value"
+            v-for="quote in newsFeedStore.filteredQuotes"
             :quote="quote"
             :key="quote.id"
           />
@@ -19,10 +19,11 @@
 import QuoteCard from "@/components/news-feed/QuoteCard.vue";
 import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
 import SearchPanel from "@/components/news-feed/SearchPanel.vue";
-import { onMounted, reactive } from "vue";
+import { onMounted } from "vue";
 import useFetch from "@/hooks/useFetch";
+import useNewsFeedStore from "@/stores/newsFeed";
 
-const quotes = reactive({ value: [] });
+const newsFeedStore = useNewsFeedStore();
 
 onMounted(async () => {
   const state = await useFetch({
@@ -30,7 +31,7 @@ onMounted(async () => {
     method: "get",
   });
   if (state.status.value === 200) {
-    quotes.value = state.response.value.quotes;
+    newsFeedStore.setQuotes(state.response.value.quotes);
   }
 });
 </script>

@@ -9,9 +9,17 @@
     <div class="flex items-center">
       <SearchIcon />
       <input
-        class="text-white bg-transparent border-0 w-[100px]"
+        class="text-white bg-transparent border-0"
         type="text"
-        placeholder="Search by"
+        :placeholder="
+          focused
+            ? 'Enter @ to search movies, Enter # to search quotes '
+            : 'Search by'
+        "
+        @focus="focused = true"
+        @blur="focused = false"
+        :class="focused ? 'w-[500px]' : 'w-[100px]'"
+        v-model="searchValue"
       />
     </div>
   </div>
@@ -20,4 +28,20 @@
 <script setup>
 import PencilSquareIcon from "@/assets/icons/news-feed/PencilSquareIcon.vue";
 import SearchIcon from "@/assets/icons/movie/SearchIcon.vue";
+import { ref, watchEffect } from "vue";
+import useNewsFeedStore from "@/stores/newsFeed";
+
+const newsFeedStore = useNewsFeedStore();
+const searchValue = ref("");
+
+watchEffect(() => {
+  if (searchValue.value[0] === "@") {
+    newsFeedStore.filterByMovieTitle(searchValue.value.slice(1));
+  }
+  if (searchValue.value[0] === "#") {
+    newsFeedStore.filterByQuoteTitle(searchValue.value.slice(1));
+  }
+});
+
+const focused = ref(false);
 </script>
