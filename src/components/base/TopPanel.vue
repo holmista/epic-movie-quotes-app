@@ -4,7 +4,14 @@
       <p class="text-[#DDCCAA] font-medium">MOVIE QUOTES</p>
     </div>
     <div class="flex items-center space-x-4">
-      <BellIcon />
+      <BellIcon
+        @click="showNotifications = !showNotifications"
+        class="hover:cursor-pointer"
+      />
+      <UserNotifications
+        v-if="showNotifications"
+        class="absolute left-[1000px] top-20"
+      />
       <LanguageDropDown />
       <BaseButton
         @click="logout"
@@ -19,8 +26,12 @@
 import LanguageDropDown from "@/components/base/LanguageDropDown.vue";
 import BellIcon from "@/assets/icons/profile/BellIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
+import UserNotifications from "@/components/news-feed/UserNotifications.vue";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
 import useFetch from "@/hooks/useFetch";
+
+const showNotifications = ref(false);
 
 const router = useRouter();
 const logout = async () => {

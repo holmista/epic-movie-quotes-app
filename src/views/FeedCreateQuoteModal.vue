@@ -127,10 +127,10 @@ import MovieCameraIcon from "@/assets/icons/profile/CameraIcon.vue";
 import { reactive, ref, onMounted } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRouter } from "vue-router";
-import useNewsFeedStore from "@/stores/newsFeed";
+// import useNewsFeedStore from "@/stores/newsFeed";
 
 const authStore = useAuthStore();
-const newsFeedStore = useNewsFeedStore();
+// const newsFeedStore = useNewsFeedStore();
 const router = useRouter();
 
 const showMovieLabel = ref(true);
