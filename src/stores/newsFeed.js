@@ -4,6 +4,7 @@ const useNewsFeedStore = defineStore("news-feed", {
   state: () => ({
     quotes: [],
     filteredQuotes: [],
+    nextPag: null,
   }),
   actions: {
     setQuotes(payload) {
@@ -19,6 +20,9 @@ const useNewsFeedStore = defineStore("news-feed", {
       this.filteredQuotes = this.quotes.filter((quote) =>
         quote.movie.title["en"].toLowerCase().includes(payload.toLowerCase())
       );
+    },
+    setNextPage(payload) {
+      this.nextPage = payload;
     },
   },
 });

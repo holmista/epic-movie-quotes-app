@@ -4,12 +4,11 @@
       <div class="flex flex-col gap-6">
         <SearchPanel />
         <div class="flex flex-col gap-10" v-if="newsFeedStore.quotes.length">
-          <!-- <QuoteCard
+          <QuoteCard
             v-for="quote in newsFeedStore.filteredQuotes"
             :quote="quote"
             :key="quote.id"
-          /> -->
-          <QuoteCard :quote="newsFeedStore.filteredQuotes[0]" />
+          />
         </div>
       </div>
     </SideTopPanels>
@@ -20,21 +19,52 @@
 import QuoteCard from "@/components/news-feed/QuoteCard.vue";
 import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
 import SearchPanel from "@/components/news-feed/SearchPanel.vue";
-import { onMounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import useNewsFeedStore from "@/stores/newsFeed";
 
 const newsFeedStore = useNewsFeedStore();
+const canLoad = ref(true);
 
-onMounted(async () => {
+const fetchMoreQuotes = async () => {
   const state = await useFetch({
-    url: "/quote",
+    url: `/quote?page=${newsFeedStore.nextPage}`,
     method: "get",
   });
   if (state.status.value === 200) {
-    newsFeedStore.setQuotes(state.response.value.quotes);
+    newsFeedStore.quotes.push(...state.response.value.quotes.data);
+    newsFeedStore.setNextPage(state.response.value.quotes.current_page + 1);
+  }
+};
+
+onMounted(async () => {
+  window.addEventListener("scroll", handleScroll);
+  const state = await useFetch({
+    url: "/quote?page=1",
+    method: "get",
+  });
+  if (state.status.value === 200) {
+    newsFeedStore.setQuotes(state.response.value.quotes.data);
+    newsFeedStore.setNextPage(state.response.value.quotes.next_page_url);
   }
 });
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+const handleScroll = () => {
+  if (
+    canLoad.value &&
+    window.scrollY + window.innerHeight >= document.body.scrollHeight - 100
+  ) {
+    canLoad.value = false;
+    console.log("fetching");
+    fetchMoreQuotes()
+      .then(() => (canLoad.value = true))
+      .catch(() => (canLoad.value = true));
+  }
+};
 </script>
 
 <style>
