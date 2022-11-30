@@ -26,7 +26,7 @@
 import LanguageDropDown from "@/components/base/LanguageDropDown.vue";
 import BellIcon from "@/assets/icons/profile/BellIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import UserNotifications from "@/components/news-feed/UserNotifications.vue";
+import UserNotifications from "@/components/notification/UserNotifications.vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import useFetch from "@/hooks/useFetch";

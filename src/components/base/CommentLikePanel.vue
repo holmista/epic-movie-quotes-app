@@ -7,7 +7,7 @@
     <div class="flex gap-2">
       <p>{{ quote.likes.length }}</p>
       <RedLikeIcon
-        v-if="quote.likes.find((like) => (like.user_id = authStore.id))"
+        v-if="quote.likes.some((like) => like.user_id === authStore.id)"
         @click="handleDeleteLike"
         class="hover:cursor-pointer"
       />
@@ -55,7 +55,6 @@ const handleDeleteLike = async () => {
   });
   if (state.status.value === 204) {
     quote.likes = quote.likes.filter((like) => like.user_id !== authStore.id);
-    // quote.likes.push(state.response.value.like);
   }
 };
 </script>
