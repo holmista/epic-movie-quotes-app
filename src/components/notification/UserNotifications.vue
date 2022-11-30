@@ -4,7 +4,9 @@
   >
     <div class="flex justify-between">
       <h1 class="text-3xl">Notifications</h1>
-      <p class="underline">mark all as read</p>
+      <p class="underline hover:cursor-pointer" @click="readAll">
+        mark all as read
+      </p>
     </div>
     <div class="mt-6 flex flex-col gap-4">
       <UserNotification
@@ -22,6 +24,19 @@ import useFetch from "@/hooks/useFetch";
 import { onMounted, reactive } from "vue";
 
 const notifications = reactive({ value: [] });
+
+const readAll = async () => {
+  const state = await useFetch({
+    url: "/notification/read-all",
+    method: "patch",
+  });
+  if (state.status.value === 200) {
+    notifications.value = notifications.value.map((notification) => {
+      notification.is_read = 1;
+      return notification;
+    });
+  }
+};
 
 onMounted(async () => {
   const state = await useFetch({ url: "/notification", method: "get" });

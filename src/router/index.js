@@ -96,6 +96,11 @@ const router = createRouter({
           name: "add-quote",
           component: () => import("@/views/FeedCreateQuoteModal.vue"),
         },
+        {
+          path: "quote/:id",
+          name: "feed-view-quote",
+          component: () => import("@/components/news-feed/FeedViewQuote.vue"),
+        },
       ],
     },
     {

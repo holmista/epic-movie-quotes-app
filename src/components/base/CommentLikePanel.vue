@@ -1,5 +1,8 @@
 <template>
-  <div class="flex gap-5 items-center text-xl">
+  <div
+    class="flex gap-5 items-center text-xl"
+    v-if="Object.keys(quote).length > 0"
+  >
     <div class="flex gap-2">
       <p>{{ quote.comments.length }}</p>
       <CommentIcon class="hover:cursor-pointer" />
@@ -33,6 +36,7 @@ const quote = inject("quote");
 //     required: true,
 //   },
 // });
+// console.log(quote.value.comments.length);
 const handleCreateLike = async () => {
   const state = await useFetch({
     url: `/like`,
