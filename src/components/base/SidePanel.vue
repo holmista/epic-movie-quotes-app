@@ -8,23 +8,24 @@
       />
       <div class="flex flex-col justify-between">
         <p class="text-2xl">{{ store.name }}</p>
-        <p class="text-base">edit your profile</p>
+        <p class="text-base">{{ $t("sidePanel.edit_your_profile") }}</p>
       </div>
     </div>
     <div class="flex gap-6 items-center hover:cursor-pointer">
       <div class="p-[14px]">
         <HouseIcon />
       </div>
-      <p>news feed</p>
+      <p>{{ $t("sidePanel.news_feed") }}</p>
     </div>
     <RouterLink :to="{ name: 'movies' }">
       <div class="flex gap-6 items-center hover:cursor-pointer">
         <div class="p-[14px]">
           <CameraIcon />
         </div>
-        <p>List of movies</p>
+        <p>{{ $t("sidePanel.list_of_movies") }}</p>
       </div>
     </RouterLink>
+    </div>
   </div>
 </template>
 

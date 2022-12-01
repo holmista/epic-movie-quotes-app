@@ -1,4 +1,5 @@
 <template>
+
   <div class="">
     <RouterView />
     <MovieDescription
@@ -17,6 +18,7 @@
     </div>
     <div v-if="Object.keys(quotes.value).length" class="flex flex-col gap-5">
       <QuoteCard v-for="quote in quotes.value" :quote="quote" :key="quote.id" />
+
     </div>
   </div>
 </template>
@@ -38,6 +40,7 @@ const quotes = reactive({ value: [] });
 
 provide("quotes", quotes);
 
+
 const getCategories = async () => {
   const state = await useFetch({
     url: `/movies/${route.params.id}`,
@@ -54,5 +57,6 @@ onMounted(async () => {
   });
   movie.value = state.response.value.movie;
   quotes.value = state.response.value.quotes;
+
 });
 </script>
