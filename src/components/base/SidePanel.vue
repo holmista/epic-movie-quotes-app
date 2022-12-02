@@ -25,8 +25,8 @@
         <p>{{ $t("sidePanel.list_of_movies") }}</p>
       </div>
     </RouterLink>
-    </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script setup>
