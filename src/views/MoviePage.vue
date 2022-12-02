@@ -1,6 +1,5 @@
 <template>
-  <RouterView />
-  <div id="parent" class="min-h-screen">
+  <div id="parent" class="h-full">
     <SideTopPanels>
       <MovieInfo />
     </SideTopPanels>
@@ -8,11 +7,25 @@
 </template>
 
 <script setup>
-import MovieInfo from "@/components/movie/MovieInfo.vue";
 import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
+import MovieInfo from "@/components/movie/MovieInfo.vue";
+import { watchEffect, ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const overflow = ref(false);
+
+watchEffect(() => {
+  if (route.fullPath.includes("quote") || route.fullPath.includes("edit")) {
+    console.log("includes quote");
+    overflow.value = true;
+  } else {
+    overflow.value = false;
+  }
+});
 </script>
 
-<style scoped>
+<style>
 #parent {
   background: linear-gradient(
     187.16deg,

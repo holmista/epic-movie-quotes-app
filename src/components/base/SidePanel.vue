@@ -17,11 +17,14 @@
       </div>
       <p>{{ $t("sidePanel.news_feed") }}</p>
     </div>
-    <div class="flex gap-6 items-center hover:cursor-pointer">
-      <div class="p-[14px]">
-        <CameraIcon />
+    <RouterLink :to="{ name: 'movies' }">
+      <div class="flex gap-6 items-center hover:cursor-pointer">
+        <div class="p-[14px]">
+          <CameraIcon />
+        </div>
+        <p>{{ $t("sidePanel.list_of_movies") }}</p>
       </div>
-      <p>{{ $t("sidePanel.list_of_movies") }}</p>
+    </RouterLink>
     </div>
   </div>
 </template>

@@ -133,6 +133,7 @@ import useFetch from "@/hooks/useFetch";
 import { useRouter } from "vue-router";
 
 const store = useMovieStore();
+store.resetGenres();
 const router = useRouter();
 
 const avatar = ref(null);

@@ -4,28 +4,18 @@
     <div class="relative mt-1 rounded-md shadow-sm">
       <Field
         v-slot="{ field }"
-        :type="type"
         :name="name"
         :placeholder="placeholder"
         :rules="rules"
+        :id="name"
+        :value="initialValue"
       >
-        <input
-          v-if="!readonly"
+        <textarea
           v-bind="field"
           :value="field.value"
-          class="block w-full rounded-md border border-gray-500 pl-7 pr-12 bg-transparent h-12"
+          class="block w-full rounded-md border border-gray-500 pl-7 pr-12 bg-transparent h-[64px]"
           :placeholder="placeholder"
-          :type="type"
-        />
-        <input
-          v-else
-          v-bind="field"
-          :value="field.value"
-          class="block w-full rounded-md border border-gray-500 pl-7 pr-12 bg-transparent h-12"
-          :placeholder="placeholder"
-          :type="type"
-          readonly
-        />
+        ></textarea>
       </Field>
       <div
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
@@ -45,10 +35,6 @@
 <script setup>
 import { Field, ErrorMessage } from "vee-validate";
 defineProps({
-  type: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
     required: true,
@@ -61,14 +47,13 @@ defineProps({
     type: String,
     required: true,
   },
+  initialValue: {
+    type: String,
+    required: false,
+  },
   placeholder: {
     type: String,
-    required: true,
-  },
-  readonly: {
-    type: Boolean,
     required: false,
-    default: false,
   },
 });
 </script>

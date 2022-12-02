@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ProfilePage from "@/views/ProfilePage.vue";
-import movies from "@/views/MoviePage.vue";
+import movies from "@/views/MoviesPage.vue";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
 
@@ -90,6 +90,18 @@ const router = createRouter({
       path: "/feed",
       name: "feed",
       component: () => import("@/views/NewsFeedPage.vue"),
+      children: [
+        {
+          path: "add-quote",
+          name: "add-quote",
+          component: () => import("@/views/FeedCreateQuoteModal.vue"),
+        },
+        {
+          path: "quote/:id",
+          name: "feed-view-quote",
+          component: () => import("@/components/news-feed/FeedViewQuote.vue"),
+        },
+      ],
     },
     {
       path: "/profile",
@@ -115,6 +127,33 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/movie/:id",
+      name: "movie",
+      component: () => import("@/views/MoviePage.vue"),
+      children: [
+        {
+          path: "create-quote",
+          name: "create-quote",
+          component: () => import("@/views/CreateQuoteModal.vue"),
+        },
+        {
+          path: "edit",
+          name: "edit-movie",
+          component: () => import("@/views/EditMoviePage.vue"),
+        },
+        {
+          path: "quote/:quoteId",
+          name: "view-quote",
+          component: () => import("@/views/ViewQuotePage.vue"),
+        },
+        {
+          path: "quote/:quoteId/edit",
+          name: "edit-quote",
+          component: () => import("@/views/EditQuoteModal.vue"),
+        },
+      ],
+    },
   ],
 });
 
@@ -123,8 +162,10 @@ router.beforeEach(async (to, from, next) => {
 
   if (authStore.authenticated === null) {
     try {
-      await axios.get(`${import.meta.env.VITE_BACK_BASE_URL}/user`);
-      authStore.authenticated = true;
+      const res = await axios.get(`${import.meta.env.VITE_BACK_BASE_URL}/user`);
+      authStore.setAuthenticated(true);
+      authStore.setName(res.data.name);
+      authStore.setId(res.data.id);
     } catch (err) {
       authStore.authenticated = false;
     }

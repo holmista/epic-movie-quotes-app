@@ -1,90 +1,62 @@
 <template>
-  <div :class="blur ? 'opacity-20' : ''">
-    <div class="text-white flex items-center justify-between mb-14">
-      <h1 class="text-2xl font-medium">
-        {{ $t("movie.my_list_of_movies") }} ({{ $t("movie.total") }}
-        {{ movieStore.movies.length }})
-      </h1>
-      <div class="flex gap-5">
-        <div class="flex items-center max-w-[100px]">
-          <SearchIcon />
-          <input
-            class="text-white bg-transparent border-0 w-full"
-            type="text"
-            :placeholder="$t('common.search')"
-            v-model="search"
-          />
-        </div>
-        <RouterLink :to="{ name: 'add-movie' }">
-          <BaseButton
-            class="w-[154px] h-12 bg-[#E31221]"
-            :text="$t('movie.add_movie')"
-          >
-            <AddIcon />
-          </BaseButton>
-        </RouterLink>
-      </div>
+
+  <div class="">
+    <RouterView />
+    <MovieDescription
+      :movie="movie.value"
+      :categories="categories.value"
+      v-if="Object.keys(movie.value).length > 0"
+    />
+    <div class="flex text-white gap-4 mt-11 mb-14 items-center">
+      <p class="text-2xl">Quotes(total {{ quotes.value.length }})</p>
+      <BigDivideIcon />
+      <RouterLink :to="{ name: 'create-quote' }">
+        <BaseButton class="text-xl bg-[#E31221]" text="Add quote">
+          <AddIcon />
+        </BaseButton>
+      </RouterLink>
     </div>
-    <div
-      v-if="movieStore.movies.length"
-      class="grid grid-cols-1 gap-x-[50px] gap-y-[60px] max-w-[1420px] sm:grid-cols-3"
-    >
-      <MovieCard
-        v-for="movie in filteredMovies.value"
-        :title="movie.title[localeStore.locale]"
-        :releaseYear="movie.release_year"
-        :image="movie.avatar"
-        :quoteAmount="movie.quotes?.length || 0"
-        :key="movie.id"
-      />
+    <div v-if="Object.keys(quotes.value).length" class="flex flex-col gap-5">
+      <QuoteCard v-for="quote in quotes.value" :quote="quote" :key="quote.id" />
+
     </div>
   </div>
 </template>
+
 <script setup>
-import MovieCard from "@/components/movie/MovieCard.vue";
-import SearchIcon from "@/assets/icons/movie/SearchIcon.vue";
-import AddIcon from "@/assets/icons/movie/AddIcon.vue";
+import MovieDescription from "@/components/movie/MovieDescription.vue";
+import QuoteCard from "@/components/quote/QuoteCard.vue";
+import BigDivideIcon from "@/assets/icons/movie/BigDivideIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import useFetch from "@/hooks/useFetch";
-import { onMounted, reactive, ref, watchEffect } from "vue";
+import AddIcon from "@/assets/icons/movie/AddIcon.vue";
+import { onMounted, reactive, provide } from "vue";
 import { useRoute } from "vue-router";
-import { useMovieStore } from "@/stores/movie";
-import { useLocaleStore } from "@/stores/locale";
-
-const movieStore = useMovieStore();
-const localeStore = useLocaleStore();
-
-let filteredMovies = reactive({ value: [] });
-const search = ref("");
-
-watchEffect(() => {
-  if (search.value) {
-    filteredMovies.value = movieStore.movies.filter((movie) =>
-      movie.title.en.toLowerCase().includes(search.value.toLowerCase())
-    );
-  } else {
-    filteredMovies.value = movieStore.movies;
-  }
-});
+import useFetch from "@/hooks/useFetch";
 
 const route = useRoute();
-const blur = ref(false);
-watchEffect(() => {
-  if (route.fullPath === "/movies") {
-    blur.value = false;
-  } else {
-    blur.value = true;
-  }
-});
+const movie = reactive({ value: {} });
+const categories = reactive({ value: {} });
+const quotes = reactive({ value: [] });
 
-onMounted(async () => {
+provide("quotes", quotes);
+
+
+const getCategories = async () => {
   const state = await useFetch({
-    url: "/movies",
+    url: `/movies/${route.params.id}`,
     method: "get",
   });
-  if (state.status.value === 200) {
-    // movies.push(...state.response.value.movies);
-    movieStore.setMovies(state.response.value.movies);
-  }
+  categories.value = state.response.value.movie.categories;
+};
+
+onMounted(async () => {
+  getCategories();
+  const state = await useFetch({
+    url: `/movies/${route.params.id}/quotes`,
+    method: "get",
+  });
+  movie.value = state.response.value.movie;
+  quotes.value = state.response.value.quotes;
+
 });
 </script>

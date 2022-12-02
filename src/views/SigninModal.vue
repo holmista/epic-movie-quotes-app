@@ -91,10 +91,12 @@ const googleClick = async () => {
 const onSubmit = async (values, actions) => {
   const backUrl = `${import.meta.env.VITE_BACK_BASE_URL}/signin`;
   try {
-    await axios.post(backUrl, values, {
+    const res = await axios.post(backUrl, values, {
       withCredentials: true,
     });
-    store.authenticated = true;
+    store.setAuthenticated(true);
+    store.setName(res.data.name);
+    store.setId(res.data.id);
     router.push({ name: "feed" });
   } catch (error) {
     if (error.response.status === 401) {
