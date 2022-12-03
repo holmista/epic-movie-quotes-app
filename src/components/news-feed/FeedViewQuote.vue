@@ -11,7 +11,7 @@
         class="flex justify-between border-b-[1px] border-[#EFEFEF] h-20 items-center"
       >
         <div class="w-20 h-9 flex justify-between items-center ml-8"></div>
-        <h1 class="text-2xl">View Quote</h1>
+        <h1 class="text-2xl">{{ $t("quote.view_quote") }}</h1>
         <RouterLink :to="{ name: 'feed' }">
           <div class="mr-8">
             <CrossIcon />

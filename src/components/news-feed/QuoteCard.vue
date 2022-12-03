@@ -11,8 +11,10 @@
       <p class="text-xl">{{ quote.user.name }}</p>
     </div>
     <p>
-      &ldquo;{{ quote.title.en }}&rdquo;
-      <span class="text-[#DDCCAA] pl-2">{{ quote.movie.title.en }}</span>
+      &ldquo;{{ quote.title[localeStore.locale] }}&rdquo;
+      <span class="text-[#DDCCAA] pl-2">{{
+        quote.movie.title[localeStore.locale]
+      }}</span>
     </p>
 
     <img
@@ -36,8 +38,10 @@ import CommentLikePanel from "@/components/base/CommentLikePanel.vue";
 import QuoteComment from "@/components/base/QuoteComment.vue";
 import QuoteWriteComment from "@/components/base/QuoteWriteComment.vue";
 import { provide } from "vue";
+import { useLocaleStore } from "@/stores/locale";
 
 provide("quote", props.quote);
+const localeStore = useLocaleStore();
 
 const props = defineProps({
   quote: {

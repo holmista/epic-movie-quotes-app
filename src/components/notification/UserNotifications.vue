@@ -3,10 +3,10 @@
     class="bg-black w-[750px] h-[800px] text-white z-30 rounded-xl p-7 overflow-y-scroll"
   >
     <div class="flex justify-between">
-      <h1 class="text-3xl">Notifications</h1>
+      <h1 class="text-3xl">{{ $t("quote.notifications") }}</h1>
 
       <p class="underline hover:cursor-pointer" @click="readAll">
-        mark all as read
+        {{ $t("quote.mark_read") }}
       </p>
     </div>
     <div

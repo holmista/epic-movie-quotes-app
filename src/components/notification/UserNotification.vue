@@ -13,14 +13,14 @@
         <p>
           {{
             notification.type === 0
-              ? "commented on your quote"
-              : "liked your quote"
+              ? $t("quote.commented_on_quote")
+              : $t("quote.liked_your_quote")
           }}
         </p>
       </div>
     </div>
     <div class="flex flex-col justify-between py-3">
-      <p>{{ timeDiff(notification.created_at) }}</p>
+      <p>{{ timeDiff(notification.created_at, localeStore.locale) }}</p>
       <p class="text-right text-[#198754]" v-if="notification.is_read === 0">
         New
       </p>
@@ -32,8 +32,10 @@
 import timeDiff from "time-diff-for-humans";
 import useFetch from "@/hooks/useFetch";
 import { useRouter } from "vue-router";
+import { useLocaleStore } from "@/stores/locale";
 
 const router = useRouter();
+const localeStore = useLocaleStore();
 
 const props = defineProps({
   notification: {

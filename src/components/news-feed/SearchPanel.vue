@@ -5,7 +5,7 @@
       class="h-[52px] w-full bg-[#24222F] opacity-60 rounded-xl grid grid-cols-8 items-center pl-4"
     >
       <PencilSquareIcon />
-      <p class="col-span-7">Write new quote</p>
+      <p class="col-span-7">{{ $t("quote.write_new_quote") }}</p>
     </RouterLink>
     <div class="flex items-center">
       <SearchIcon />
@@ -13,9 +13,7 @@
         class="text-white bg-transparent border-0"
         type="text"
         :placeholder="
-          focused
-            ? 'Enter @ to search movies, Enter # to search quotes '
-            : 'Search by'
+          focused ? $t('common.search_instructions') : $t('common.search')
         "
         @focus="focused = true"
         @blur="focused = false"
