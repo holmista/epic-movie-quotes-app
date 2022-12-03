@@ -7,5 +7,6 @@
   "view_quote": "ნახე ციტატა",
   "drag_drop": "ჩააგდე ფოტო აქ ან",
   "choose_movie": "აირჩიე ფილმი",
-  "add_quote": "დაამატე ციტატა"
+  "add_quote": "დაამატე ციტატა",
+  "total_quotes": "ციტატები(სულ {amount})"
 }

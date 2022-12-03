@@ -1,44 +1,32 @@
 <template>
   <div class="text-2xl text-white font-medium">
     <img
-      :src="image"
+      :src="movie.avatar"
       alt="movie poster"
       class="h-[370px] rounded-xl object-cover hover:cursor-pointer"
-      @click="router.push({ name: 'movie', params: { id } })"
+      @click="router.push({ name: 'movie', params: { id: movie.id } })"
     />
     <p class="mt-2">
-      <span>{{ title }}</span>
-      <span>({{ releaseYear }})</span>
+      <span>{{ movie.title[localeStore.locale] }}</span>
+      <span>({{ movie.release_year }})</span>
     </p>
-    <p class="flex gap-3 items-center">{{ quoteAmount }} <QuoteIcon /></p>
+    <p class="flex gap-3 items-center">
+      {{ movie.quotes?.length || 0 }} <QuoteIcon />
+    </p>
   </div>
 </template>
 
 <script setup>
 import QuoteIcon from "@/assets/icons/movie/QuoteIcon.vue";
 import { useRouter } from "vue-router";
+import { useLocaleStore } from "@/stores/locale";
 
 const router = useRouter();
+const localeStore = useLocaleStore();
 
 defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  releaseYear: {
-    type: Number,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  quoteAmount: {
-    type: Number,
-    required: true,
-  },
-  id: {
-    type: Number,
+  movie: {
+    type: Object,
     required: true,
   },
 });
