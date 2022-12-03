@@ -10,7 +10,7 @@
         class="flex items-center justify-between py-5 border-[#EFEFEF] border-b-2"
       >
         <div class="w-1 h-1"></div>
-        <h1>Edit movie</h1>
+        <h1>{{ $t("movie.edit_movie") }}</h1>
         <div class="pr-6 hover:cursor-pointer">
           <RouterLink :to="{ name: 'movie', params: { id: route.params.id } }">
             <CrossIcon />
@@ -95,8 +95,10 @@
                 class="border border-gray-500 pl-7 pr-12 bg-transparent rounded-md h-[64px] flex items-center"
               >
                 <label for="avatar" class="flex items-center gap-1">
-                  <CameraIcon /> Drag & drop your image here or
-                  <span class="p-2 bg-[#9747FF]">Choose file</span>
+                  <CameraIcon /> {{ $t("quote.drag_drop") }}
+                  <span class="p-2 bg-[#9747FF]">{{
+                    $t("common.choose_file")
+                  }}</span>
                 </label>
                 <Field
                   name="avatar"
@@ -118,7 +120,7 @@
             <BaseButton
               type="submit"
               class="h-12 bg-[#E31221] w-full"
-              text="Edit movie"
+              :text="$t('movie.edit_movie')"
             />
           </form>
         </VeeForm>

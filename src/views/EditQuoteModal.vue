@@ -9,7 +9,7 @@
         class="flex justify-between border-b-[1px] border-[#EFEFEF] h-20 items-center"
       >
         <TrashIcon class="ml-8 hover:cursor-pointer" @click="handleDelete" />
-        <h1 class="text-2xl">Edit Quote</h1>
+        <h1 class="text-2xl">{{ $t("quote.edit_quote") }}</h1>
         <RouterLink :to="{ name: 'movie', params: { id: route.params.id } }">
           <CrossIcon class="mr-8" />
         </RouterLink>
@@ -64,7 +64,7 @@
             />
             <BaseButton
               class="h-10 w-full bg-[#E31221] mt-10"
-              text="Save changes"
+              :text="$t('common.save_changes')"
             />
           </div>
         </form>
@@ -79,7 +79,7 @@ import CrossIcon from "@/assets/icons/quote/CrossIcon.vue";
 import FormTextarea from "@/components/quote/FormTextarea.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import ChangePhoto from "@/components/quote/ChangePhoto.vue";
-import { onMounted, onUnmounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRoute, useRouter } from "vue-router";
 import { inject } from "vue";

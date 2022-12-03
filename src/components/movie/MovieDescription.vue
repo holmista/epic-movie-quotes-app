@@ -10,7 +10,7 @@
       <aside class="flex gap-5 flex-col pl-5 w-[576px]">
         <div class="flex justify-between w-full">
           <p class="text-[#DDCCAA] text-2xl font-medium">
-            {{ movie.title.en }} ({{ movie.release_year }})
+            {{ movie.title[localeStore.locale] }} ({{ movie.release_year }})
           </p>
           <div
             class="w-32 h-9 bg-[#24222F] opacity-60 rounded-lg flex justify-evenly items-center"
@@ -32,13 +32,16 @@
           />
         </div>
         <p class="pl-3">
-          <span class="font-bold">Director:</span> {{ movie.director.en }}
+          <span class="font-bold">{{ $t("movie.director") }}:</span>
+          {{ movie.director[localeStore.locale] }}
         </p>
         <p class="pl-3 font-bold">
-          <span class="font-bold">Budget: </span> ${{ movie.budget }}
+          <span class="font-bold">{{ $t("movie.budget") }}:</span> ${{
+            movie.budget
+          }}
         </p>
         <p class="pl-3">
-          {{ movie.description.en }}
+          {{ movie.description[localeStore.locale] }}
         </p>
       </aside>
     </div>
@@ -52,9 +55,11 @@ import TrashIcon from "@/assets/icons/movie/TrashIcon.vue";
 import DividerIcon from "@/assets/icons/movie/DividerIcon.vue";
 import { useRoute, useRouter } from "vue-router";
 import useFetch from "@/hooks/useFetch";
+import { useLocaleStore } from "@/stores/locale";
 
 const route = useRoute();
 const router = useRouter();
+const localeStore = useLocaleStore();
 
 const deleteMovie = async () => {
   const state = await useFetch({

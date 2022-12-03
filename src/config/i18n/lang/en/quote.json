@@ -8,5 +8,7 @@
   "drag_drop": "Drag & drop your image here or",
   "choose_movie": "choose movie",
   "add_quote": "Add quote",
-  "total_quotes": "Quotes(total {amount})"
+  "edit_quote": "Edit quote",
+  "total_quotes": "Quotes(total {amount})",
+  "change_photo": "Change photo"
 }

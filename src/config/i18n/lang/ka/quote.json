@@ -8,5 +8,7 @@
   "drag_drop": "ჩააგდე ფოტო აქ ან",
   "choose_movie": "აირჩიე ფილმი",
   "add_quote": "დაამატე ციტატა",
-  "total_quotes": "ციტატები(სულ {amount})"
+  "edit_quote": "დაარედაქტირე ციტატა",
+  "total_quotes": "ციტატები(სულ {amount})",
+  "change_photo": "შეცვალე ფოტო"
 }

@@ -2,5 +2,8 @@
   "my_list_of_movies": "ჩემი ფილმების სია",
   "total": "სულ",
   "add_movie": "ფილმის დამატება",
-  "my_movies": "ჩემი ფილმების სია (სულ {amount})"
+  "edit_movie": "ფილმის რედაქტირება",
+  "my_movies": "ჩემი ფილმების სია (სულ {amount})",
+  "director": "რეჟისორი",
+  "budget": "ბიუჯეტი"
 }

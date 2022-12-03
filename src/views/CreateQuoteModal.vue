@@ -12,7 +12,7 @@
       >
         <div></div>
         <div class="flex justify-center text-xl ml-8 sm:text-2xl">
-          <h1 class="">Add Quote</h1>
+          <h1 class="">{{ $t("quote.add_quote") }}</h1>
         </div>
         <RouterLink :to="`/movie/${route.params.id}`">
           <div class="flex justify-end">
@@ -31,7 +31,9 @@
         <img class="h-36 w-60 rounded-xl" :src="movie.value.avatar" />
         <aside class="flex flex-col gap-4">
           <p class="text-base text-[#DDCCAA] sm:text-xl">
-            {{ movie.value.title.en }} ({{ movie.value.release_year }})
+            {{ movie.value.title[localeStore.locale] }} ({{
+              movie.value.release_year
+            }})
           </p>
           <div class="flex gap-2 flex-wrap">
             <div
@@ -40,13 +42,13 @@
               class="bg-[#6C757D] h-7 flex justify-center p-1 items-center w-fit rounded text-xs sm:text-base sm:p-2"
             >
               <p>
-                {{ category.name.en }}
+                {{ category.name[localeStore.locale] }}
               </p>
             </div>
           </div>
           <p class="text-base sm:text-lg">
-            <span class="font-bold">Director:</span>
-            {{ movie.value.director.en }}
+            <span class="font-bold">{{ $t("movie.director") }}:</span>
+            {{ movie.value.director[localeStore.locale] }}
           </p>
         </aside>
       </div>
@@ -77,7 +79,7 @@
               >
                 <CameraIcon />
                 <p class="hidden sm:block col-span-4">
-                  Drag & drop your image here or
+                  {{ $t("quote.drag_drop") }}
                 </p>
                 <p class="block sm:hidden col-span-4">Upload image</p>
                 <Field
@@ -99,7 +101,7 @@
           </div>
           <BaseButton
             class="bg-[#E31221] h-12 w-full"
-            text="Add quote"
+            :text="$t('quote.add_quote')"
             type="submit"
           />
         </form>
@@ -117,6 +119,9 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import { onMounted, reactive, inject } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import useFetch from "@/hooks/useFetch";
+import { useLocaleStore } from "@/stores/locale";
+
+const localeStore = useLocaleStore();
 
 const route = useRoute();
 const router = useRouter();

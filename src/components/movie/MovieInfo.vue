@@ -12,7 +12,7 @@
       </p>
       <BigDivideIcon />
       <RouterLink :to="{ name: 'create-quote' }">
-        <BaseButton class="text-xl bg-[#E31221]" text="Add quote">
+        <BaseButton class="text-xl bg-[#E31221]" :text="$t('quote.add_quote')">
           <AddIcon />
         </BaseButton>
       </RouterLink>

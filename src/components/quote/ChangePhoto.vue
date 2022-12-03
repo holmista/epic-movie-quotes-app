@@ -4,7 +4,7 @@
     class="h-20 w-32 opacity-80 rounded-xl flex flex-col gap-3 justify-center items-center hover:cursor-pointer"
   >
     <CameraIcon />
-    <p>Change photo</p>
+    <p>{{ $t("quote.change_photo") }}</p>
   </div>
 </template>
 

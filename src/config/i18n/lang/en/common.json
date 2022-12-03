@@ -5,7 +5,11 @@
   "log_out": "Log out",
   "my_profile": "My profile",
   "add": "Add",
+  "edit": "Edit",
+  "delete": "Delete",
   "cancel": "Cancel",
   "search": "Search",
-  "search_instructions": "Enter @ to search movies, Enter # to search quotes"
+  "search_instructions": "Enter @ to search movies, Enter # to search quotes",
+  "save_changes": "Save changes",
+  "choose_file": "Choose file"
 }

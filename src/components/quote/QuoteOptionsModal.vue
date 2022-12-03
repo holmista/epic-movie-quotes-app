@@ -5,18 +5,18 @@
     <div class="flex gap-2 items-center hover:cursor-pointer">
       <ModalEyeIcon />
       <p @click="router.push(`/movie/${route.params.id}/quote/${id}`)">
-        View Quote
+        {{ $t("quote.view_quote") }}
       </p>
     </div>
     <div class="flex gap-2 items-center hover:cursor-pointer">
       <ModalPencilIcon />
       <p @click="router.push(`/movie/${route.params.id}/quote/${id}/edit`)">
-        Edit
+        {{ $t("common.edit") }}
       </p>
     </div>
     <div class="flex gap-2 items-center hover:cursor-pointer">
       <ModalTrashIcon />
-      <p @click="handleDelete">Delete</p>
+      <p @click="handleDelete">{{ $t("common.delete") }}</p>
     </div>
   </div>
 </template>
