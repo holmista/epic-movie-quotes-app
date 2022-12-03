@@ -4,10 +4,21 @@
       <p class="text-[#DDCCAA] font-medium">{{ $t("landing.movie_quotes") }}</p>
     </div>
     <div class="flex items-center space-x-4">
-      <BellIcon
-        @click="showNotifications = !showNotifications"
-        class="hover:cursor-pointer"
-      />
+      <div @click="showNotifications = !showNotifications" class="flex">
+        <BellIcon class="hover:cursor-pointer" />
+        <div
+          class="absolute ml-7 flex justify-center hover:cursor-pointer"
+          v-if="notificationStore.notifications.some((el) => el.is_read === 0)"
+        >
+          <p class="z-10 absolute">
+            {{
+              notificationStore.notifications.filter((el) => el.is_read === 0)
+                .length
+            }}
+          </p>
+          <RedBallIcon class="absolute" />
+        </div>
+      </div>
       <UserNotifications
         v-if="showNotifications"
         class="absolute left-[1000px] top-20"
@@ -27,6 +38,7 @@ import LanguageDropDown from "@/components/base/LanguageDropDown.vue";
 import BellIcon from "@/assets/icons/profile/BellIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import UserNotifications from "@/components/notification/UserNotifications.vue";
+import RedBallIcon from "@/assets/icons/notification/RedBallIcon.vue";
 import { useRouter } from "vue-router";
 import { onMounted, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
@@ -34,9 +46,11 @@ import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 import axios from "@/config/axios/index.js";
 import { useAuthStore } from "@/stores/auth";
+import useNotificationStore from "@/stores/notification";
 
 const showNotifications = ref(false);
 const authStore = useAuthStore();
+const notificationStore = useNotificationStore();
 const router = useRouter();
 const logout = async () => {
   const state = await useFetch({ url: "/signout", method: "get" });
@@ -45,7 +59,15 @@ const logout = async () => {
   }
 };
 
+const getNotifications = async () => {
+  const state = await useFetch({ url: "/notification", method: "get" });
+  if (state.status.value === 200) {
+    notificationStore.setNotifications(state.response.value.notifications);
+  }
+};
+
 onMounted(() => {
+  getNotifications();
   // pusher
   Pusher.Runtime.createXHR = function () {
     const xhr = new XMLHttpRequest();
@@ -67,7 +89,8 @@ onMounted(() => {
   window.Echo.private("notifications." + authStore.id).listen(
     "NotificationCreated",
     (e) => {
-      console.log(e);
+      console.log(e.notification);
+      notificationStore.addNotification(e.notification);
     }
   );
 });

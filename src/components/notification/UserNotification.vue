@@ -52,6 +52,7 @@ const handleClick = () => {
   router.push({
     name: "feed-view-quote",
     params: { id: props.notification.quote_id },
+    query: { notificationId: props.notification.id },
   });
 };
 </script>

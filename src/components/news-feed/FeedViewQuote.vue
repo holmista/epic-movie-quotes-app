@@ -71,15 +71,30 @@ import QuoteWriteComment from "@/components/base/QuoteWriteComment.vue";
 import { useRoute } from "vue-router";
 import { onMounted, reactive, provide } from "vue";
 import useFetch from "@/hooks/useFetch";
+import useNotificationStore from "@/stores/notification";
 
 const route = useRoute();
-
+const notificationStore = useNotificationStore();
 const quote = reactive({ value: {} });
 provide("quote", quote);
 
 onMounted(async () => {
   const state = await useFetch({ url: `/quote/${route.params.id}` });
   quote.value = state.response.value.quote;
+  const notificationToUpdate = notificationStore.notifications.find(
+    (notification) => notification.id == route.query.notificationId
+  );
+  console.log(notificationToUpdate);
+  notificationToUpdate.is_read = 1;
+  const newNotifications = [];
+  for (let i of notificationStore.notifications) {
+    if (i.id == notificationToUpdate.id) {
+      newNotifications.push(notificationToUpdate);
+    } else {
+      newNotifications.push(i);
+    }
+  }
+  notificationStore.setNotifications(newNotifications);
 });
 </script>
 
