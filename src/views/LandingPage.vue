@@ -2,7 +2,6 @@
   <router-view />
   <div
     :class="blur ? 'overflow-x-hidden overflow-y-hidden h-screen' : 'h-screen'"
-    class="w-screen"
     @click="goBack"
   >
     <div :class="blur ? 'blur-sm scale-[1.01] h-screen' : 'h-screen'">
@@ -18,7 +17,7 @@
             <BaseButton
               @click="signupClick"
               :text="$t('landing.sign_up')"
-              class="bg-[#E31221] border-[#E31221] border w-[109px] h-10 hidden sm:block"
+              class="bg-[#E31221] border-[#E31221] border w-[109px] h-10"
             />
             <BaseButton
               @click="signinClick"
@@ -29,7 +28,7 @@
         </nav>
         <div class="flex justify-center items-center flex-col gap-7 mt-60">
           <h1
-            class="text-[#DDCCAA] font-bold text-2xl font-montserrat max-w-[703px] text-center sm:text-[60px]"
+            class="text-[#DDCCAA] font-bold text-[60px] font-montserrat max-w-[703px] text-center"
           >
             {{ $t("landing.find_any_quote") }}
           </h1>
