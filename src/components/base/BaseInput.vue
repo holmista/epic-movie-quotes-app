@@ -45,8 +45,13 @@
     <div class="flex items-center justify-start">
       <ErrorMessage
         :name="name"
-        class="text-[#F15524] text-center font-light"
-      />
+        class="text-[#F15524] text-left font-light"
+        v-slot="{ message }"
+      >
+        <p class="text-[#F15524] text-left font-light">
+          {{ message[localeStore.locale] || message }}
+        </p>
+      </ErrorMessage>
     </div>
   </div>
 </template>
@@ -55,6 +60,7 @@
 import { Field, ErrorMessage } from "vee-validate";
 import ExclamationMark from "@/assets/icons/landing/ExclamationMark.vue";
 import CheckMark from "@/assets/icons/landing/CheckMark.vue";
+import { useLocaleStore } from "@/stores/locale";
 
 export default {
   components: {
@@ -76,7 +82,8 @@ export default {
     const handleChange = (e) => {
       ctx.emit(props.name, e.target.value);
     };
-    return { handleChange };
+    const localeStore = useLocaleStore();
+    return { handleChange, localeStore };
   },
 };
 </script>

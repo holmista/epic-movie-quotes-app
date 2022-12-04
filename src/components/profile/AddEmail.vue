@@ -51,7 +51,10 @@ const onSubmit = async (values, actions) => {
     router.push({ name: "profile" });
   }
   if (state.error.value.response.data.message) {
-    actions.setFieldError("email", state.error.value.response.data.message);
+    actions.setFieldError("email", {
+      en: state.error.value.response.data.message,
+      ka: "იმეილი დაკავებულია",
+    });
   }
 };
 </script>

@@ -39,6 +39,7 @@ const categories = reactive({ value: {} });
 const quotes = reactive({ value: [] });
 
 provide("quotes", quotes);
+provide("movie", movie);
 
 const getCategories = async () => {
   const state = await useFetch({

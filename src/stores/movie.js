@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useMovieStore = defineStore("movie", {
   state: () => ({
     movies: [],
+    filteredMovies: [],
     chosenCategories: [],
     availableCategories: [],
     categoriesError: false,
@@ -10,12 +11,16 @@ export const useMovieStore = defineStore("movie", {
   actions: {
     setMovies(payload) {
       this.movies = payload;
+      this.filteredMovies = payload;
     },
     addMovie(payload) {
       this.movies.push(payload);
     },
     removeMovie(payload) {
       this.movies = this.movies.filter((movie) => movie.id !== payload.id);
+      this.filteredMovies = this.filteredMovies.filter(
+        (movie) => movie.id !== payload.id
+      );
     },
     updateMovie(payload) {
       this.movies = this.movies.map((movie) => {
@@ -23,6 +28,24 @@ export const useMovieStore = defineStore("movie", {
           return payload;
         }
         return movie;
+      });
+      this.filteredMovies = this.filteredMovies.map((movie) => {
+        if (movie.id === payload.id) {
+          return payload;
+        }
+        return movie;
+      });
+    },
+    filterMovies(payload) {
+      this.filteredMovies = this.movies.filter((movie) => {
+        // console.log(payload.toLowerCase());
+        // console.log(movie.title.en.includes(payload.toLowerCase));
+        if (
+          movie.title.en.toLowerCase().includes(payload.toLowerCase()) ||
+          movie.title.ka.toLowerCase().includes(payload.toLowerCase())
+        ) {
+          return true;
+        }
       });
     },
     setAvailableCategories(payload) {

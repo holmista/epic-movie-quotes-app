@@ -36,14 +36,21 @@
     <div class="flex items-center justify-start">
       <ErrorMessage
         :name="name"
-        class="text-[#F15524] text-center font-light"
-      />
+        class="text-[#F15524] text-left font-light"
+        v-slot="{ message }"
+      >
+        <p class="text-[#F15524] text-left font-light">
+          {{ message[localeStore.locale] || message }}
+        </p>
+      </ErrorMessage>
     </div>
   </div>
 </template>
 
 <script setup>
 import { Field, ErrorMessage } from "vee-validate";
+import { useLocaleStore } from "@/stores/locale";
+
 defineProps({
   type: {
     type: String,
@@ -70,5 +77,11 @@ defineProps({
     required: false,
     default: false,
   },
+  label: {
+    type: String,
+    required: false,
+  },
 });
+
+const localeStore = useLocaleStore();
 </script>

@@ -19,7 +19,7 @@
           name="email"
           :label="$t('input.fields.email')"
           type="text"
-          rules="required"
+          rules="required|email"
           :placeholder="$t('input.placeholders.enter_your_email')"
           class="max-w-96 w-full"
         />
@@ -100,9 +100,16 @@ const onSubmit = async (values, actions) => {
     router.push({ name: "feed" });
   } catch (error) {
     if (error.response.status === 401) {
-      actions.setErrors({ email: "Invalid email or password" });
+      actions.setErrors({
+        email: {
+          en: "Invalid email or password",
+          ka: "იმეილი ან პაროლი არასწორია",
+        },
+      });
     } else if (error.response.status === 422) {
-      actions.setErrors({ email: "email not verified" });
+      actions.setErrors({
+        email: { en: "email not verified", ka: "იმეილი არაა ვერიფიცირებული" },
+      });
     }
   }
 };

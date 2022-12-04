@@ -139,7 +139,7 @@ import FormTextarea from "@/components/movie/FormTextarea.vue";
 import DropDown from "@/components/movie/AvailableCategories.vue";
 import CameraIcon from "@/assets/icons/movie/CameraIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import { onMounted, reactive, ref } from "vue";
+import { inject, onMounted, reactive, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRouter, useRoute } from "vue-router";
 
@@ -147,6 +147,7 @@ const store = useMovieStore();
 store.resetGenres();
 const router = useRouter();
 const route = useRoute();
+const movie = inject("movie");
 
 const avatar = ref(null);
 const handleImageChange = (e) => {
@@ -229,7 +230,9 @@ const onSubmit = async (values, actions) => {
     data: form,
   });
   if (state.status.value === 200) {
-    store.updateMovie(state.response.value.movie);
+    // store.updateMovie(state.response.value.movie);
+    movie.value = state.response.value.movie;
+    console.log(movie.value);
     router.push({ name: "movie", params: { id: route.params.id } });
   } else {
     const titleError = state.error.value.response.data.errors.title;

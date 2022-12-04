@@ -29,7 +29,7 @@
       class="grid grid-cols-1 gap-x-[50px] gap-y-[60px] max-w-[1420px] sm:grid-cols-3"
     >
       <MovieCard
-        v-for="movie in filteredMovies.value"
+        v-for="movie in store.filteredMovies"
         :movie="movie"
         :key="movie.id"
       />
@@ -42,21 +42,16 @@ import SearchIcon from "@/assets/icons/movie/SearchIcon.vue";
 import AddIcon from "@/assets/icons/movie/AddIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
-import { onMounted, reactive, ref, watchEffect } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { useMovieStore } from "@/stores/movie";
 
 const store = useMovieStore();
-let filteredMovies = reactive({ value: [] });
 const search = ref("");
 
 watchEffect(() => {
   if (search.value) {
-    filteredMovies.value = store.movies.filter((movie) =>
-      movie.title.en.toLowerCase().includes(search.value.toLowerCase())
-    );
-  } else {
-    filteredMovies.value = store.movies;
+    store.filterMovies(search.value);
   }
 });
 
@@ -76,7 +71,6 @@ onMounted(async () => {
     method: "get",
   });
   if (state.status.value === 200) {
-    // movies.push(...state.response.value.movies);
     store.setMovies(state.response.value.movies);
   }
 });

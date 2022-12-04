@@ -1,5 +1,5 @@
 <template>
-  <div id="parent" class="h-full">
+  <div id="parent" class="h-screen">
     <SideTopPanels>
       <MovieInfo />
     </SideTopPanels>

@@ -191,14 +191,26 @@ const onSubmit = async (values, actions) => {
     if (titleError) {
       if (titleError.length === 2) {
         const [enError, kaError] = titleError;
-        actions.setFieldError("movie_title_en", enError);
-        actions.setFieldError("movie_title_ka", kaError);
+        actions.setFieldError("movie_title_en", {
+          en: enError,
+          ka: "ინგლისურად ფილმის სახელი უკვე არსებობს",
+        });
+        actions.setFieldError("movie_title_ka", {
+          en: kaError,
+          ka: "ქართულად ფილმის სახელი უკვე არსებობს",
+        });
       } else {
         const [error] = titleError;
         if (error.includes("Georgian")) {
-          actions.setFieldError("movie_title_ka", error);
+          actions.setFieldError("movie_title_ka", {
+            en: error,
+            ka: "ქართულად ფილმის სახელი უკვე არსებობს",
+          });
         } else {
-          actions.setFieldError("movie_title_en", error);
+          actions.setFieldError("movie_title_en", {
+            en: error,
+            ka: "ინგლისურად ფილმის სახელი უკვე არსებობს",
+          });
         }
       }
     }

@@ -21,7 +21,13 @@
       </div>
     </div>
     <div v-if="movieStore.categoriesError">
-      <p class="text-[#F15524] font-light">genres field is required</p>
+      <p class="text-[#F15524] font-light">
+        {{
+          localeStore.locale === "en"
+            ? "genres field is required"
+            : "ჟანრები აუცილებელია"
+        }}
+      </p>
     </div>
   </div>
 </template>
