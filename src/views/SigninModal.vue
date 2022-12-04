@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute overflow-x-hidden bg-[#222030] max-w-[601px] max-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="w-96 text-center text-white text-3xl font-medium">
@@ -76,6 +76,8 @@ import useFetch from "@/hooks/useFetch";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
+
+// class="absolute bg-[#222030] w-[428px] max-h-[601px] h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
 
 const router = useRouter();
 const store = useAuthStore();
