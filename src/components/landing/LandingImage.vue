@@ -6,11 +6,13 @@
       'background-image': `url(/src/assets/images/landing/${image}.png)`,
     }"
   >
-    <div class="flex gap-3 ml-40 max-w-[800px]">
-      <p class="leading-[75px]">&#8212;</p>
+    <div class="flex gap-3 ml-10 max-w-[800px] sm:ml-40">
+      <p class="leading-[30px] sm:leading-[75px]">&#8212;</p>
       <div>
-        <p class="leading-[75px]">{{ quote }}</p>
-        <p class="text-3xl mt-6">{{ movie }}</p>
+        <p class="leading-[30px] text-xl sm:text-3xl sm:leading-[75px]">
+          {{ quote }}
+        </p>
+        <p class="text-xl mt-6 sm:text-3xl">{{ movie }}</p>
       </div>
     </div>
   </div>
