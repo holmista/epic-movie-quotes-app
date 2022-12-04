@@ -1,9 +1,9 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[486px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute bg-[#222030] max-w-[601px] max-h-[540px] w-full h-full flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-28 gap-3">
-      <h1 class="text-white text-3xl font-medium">
+      <h1 class="text-white text-3xl font-medium w-96 text-center">
         {{ $t("accountActivity.create_new_password") }}
       </h1>
       <h4 class="text-[#6C757D] text-center">
@@ -71,6 +71,7 @@ const onSubmit = async (values) => {
     url: backUrl,
     data: { ...values, token, email: route.query.email },
   });
+  console.log(state.response.value);
   if (state.response.value.message === "passwords.reset") {
     router.push("/reset-password-success");
   }

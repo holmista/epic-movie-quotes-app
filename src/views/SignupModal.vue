@@ -1,9 +1,9 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[780px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute overflow-x-hidden bg-[#222030] max-w-[601px] max-h-[780px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
-      <h1 class="text-white text-3xl font-medium">
+      <h1 class="text-white text-3xl font-medium w-96 text-center">
         {{ $t("signup.create_an_account") }}
       </h1>
       <h4 class="text-[#6C757D]">{{ $t("signup.start_your_journey") }}</h4>

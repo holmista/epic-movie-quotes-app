@@ -1,7 +1,7 @@
 <template>
   <RouterView />
   <div id="parent" class="min-h-screen">
-    <SideTopPanels>
+    <SideTopPanels class="hidden">
       <MoviesInfo />
     </SideTopPanels>
   </div>

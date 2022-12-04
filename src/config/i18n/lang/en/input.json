@@ -18,6 +18,7 @@
     "passwords_should_contain": "Passwords should contain:",
     "enter_new_email": "Enter new email",
     "genres": "ჟანრები",
-    "upload_image": "Drag & drop your image here or"
+    "upload_image": "Drag & drop your image here or",
+    "confirm_password": "Confirm password"
   }
 }
