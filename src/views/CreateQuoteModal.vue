@@ -1,7 +1,7 @@
 <template>
   <div
     id="parent"
-    class="fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10"
+    class="fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10 overflow-y-auto"
     v-if="Object.keys(movie.value).length > 0"
   >
     <div
