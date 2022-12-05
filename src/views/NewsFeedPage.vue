@@ -1,7 +1,7 @@
 <template>
   <div id="parent">
     <RouterView />
-    <SideTopPanels>
+    <SideTopPanels :showSearch="true">
       <div class="flex flex-col gap-6">
         <SearchPanel />
         <div class="flex flex-col gap-10" v-if="newsFeedStore.quotes.length">
@@ -46,7 +46,7 @@ onMounted(async () => {
   });
   if (state.status.value === 200) {
     newsFeedStore.setQuotes(state.response.value.quotes.data);
-    newsFeedStore.setNextPage(state.response.value.quotes.next_page_url);
+    newsFeedStore.setNextPage(2);
   }
 });
 

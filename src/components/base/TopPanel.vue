@@ -12,6 +12,7 @@
       <BurgerMenuIcon @click="showBurger = true" />
     </div>
     <div class="flex items-center space-x-4">
+      <div id="teleportSearch"></div>
       <div @click="showNotifications = !showNotifications" class="flex">
         <BellIcon class="hover:cursor-pointer hidden sm:block" />
         <SmallBellIcon class="hover:cursor-pointer block sm:hidden" />
@@ -59,7 +60,15 @@ import { useAuthStore } from "@/stores/auth";
 import useNotificationStore from "@/stores/notification";
 import BurgerMenuIcon from "@/assets/icons/common/BurgerMenuIcon.vue";
 import SmallBellIcon from "@/assets/icons/common/SmallBellIcon.vue";
+import SmallSearchIcon from "@/assets/icons/common/SmallSearchIcon.vue";
 import BurgerMenu from "@/components/base/BurgerMenu.vue";
+
+defineProps({
+  showSearch: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const showNotifications = ref(false);
 const showBurger = ref(false);

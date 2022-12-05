@@ -4,7 +4,7 @@ const useNewsFeedStore = defineStore("news-feed", {
   state: () => ({
     quotes: [],
     filteredQuotes: [],
-    nextPag: null,
+    nextPage: null,
   }),
   actions: {
     setQuotes(payload) {

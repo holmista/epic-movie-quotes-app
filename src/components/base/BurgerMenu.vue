@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[#1d1c25] flex flex-col gap-10 py-10 text-white w-[300px] h-full pl-4"
+    class="bg-[#1d1c25] flex flex-col gap-10 py-10 text-white w-[300px] h-full pl-4 z-30"
   >
     <CrossIcon class="pl-14px" @click="$emit('closeBurgerMenu')" />
     <RouterLink :to="{ name: 'profile' }">
