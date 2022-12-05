@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-5 text-white ml-8">
+  <div class="sm:flex flex-col gap-5 text-white ml-8 hidden">
     <RouterLink :to="{ name: 'profile' }">
       <div class="flex gap-6 hover:cursor-pointer">
         <img

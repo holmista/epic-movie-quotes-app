@@ -13,6 +13,9 @@ export const useMovieStore = defineStore("movie", {
       this.movies = payload;
       this.filteredMovies = payload;
     },
+    setFilteredMovies(payload) {
+      this.filteredMovies = payload;
+    },
     addMovie(payload) {
       this.movies.push(payload);
     },

@@ -1,11 +1,11 @@
 <template>
-  <div :class="blur ? 'opacity-20' : ''" class="w-full pr-20">
+  <div :class="blur ? 'opacity-20' : ''" class="w-full sm:mt-0 mt-4">
     <div class="text-white flex items-center justify-between mb-14 w-full">
-      <h1 class="text-2xl font-medium">
+      <h1 class="sm:text-2xl text-xl font-medium">
         {{ $t("movie.my_movies", { amount: store.movies.length }) }}
       </h1>
       <div class="flex gap-5">
-        <div class="flex items-center max-w-[100px]">
+        <div class="items-center max-w-[100px] hidden sm:flex">
           <SearchIcon />
           <input
             class="text-white bg-transparent border-0 w-full"
@@ -16,7 +16,7 @@
         </div>
         <RouterLink :to="{ name: 'add-movie' }">
           <BaseButton
-            class="w-[154px] h-12 bg-[#E31221]"
+            class="sm:w-[154px] w-28 h-12 bg-[#E31221] sm:text-base text-sm"
             :text="$t('movie.add_movie')"
           >
             <AddIcon />

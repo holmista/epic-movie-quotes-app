@@ -1,6 +1,6 @@
 <template>
   <button
-    class="py-2 px-4 text-white rounded flex items-center flex-row-reverse justify-center gap-2"
+    class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2"
   >
     {{ text }}
     <slot></slot>

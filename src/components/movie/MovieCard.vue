@@ -1,5 +1,5 @@
 <template>
-  <div class="text-2xl text-white font-medium">
+  <div class="text-2xl text-white font-medium flex flex-col justify-center">
     <img
       :src="movie.avatar"
       alt="movie poster"

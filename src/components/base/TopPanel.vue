@@ -1,11 +1,15 @@
 <template>
   <div class="flex h-[86px] bg-[#24222f] px-16 justify-between text-white">
-    <div class="flex items-center">
+    <div class="sm:flex hidden items-center">
       <p class="text-[#DDCCAA] font-medium">{{ $t("landing.movie_quotes") }}</p>
+    </div>
+    <div class="flex items-center sm:hidden">
+      <BurgerMenuIcon />
     </div>
     <div class="flex items-center space-x-4">
       <div @click="showNotifications = !showNotifications" class="flex">
-        <BellIcon class="hover:cursor-pointer" />
+        <BellIcon class="hover:cursor-pointer hidden sm:block" />
+        <SmallBellIcon class="hover:cursor-pointer block sm:hidden" />
         <div
           class="absolute ml-7 flex justify-center hover:cursor-pointer"
           v-if="notificationStore.notifications.some((el) => el.is_read === 0)"
@@ -19,15 +23,16 @@
           <RedBallIcon class="absolute" />
         </div>
       </div>
+
       <UserNotifications
         v-if="showNotifications"
         class="absolute left-[1000px] top-20"
       />
-      <LanguageDropDown />
+      <LanguageDropDown class="hidden sm:block" />
       <BaseButton
         @click="logout"
         :text="$t('common.log_out')"
-        class="border-white border w-[109px] h-10"
+        class="border-white border w-[109px] h-10 hidden sm:block"
       />
     </div>
   </div>
@@ -47,6 +52,8 @@ import Pusher from "pusher-js";
 import axios from "@/config/axios/index.js";
 import { useAuthStore } from "@/stores/auth";
 import useNotificationStore from "@/stores/notification";
+import BurgerMenuIcon from "@/assets/icons/common/BurgerMenuIcon.vue";
+import SmallBellIcon from "@/assets/icons/common/SmallBellIcon.vue";
 
 const showNotifications = ref(false);
 const authStore = useAuthStore();
