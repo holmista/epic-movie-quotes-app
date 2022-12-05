@@ -1,12 +1,14 @@
 <template>
-  <div class="">
+  <div class="w-full overflow-x-hidden">
     <RouterView />
     <MovieDescription
       :movie="movie.value"
       :categories="categories.value"
       v-if="Object.keys(movie.value).length > 0"
     />
-    <div class="flex text-white gap-4 mt-11 mb-14 items-center">
+    <div
+      class="flex text-white gap-4 mt-11 mb-14 items-center sm:justify-start justify-center"
+    >
       <p class="text-2xl">
         {{ $t("quote.total_quotes", { amount: quotes.value.length }) }}
       </p>

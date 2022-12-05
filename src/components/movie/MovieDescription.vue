@@ -1,19 +1,21 @@
 <template>
   <div class="text-white">
     <h1 class="font-medium text-2xl">Movie description</h1>
-    <div class="flex mt-6">
+    <div class="flex sm:flex-row flex-col mt-6">
       <img
         :src="movie.avatar"
         alt=""
         class="h-[350px] rounded-xl object-cover"
       />
       <aside class="flex gap-5 flex-col pl-5 w-[576px]">
-        <div class="flex justify-between w-full">
+        <div
+          class="flex sm:flex-row flex-col justify-between w-full mt-6 sm:mt-0"
+        >
           <p class="text-[#DDCCAA] text-2xl font-medium">
             {{ movie.title[localeStore.locale] }} ({{ movie.release_year }})
           </p>
           <div
-            class="w-32 h-9 bg-[#24222F] opacity-60 rounded-lg flex justify-evenly items-center"
+            class="w-32 h-9 bg-[#24222F] opacity-60 rounded-lg flex justify-evenly items-center mt-3 sm:mt-0"
           >
             <RouterLink
               :to="{ name: 'edit-movie', params: { id: route.params.id } }"
@@ -40,7 +42,12 @@
             movie.budget
           }}
         </p>
-        <p class="pl-3">
+        <div class="block sm:hidden w-[400px]">
+          <p class="pl-3">
+            {{ movie.description[localeStore.locale] }}
+          </p>
+        </div>
+        <p class="pl-3 hidden sm:block">
           {{ movie.description[localeStore.locale] }}
         </p>
       </aside>
