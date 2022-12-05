@@ -1,10 +1,15 @@
 <template>
+  <BurgerMenu
+    v-if="showBurger"
+    class="fixed mr-16"
+    @closeBurgerMenu="showBurger = false"
+  />
   <div class="flex h-[86px] bg-[#24222f] px-16 justify-between text-white">
     <div class="sm:flex hidden items-center">
       <p class="text-[#DDCCAA] font-medium">{{ $t("landing.movie_quotes") }}</p>
     </div>
     <div class="flex items-center sm:hidden">
-      <BurgerMenuIcon />
+      <BurgerMenuIcon @click="showBurger = true" />
     </div>
     <div class="flex items-center space-x-4">
       <div @click="showNotifications = !showNotifications" class="flex">
@@ -26,7 +31,7 @@
 
       <UserNotifications
         v-if="showNotifications"
-        class="absolute left-[1000px] top-20"
+        class="absolute right-5 sm:left-[1000px] top-20"
       />
       <LanguageDropDown class="hidden sm:block" />
       <BaseButton
@@ -54,8 +59,10 @@ import { useAuthStore } from "@/stores/auth";
 import useNotificationStore from "@/stores/notification";
 import BurgerMenuIcon from "@/assets/icons/common/BurgerMenuIcon.vue";
 import SmallBellIcon from "@/assets/icons/common/SmallBellIcon.vue";
+import BurgerMenu from "@/components/base/BurgerMenu.vue";
 
 const showNotifications = ref(false);
+const showBurger = ref(false);
 const authStore = useAuthStore();
 const notificationStore = useNotificationStore();
 const router = useRouter();

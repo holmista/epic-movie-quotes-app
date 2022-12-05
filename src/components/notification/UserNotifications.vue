@@ -1,9 +1,9 @@
 <template>
   <div
-    class="bg-black w-[750px] h-[800px] text-white z-30 rounded-xl p-7 overflow-y-scroll"
+    class="bg-black w-[400px] sm:w-[750px] h-64 sm:h-[800px] text-white z-30 rounded-xl p-7 overflow-y-scroll"
   >
     <div class="flex justify-between">
-      <h1 class="text-3xl">{{ $t("quote.notifications") }}</h1>
+      <h1 class="text-xl sm:text-3xl">{{ $t("quote.notifications") }}</h1>
 
       <p class="underline hover:cursor-pointer" @click="readAll">
         {{ $t("quote.mark_read") }}

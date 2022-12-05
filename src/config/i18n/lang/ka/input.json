@@ -18,6 +18,7 @@
     "passwords_should_contain": "პაროლი უნდა შეიცავდეს:",
     "enter_new_email": "შეიყვანე ახალი იმეილი",
     "genres": "ჟანრები",
-    "upload_image": "ჩააგდე შენი ფოტო აქ ან"
+    "upload_image": "ჩააგდე შენი ფოტო აქ ან",
+    "upload_image_short": "ატვირთე ფოტო"
   }
 }
