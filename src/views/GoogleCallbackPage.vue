@@ -32,6 +32,7 @@ const success = ref(false);
 const store = useAuthStore();
 
 onMounted(async () => {
+  console.log(route.path);
   const queryString = new URLSearchParams(route.query).toString();
   const backUrl = `${
     import.meta.env.VITE_BACK_BASE_URL

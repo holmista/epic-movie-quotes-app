@@ -21,6 +21,7 @@ axiosInstance.interceptors.response.use(
       authStore.setAuthenticated(false);
       authStore.setName(null);
       authStore.setId(null);
+      authStore.setAvatar(null);
       router.push("/");
     }
     return Promise.reject(error);

@@ -136,6 +136,7 @@ import { useRoute } from "vue-router";
 import { Form, Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
 import { useProfileStore } from "@/stores/profile";
+import { useAuthStore } from "@/stores/auth";
 
 const imageInputTouched = ref(false);
 const avatarRef = ref(null);
@@ -149,6 +150,7 @@ const handleImageChange = (e) => {
   }
 };
 
+const authStore = useAuthStore();
 const store = useProfileStore();
 const showEditPassword = ref(false);
 const setShowEditPassword = (value) => {
@@ -162,7 +164,7 @@ const onSubmit = async (values) => {
     confirmPassword: values.confirmPassword,
     avatar: avatar.value,
   };
-  if (body.name === store.name) {
+  if (body.name === authStore.name) {
     delete body.name;
   }
   for (let [k, v] of Object.entries(body)) {

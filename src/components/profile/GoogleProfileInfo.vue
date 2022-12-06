@@ -3,7 +3,7 @@
     <h1 class="text-2xl sm:block hidden">{{ $t("common.my_profile") }}</h1>
     <div class="flex flex-col items-center mt-10">
       <img
-        :src="store.avatarSrc"
+        :src="authStore.avatar"
         class="w-[188px] h-[188px] rounded-full object-cover absolute top-40"
         alt=""
         ref="avatarRef"
@@ -15,7 +15,7 @@
       >
         <form
           @submit="handleSubmit($event, onSubmit)"
-          class="flex flex-col gap-6 mt-14 sm:w-[998px] w-[428px] h-full sm:px-20 px-5 pb-20 bg-[#11101a]"
+          class="flex flex-col gap-6 mt-14 sm:w-[780px] w-[428px] h-full sm:px-20 px-5 pb-20 bg-[#11101a]"
         >
           <Field
             name="avatar"
@@ -77,8 +77,10 @@ import { ref, onMounted, reactive } from "vue";
 import { Form, Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
 import { useProfileStore } from "@/stores/profile";
+import { useAuthStore } from "@/stores/auth";
 
 const store = useProfileStore();
+const authStore = useAuthStore();
 
 const imageInputTouched = ref(false);
 const avatarRef = ref(null);
@@ -92,7 +94,7 @@ const handleImageChange = (e) => {
   }
 };
 
-const onSubmit = async (values) => {
+const onSubmit = async (values, actions) => {
   const body = {
     name: values.name,
     avatar: avatar.value,
@@ -114,9 +116,11 @@ const onSubmit = async (values) => {
     data: form,
   });
   if (state.status.value === 200) {
-    store.setName(state.response.value.user.name);
+    authStore.setName(state.response.value.user.name);
     store.setEmail(state.response.value.user.email);
-    store.setAvatarSrc(state.response.value.user.avatar);
+    authStore.setAvatar(state.response.value.user.avatar);
+  } else if (state.status.value === 422) {
+    actions.setErrors({ name: state.error.value.response.data.message });
   }
 };
 
@@ -127,8 +131,8 @@ const formValues = reactive({
 onMounted(async () => {
   const state = await useFetch({ method: "get", url: "/user" });
   if (state.status.value === 200) {
-    store.setName(state.response.value.name);
-    store.setAvatarSrc(state.response.value.avatar);
+    // store.setName(state.response.value.name);
+    // store.setAvatarSrc(state.response.value.avatar);
     formValues.name = state.response.value.name;
   }
 });
