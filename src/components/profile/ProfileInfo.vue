@@ -9,7 +9,7 @@
     <h1 class="text-2xl sm:block hidden">{{ $t("common.my_profile") }}</h1>
     <div class="flex flex-col items-center mt-10">
       <img
-        :src="store.avatarSrc"
+        :src="authStore.avatar"
         class="w-[188px] h-[188px] rounded-full object-cover absolute top-40"
         alt=""
         ref="avatarRef"
@@ -49,7 +49,7 @@
                 :label="$t('input.fields.name')"
                 type="text"
                 rules="required|min:3|max:15|lower"
-                :initialValue="store.name"
+                :initialValue="authStore.name"
                 class="sm:w-[360px] w-[200px]"
               />
             </template>
@@ -183,9 +183,9 @@ const onSubmit = async (values) => {
     data: form,
   });
   if (state.status.value === 200) {
-    store.setName(state.response.value.user.name);
+    authStore.setName(state.response.value.user.name);
     store.setEmail(state.response.value.user.email);
-    store.setAvatarSrc(state.response.value.user.avatar);
+    authStore.setAvatar(state.response.value.user.avatar);
   }
 };
 
@@ -196,11 +196,11 @@ const formValues = reactive({
 onMounted(async () => {
   const state = await useFetch({ method: "get", url: "/user" });
   if (state.status.value === 200) {
-    store.setName(state.response.value.name);
+    // store.setName(state.response.value.name);
     store.setSecondaryEmails(state.response.value.socondary_emails);
     store.setPrimaryEmail(state.response.value.email);
-    store.setAvatarSrc(state.response.value.avatar);
-    formValues.name = state.response.value.name;
+    // store.setAvatarSrc(state.response.value.avatar);
+    formValues.name = authStore.name;
   }
 });
 
