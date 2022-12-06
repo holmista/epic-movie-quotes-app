@@ -1,6 +1,6 @@
 <template>
-  <div class="ml-56 mt-8 pb-20">
-    <h1 class="text-2xl">My profile</h1>
+  <div class="sm:ml-56 ml-0 mt-8 pb-20">
+    <h1 class="text-2xl sm:block hidden">{{ $t("common.my_profile") }}</h1>
     <div class="flex flex-col items-center mt-10">
       <img
         :src="store.avatarSrc"
@@ -15,7 +15,7 @@
       >
         <form
           @submit="handleSubmit($event, onSubmit)"
-          class="flex flex-col gap-6 mt-14 max-w-[998px] h-full px-20 pb-20 bg-[#11101a]"
+          class="flex flex-col gap-6 mt-14 sm:w-[998px] w-[428px] h-full sm:px-20 px-5 pb-20 bg-[#11101a]"
         >
           <Field
             name="avatar"
@@ -37,7 +37,7 @@
                 name="name"
                 label="Name"
                 type="text"
-                class="w-[360px]"
+                class="sm:w-[360px] w-[300px]"
                 rules="required|min:3|max:15|lower"
               />
             </template>
@@ -51,7 +51,7 @@
               label="Email"
               type="email"
               :value="store.primaryEmail"
-              class="w-[360px] border-t-2 border-[#CED4DA] text-black rounded"
+              class="sm:w-[360px] w-[300px] border-t-2 border-[#CED4DA] text-black rounded"
               readonly
             />
           </div>

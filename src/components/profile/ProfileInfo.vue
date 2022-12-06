@@ -1,12 +1,12 @@
 <template>
   <router-view />
   <div
-    class="ml-56 mt-8 pb-20"
+    class="sm:ml-56 ml-0 mt-8 pb-20"
     :class="
       blur ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden ' : ''
     "
   >
-    <h1 class="text-2xl">{{ $t("common.my_profile") }}</h1>
+    <h1 class="text-2xl sm:block hidden">{{ $t("common.my_profile") }}</h1>
     <div class="flex flex-col items-center mt-10">
       <img
         :src="store.avatarSrc"
@@ -21,7 +21,7 @@
       >
         <form
           @submit="handleSubmit($event, onSubmit)"
-          class="flex flex-col gap-6 mt-14 max-w-[998px] h-full px-20"
+          class="flex flex-col gap-6 mt-14 sm:w-[998px] w-[428px] h-full sm:px-20 px-5"
           :class="
             blur
               ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden'
@@ -50,7 +50,7 @@
                 type="text"
                 rules="required|min:3|max:15|lower"
                 :initialValue="store.name"
-                class="w-[360px]"
+                class="sm:w-[360px] w-[200px]"
               />
             </template>
             <template #button>
@@ -69,7 +69,7 @@
                   :label="$t('input.fields.email')"
                   type="email"
                   :value="store.primaryEmail"
-                  class="w-[360px] border-t-2 border-[#CED4DA] text-black rounded mt-1"
+                  class="sm:w-[360px] w-[200px] border-t-2 border-[#CED4DA] text-black rounded mt-1"
                   readonly
                 />
               </div>
@@ -94,7 +94,7 @@
                 :label="$t('input.fields.password')"
                 type="password"
                 :placeholder="$t('input.placeholders.min_8_max_15_lower')"
-                class="w-[360px] border-[#CED4DA] border-t-2 pt-5"
+                class="sm:w-[360px] w-[200px] border-[#CED4DA] border-t-2 pt-5"
               />
             </template>
             <template #button>
