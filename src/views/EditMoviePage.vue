@@ -20,7 +20,7 @@
       <div class="px-6">
         <div class="py-3">
           <img
-            :src="store.avatarSrc"
+            :src="authStore.avatar"
             class="w-[60px] h-[60px] rounded-full object-cover"
           />
           <p>{{ store.name }}</p>
@@ -145,7 +145,9 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import { inject, onMounted, reactive, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRouter, useRoute } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 
+const authStore = useAuthStore();
 const store = useMovieStore();
 store.resetGenres();
 const router = useRouter();

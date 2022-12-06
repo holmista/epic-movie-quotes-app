@@ -22,7 +22,7 @@
       </div>
       <div class="flex items-center gap-4 text-xl px-8 py-2 mt-7">
         <img
-          src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          :src="authStore.avatar"
           class="h-[60px] w-[60px] rounded-full object-cover"
         />
         <p>{{ movie.value.user.name }}</p>
@@ -120,7 +120,9 @@ import { onMounted, reactive, inject } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import useFetch from "@/hooks/useFetch";
 import { useLocaleStore } from "@/stores/locale";
+import { useAuthStore } from "@/stores/auth";
 
+const authStore = useAuthStore();
 const localeStore = useLocaleStore();
 
 const route = useRoute();
