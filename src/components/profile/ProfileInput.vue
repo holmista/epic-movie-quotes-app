@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-start items-center">
+  <div class="flex justify-start items-center sm:text-base text-xs">
     <slot name="input"></slot>
     <slot name="button"></slot>
   </div>

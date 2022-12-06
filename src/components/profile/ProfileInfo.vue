@@ -21,7 +21,7 @@
       >
         <form
           @submit="handleSubmit($event, onSubmit)"
-          class="flex flex-col gap-6 mt-14 sm:w-[998px] w-[428px] h-full sm:px-20 px-5"
+          class="flex flex-col gap-6 mt-14 sm:w-[780px] w-[428px] h-full sm:px-20 px-5"
           :class="
             blur
               ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden'
@@ -57,7 +57,7 @@
               <BaseButton :text="$t('profile.edit')" class="mt-7" />
             </template>
           </ProfileInput>
-          <div class="flex flex-col gap-8">
+          <div class="flex flex-col gap-8 sm:text-base text-xs">
             <div class="flex items-center">
               <div class="flex flex-col">
                 <label class="text-sm font-medium text-white mb-2"
@@ -69,7 +69,7 @@
                   :label="$t('input.fields.email')"
                   type="email"
                   :value="store.primaryEmail"
-                  class="sm:w-[360px] w-[200px] border-t-2 border-[#CED4DA] text-black rounded mt-1"
+                  class="sm:w-[360px] w-[200px] border-t-2 border-[#CED4DA] text-black rounded mt-1 sm:text-base text-xs"
                   readonly
                 />
               </div>
