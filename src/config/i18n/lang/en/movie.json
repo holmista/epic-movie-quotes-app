@@ -1,5 +1,9 @@
 {
   "my_list_of_movies": "My list of movies",
   "total": "total",
-  "add_movie": "Add movie"
+  "add_movie": "Add movie",
+  "edit_movie": "Edit movie",
+  "my_movies": "My list of movies (Total {amount})",
+  "director": "Director",
+  "budget": "Budget"
 }

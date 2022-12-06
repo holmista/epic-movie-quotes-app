@@ -27,7 +27,8 @@ import { ref } from "vue";
 import DropDown from "@/assets/icons/common/DropDown.vue";
 import i18n from "@/config/i18n/index.js";
 import { set } from "@/hooks/useCookie";
-import { useLocaleStore } from "../../stores/locale";
+import { useLocaleStore } from "@/stores/locale";
+import { setLocale as veeSetLocale } from "@vee-validate/i18n";
 
 const showLocale = ref(false);
 const store = useLocaleStore();
@@ -40,6 +41,7 @@ const setLocale = (locale) => {
   i18n.global.locale = locale;
   store.setLocale(locale);
   set("locale", locale, 604800);
+  veeSetLocale(locale);
   showLocale.value = false;
 };
 </script>

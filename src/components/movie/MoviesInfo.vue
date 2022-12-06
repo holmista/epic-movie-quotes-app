@@ -1,21 +1,24 @@
 <template>
-  <div :class="blur ? 'opacity-20' : ''" class="w-full pr-20">
+  <div :class="blur ? 'opacity-20' : ''" class="w-full sm:mt-0 mt-4 sm:pr-20">
     <div class="text-white flex items-center justify-between mb-14 w-full">
-      <h1 class="text-2xl font-medium">
-        My list of movies (Total {{ store.movies.length }})
+      <h1 class="sm:text-2xl text-xl font-medium">
+        {{ $t("movie.my_movies", { amount: store.movies.length }) }}
       </h1>
       <div class="flex gap-5">
-        <div class="flex items-center max-w-[100px]">
+        <div class="items-center max-w-[100px] hidden sm:flex">
           <SearchIcon />
           <input
             class="text-white bg-transparent border-0 w-full"
             type="text"
-            placeholder="Search"
+            :placeholder="$t('common.search')"
             v-model="search"
           />
         </div>
         <RouterLink :to="{ name: 'add-movie' }">
-          <BaseButton class="w-[154px] h-12 bg-[#E31221]" text="Add movie">
+          <BaseButton
+            class="sm:w-[154px] w-28 h-12 bg-[#E31221] sm:text-base text-sm"
+            :text="$t('movie.add_movie')"
+          >
             <AddIcon />
           </BaseButton>
         </RouterLink>
@@ -26,13 +29,9 @@
       class="grid grid-cols-1 gap-x-[50px] gap-y-[60px] max-w-[1420px] sm:grid-cols-3"
     >
       <MovieCard
-        v-for="movie in filteredMovies.value"
-        :title="movie.title.en"
-        :releaseYear="movie.release_year"
-        :image="movie.avatar"
-        :quoteAmount="movie.quotes?.length || 0"
+        v-for="movie in store.filteredMovies"
+        :movie="movie"
         :key="movie.id"
-        :id="movie.id"
       />
     </div>
   </div>
@@ -43,21 +42,16 @@ import SearchIcon from "@/assets/icons/movie/SearchIcon.vue";
 import AddIcon from "@/assets/icons/movie/AddIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import useFetch from "@/hooks/useFetch";
-import { onMounted, reactive, ref, watchEffect } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { useMovieStore } from "@/stores/movie";
 
 const store = useMovieStore();
-let filteredMovies = reactive({ value: [] });
 const search = ref("");
 
 watchEffect(() => {
   if (search.value) {
-    filteredMovies.value = store.movies.filter((movie) =>
-      movie.title.en.toLowerCase().includes(search.value.toLowerCase())
-    );
-  } else {
-    filteredMovies.value = store.movies;
+    store.filterMovies(search.value);
   }
 });
 
@@ -77,7 +71,6 @@ onMounted(async () => {
     method: "get",
   });
   if (state.status.value === 200) {
-    // movies.push(...state.response.value.movies);
     store.setMovies(state.response.value.movies);
   }
 });

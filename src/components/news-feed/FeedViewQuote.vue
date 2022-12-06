@@ -11,7 +11,7 @@
         class="flex justify-between border-b-[1px] border-[#EFEFEF] h-20 items-center"
       >
         <div class="w-20 h-9 flex justify-between items-center ml-8"></div>
-        <h1 class="text-2xl">View Quote</h1>
+        <h1 class="text-2xl">{{ $t("quote.view_quote") }}</h1>
         <RouterLink :to="{ name: 'feed' }">
           <div class="mr-8">
             <CrossIcon />
@@ -71,15 +71,30 @@ import QuoteWriteComment from "@/components/base/QuoteWriteComment.vue";
 import { useRoute } from "vue-router";
 import { onMounted, reactive, provide } from "vue";
 import useFetch from "@/hooks/useFetch";
+import useNotificationStore from "@/stores/notification";
 
 const route = useRoute();
-
+const notificationStore = useNotificationStore();
 const quote = reactive({ value: {} });
 provide("quote", quote);
 
 onMounted(async () => {
   const state = await useFetch({ url: `/quote/${route.params.id}` });
   quote.value = state.response.value.quote;
+  const notificationToUpdate = notificationStore.notifications.find(
+    (notification) => notification.id == route.query.notificationId
+  );
+  console.log(notificationToUpdate);
+  notificationToUpdate.is_read = 1;
+  const newNotifications = [];
+  for (let i of notificationStore.notifications) {
+    if (i.id == notificationToUpdate.id) {
+      newNotifications.push(notificationToUpdate);
+    } else {
+      newNotifications.push(i);
+    }
+  }
+  notificationStore.setNotifications(newNotifications);
 });
 </script>
 

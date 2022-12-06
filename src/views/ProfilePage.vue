@@ -1,21 +1,18 @@
 <template>
   <div id="parent" class="text-white min-h-screen">
-    <TopPanel />
-    <div class="flex">
-      <SidePanel class="ml-[70px] mt-8" />
+    <SideTopPanels>
       <ProfileInfo v-if="isGoogleUser === false" />
       <GoogleProfileInfo v-else />
-    </div>
+    </SideTopPanels>
   </div>
 </template>
 
 <script setup>
-import SidePanel from "@/components/base/SidePanel.vue";
-import TopPanel from "@/components/base/TopPanel.vue";
 import { onMounted, ref } from "vue";
-import ProfileInfo from "../components/profile/ProfileInfo.vue";
-import GoogleProfileInfo from "../components/profile/GoogleProfileInfo.vue";
+import ProfileInfo from "@/components/profile/ProfileInfo.vue";
+import GoogleProfileInfo from "@/components/profile/GoogleProfileInfo.vue";
 import useFetch from "@/hooks/useFetch";
+import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
 
 const isGoogleUser = ref(false);
 

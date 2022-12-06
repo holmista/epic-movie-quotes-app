@@ -1,16 +1,20 @@
 <template>
   <div
-    class="bg-black w-[750px] h-[800px] text-white z-30 rounded-xl p-7 overflow-y-scroll"
+    class="bg-black w-[400px] sm:w-[750px] h-64 sm:h-[800px] text-white z-30 rounded-xl p-7 overflow-y-scroll"
   >
     <div class="flex justify-between">
-      <h1 class="text-3xl">Notifications</h1>
+      <h1 class="text-xl sm:text-3xl">{{ $t("quote.notifications") }}</h1>
+
       <p class="underline hover:cursor-pointer" @click="readAll">
-        mark all as read
+        {{ $t("quote.mark_read") }}
       </p>
     </div>
-    <div class="mt-6 flex flex-col gap-4">
+    <div
+      class="mt-6 flex flex-col gap-4"
+      v-if="notificationStore.notifications.length > 0"
+    >
       <UserNotification
-        v-for="notification in notifications.value"
+        v-for="notification in notificationStore.notifications"
         :notification="notification"
         :key="notification.id"
       />
@@ -21,9 +25,9 @@
 <script setup>
 import UserNotification from "@/components/notification/UserNotification.vue";
 import useFetch from "@/hooks/useFetch";
-import { onMounted, reactive } from "vue";
+import useNotificationStore from "@/stores/notification";
 
-const notifications = reactive({ value: [] });
+const notificationStore = useNotificationStore();
 
 const readAll = async () => {
   const state = await useFetch({
@@ -31,16 +35,13 @@ const readAll = async () => {
     method: "patch",
   });
   if (state.status.value === 200) {
-    notifications.value = notifications.value.map((notification) => {
-      notification.is_read = 1;
-      return notification;
-    });
+    const updatedNotifications = notificationStore.notifications.map(
+      (notification) => {
+        notification.is_read = 1;
+        return notification;
+      }
+    );
+    notificationStore.setNotifications(updatedNotifications);
   }
 };
-
-onMounted(async () => {
-  const state = await useFetch({ url: "/notification", method: "get" });
-  notifications.value = state.response.value.notifications;
-  console.log(state.response.value);
-});
 </script>

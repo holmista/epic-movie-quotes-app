@@ -86,9 +86,13 @@
             <div
               class="border border-gray-500 pl-7 pr-12 bg-transparent rounded-md h-[64px] flex items-center"
             >
-              <label for="avatar" class="flex items-center gap-1">
+              <label for="avatar" class="sm:flex hidden items-center gap-1">
                 <CameraIcon /> {{ $t("input.placeholders.upload_image") }}
-                <span class="p-2 bg-[#9747FF]">Choose file</span>
+                <span class="p-2 w-28 bg-[#9747FF]">Choose file</span>
+              </label>
+              <label for="avatar" class="sm:hidden flex items-center gap-1">
+                <CameraIcon /> {{ $t("input.placeholders.upload_image_short") }}
+                <span class="p-2 w-28 bg-[#9747FF] ml-10">Choose file</span>
               </label>
               <Field
                 name="avatar"
@@ -191,14 +195,26 @@ const onSubmit = async (values, actions) => {
     if (titleError) {
       if (titleError.length === 2) {
         const [enError, kaError] = titleError;
-        actions.setFieldError("movie_title_en", enError);
-        actions.setFieldError("movie_title_ka", kaError);
+        actions.setFieldError("movie_title_en", {
+          en: enError,
+          ka: "ინგლისურად ფილმის სახელი უკვე არსებობს",
+        });
+        actions.setFieldError("movie_title_ka", {
+          en: kaError,
+          ka: "ქართულად ფილმის სახელი უკვე არსებობს",
+        });
       } else {
         const [error] = titleError;
         if (error.includes("Georgian")) {
-          actions.setFieldError("movie_title_ka", error);
+          actions.setFieldError("movie_title_ka", {
+            en: error,
+            ka: "ქართულად ფილმის სახელი უკვე არსებობს",
+          });
         } else {
-          actions.setFieldError("movie_title_en", error);
+          actions.setFieldError("movie_title_en", {
+            en: error,
+            ka: "ინგლისურად ფილმის სახელი უკვე არსებობს",
+          });
         }
       }
     }

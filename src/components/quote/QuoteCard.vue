@@ -2,8 +2,10 @@
   <div class="bg-[#11101A] max-w-[525px] h-[268px] rounded-xl p-6 text-white">
     <div class="flex gap-4 items-start h-4/6 border-b-2 border-[#EFEFEF]">
       <img :src="quote.avatar" class="h-[120px] object-cover max-w-[300px]" />
-      <div class="flex h-full justify-center items-center">
-        <p>"{{ quote.title.en }}"</p>
+      <div class="flex h-[120px] justify-center items-center overflow-y-scroll">
+        <p class="overflow-y-scroll h-[120px] break-words">
+          "{{ quote.title[localeStore.locale] }}"
+        </p>
       </div>
       <div class="flex justify-end h-full w-full">
         <ThreeDotsIcon
@@ -35,12 +37,16 @@ import ThreeDotsIcon from "@/assets/icons/quote/ThreeDotsIcon.vue";
 import CommentIcon from "@/assets/icons/common/CommentIcon.vue";
 import LikeIcon from "@/assets/icons/common/LikeIcon.vue";
 import QuoteOptionsModal from "@/components/quote/QuoteOptionsModal.vue";
+import { useLocaleStore } from "@/stores/locale";
 import { ref } from "vue";
+
 defineProps({
   quote: {
     type: Object,
     required: true,
   },
 });
+
+const localeStore = useLocaleStore();
 const showQuoteOptionsModal = ref(false);
 </script>

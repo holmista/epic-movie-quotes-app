@@ -2,12 +2,12 @@
   <ProfileInput v-for="email in data" :key="email.id">
     <template #input>
       <input
-        class="py-2 px-5 block rounded-md pr-10 text-[#212529] border-[2px] focus:outline-none w-[360px]"
+        class="py-2 px-5 block rounded-md pr-10 text-[#212529] border-[2px] focus:outline-none sm:w-[360px] w-[200px]"
         :value="email.email"
       />
     </template>
     <template #button>
-      <div class="flex items-center">
+      <div class="flex sm:flex-row flex-col items-center">
         <BaseButton
           :text="
             email.email_verified_at

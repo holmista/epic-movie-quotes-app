@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute overflow-x-hidden bg-[#222030] max-w-[601px] max-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="w-96 text-center text-white text-3xl font-medium">
@@ -19,7 +19,7 @@
           name="email"
           :label="$t('input.fields.email')"
           type="text"
-          rules="required"
+          rules="required|email"
           :placeholder="$t('input.placeholders.enter_your_email')"
           class="max-w-96 w-full"
         />
@@ -77,6 +77,8 @@ import { useRouter } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
 
+// class="absolute bg-[#222030] w-[428px] max-h-[601px] h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+
 const router = useRouter();
 const store = useAuthStore();
 
@@ -100,9 +102,16 @@ const onSubmit = async (values, actions) => {
     router.push({ name: "feed" });
   } catch (error) {
     if (error.response.status === 401) {
-      actions.setErrors({ email: "Invalid email or password" });
+      actions.setErrors({
+        email: {
+          en: "Invalid email or password",
+          ka: "იმეილი ან პაროლი არასწორია",
+        },
+      });
     } else if (error.response.status === 422) {
-      actions.setErrors({ email: "email not verified" });
+      actions.setErrors({
+        email: { en: "email not verified", ka: "იმეილი არაა ვერიფიცირებული" },
+      });
     }
   }
 };

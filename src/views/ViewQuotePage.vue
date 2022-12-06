@@ -26,7 +26,7 @@
           <DividerIcon />
           <TrashIcon class="hover:cursor-pointer" @click="handleDelete" />
         </div>
-        <h1 class="text-2xl">View Quote</h1>
+        <h1 class="text-2xl">{{ $t("quote.view_quote") }}</h1>
         <RouterLink :to="{ name: 'movie', params: { id: route.params.id } }">
           <div class="mr-8">
             <CrossIcon />

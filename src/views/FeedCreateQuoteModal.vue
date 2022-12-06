@@ -7,11 +7,11 @@
       class="min-h-[670px] w-[428px] bg-[#11101A] text-white sm:w-[650px] z-60 relative rounded-xl"
     >
       <div
-        class="grid grid-cols-3 border-b-[1px] border-[#EFEFEF] h-20 items-center"
+        class="grid grid-flow-col-dense border-b-[1px] border-[#EFEFEF] h-20 items-center"
       >
         <div></div>
         <div class="flex justify-center text-xl sm:text-2xl">
-          <h1 class="">Write New Quote</h1>
+          <h1 class="">{{ $t("quote.write_new_quote") }}</h1>
         </div>
         <RouterLink :to="{ name: 'feed' }">
           <div class="flex justify-end">
@@ -54,7 +54,7 @@
               >
                 <CameraIcon />
                 <p class="hidden sm:block col-span-4">
-                  Drag & drop your image here or
+                  {{ $t("quote.drag_drop") }}
                 </p>
                 <p class="block sm:hidden col-span-4">Upload image</p>
                 <Field
@@ -80,7 +80,7 @@
               v-if="showMovieLabel"
             >
               <MovieCameraIcon />
-              <p>Choose movie</p>
+              <p>{{ $t("quote.choose_movie") }}</p>
             </div>
             <div class="w-full">
               <Field
@@ -107,7 +107,7 @@
 
           <BaseButton
             class="bg-[#E31221] h-12 w-full mb-6"
-            text="Add quote"
+            :text="$t('quote.add_quote')"
             type="submit"
           />
         </form>

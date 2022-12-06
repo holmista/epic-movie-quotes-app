@@ -1,9 +1,9 @@
 <template>
   <div
-    class="absolute bg-[#222030] max-w-[601px] max-h-[422px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute overflow-x-hidden bg-[#222030] max-w-[601px] min-h-[422px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-28 gap-3">
-      <h1 class="text-white text-3xl font-medium">
+      <h1 class="text-white text-3xl font-medium w-96 text-center">
         {{ $t("signin.forgot_password") }}
       </h1>
       <h4 class="text-[#6C757D] text-center">
@@ -47,7 +47,7 @@ import BaseInput from "@/components/base/BaseInput.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import BackArrow from "@/assets/icons/landing/BackArrow.vue";
 import useFetch from "@/hooks/useFetch";
-import { get } from "@hooks/useCookie";
+import { get } from "@/hooks/useCookie";
 
 const router = useRouter();
 

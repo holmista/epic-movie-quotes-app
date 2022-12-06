@@ -1,24 +1,26 @@
 <template>
-
-  <div class="">
+  <div class="w-full overflow-x-hidden">
     <RouterView />
     <MovieDescription
       :movie="movie.value"
       :categories="categories.value"
       v-if="Object.keys(movie.value).length > 0"
     />
-    <div class="flex text-white gap-4 mt-11 mb-14 items-center">
-      <p class="text-2xl">Quotes(total {{ quotes.value.length }})</p>
+    <div
+      class="flex text-white gap-4 mt-11 mb-14 items-center sm:justify-start justify-center"
+    >
+      <p class="text-2xl">
+        {{ $t("quote.total_quotes", { amount: quotes.value.length }) }}
+      </p>
       <BigDivideIcon />
       <RouterLink :to="{ name: 'create-quote' }">
-        <BaseButton class="text-xl bg-[#E31221]" text="Add quote">
+        <BaseButton class="text-xl bg-[#E31221]" :text="$t('quote.add_quote')">
           <AddIcon />
         </BaseButton>
       </RouterLink>
     </div>
     <div v-if="Object.keys(quotes.value).length" class="flex flex-col gap-5">
       <QuoteCard v-for="quote in quotes.value" :quote="quote" :key="quote.id" />
-
     </div>
   </div>
 </template>
@@ -39,7 +41,7 @@ const categories = reactive({ value: {} });
 const quotes = reactive({ value: [] });
 
 provide("quotes", quotes);
-
+provide("movie", movie);
 
 const getCategories = async () => {
   const state = await useFetch({
@@ -57,6 +59,5 @@ onMounted(async () => {
   });
   movie.value = state.response.value.movie;
   quotes.value = state.response.value.quotes;
-
 });
 </script>

@@ -4,12 +4,14 @@
     class="fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center overflow-y-scroll w-full h-full z-20"
     v-if="Object.keys(quote.value).length"
   >
-    <div class="min-h-[850px] w-[428px] bg-[#11101A] text-white sm:w-[650px]">
+    <div
+      class="min-h-[650px] w-[428px] bg-[#11101A] text-white sm:w-[650px] top-28 absolute"
+    >
       <div
         class="flex justify-between border-b-[1px] border-[#EFEFEF] h-20 items-center"
       >
         <TrashIcon class="ml-8 hover:cursor-pointer" @click="handleDelete" />
-        <h1 class="text-2xl">Edit Quote</h1>
+        <h1 class="text-2xl">{{ $t("quote.edit_quote") }}</h1>
         <RouterLink :to="{ name: 'movie', params: { id: route.params.id } }">
           <CrossIcon class="mr-8" />
         </RouterLink>
@@ -26,7 +28,7 @@
           @submit="handleSubmit($event, onSubmit)"
           class="px-8 flex flex-col gap-6 mt-7"
         >
-          <div class="px-8 flex flex-col gap-3">
+          <div class="flex flex-col gap-3">
             <FormTextarea
               name="quote_en"
               language="Eng"
@@ -40,9 +42,9 @@
               rules="required"
             />
           </div>
-          <div class="px-8 mt-6 w-full">
+          <div class="mt-6 w-full">
             <div
-              class="w-[586px] h-[370px] absolute flex justify-center items-center"
+              class="sm:w-[586px] w-[364px] h-[370px] absolute flex justify-center items-center"
             >
               <label for="avatar">
                 <ChangePhoto />
@@ -63,8 +65,8 @@
               ref="avatarRef"
             />
             <BaseButton
-              class="h-10 w-full bg-[#E31221] mt-10"
-              text="Save changes"
+              class="h-10 w-full bg-[#E31221] mt-10 mb-10"
+              :text="$t('common.save_changes')"
             />
           </div>
         </form>
@@ -79,7 +81,7 @@ import CrossIcon from "@/assets/icons/quote/CrossIcon.vue";
 import FormTextarea from "@/components/quote/FormTextarea.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import ChangePhoto from "@/components/quote/ChangePhoto.vue";
-import { onMounted, onUnmounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRoute, useRouter } from "vue-router";
 import { inject } from "vue";

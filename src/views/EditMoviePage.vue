@@ -10,7 +10,7 @@
         class="flex items-center justify-between py-5 border-[#EFEFEF] border-b-2"
       >
         <div class="w-1 h-1"></div>
-        <h1>Edit movie</h1>
+        <h1>{{ $t("movie.edit_movie") }}</h1>
         <div class="pr-6 hover:cursor-pointer">
           <RouterLink :to="{ name: 'movie', params: { id: route.params.id } }">
             <CrossIcon />
@@ -94,9 +94,14 @@
               <div
                 class="border border-gray-500 pl-7 pr-12 bg-transparent rounded-md h-[64px] flex items-center"
               >
-                <label for="avatar" class="flex items-center gap-1">
-                  <CameraIcon /> Drag & drop your image here or
-                  <span class="p-2 bg-[#9747FF]">Choose file</span>
+                <label for="avatar" class="sm:flex hidden items-center gap-1">
+                  <CameraIcon /> {{ $t("input.placeholders.upload_image") }}
+                  <span class="p-2 w-28 bg-[#9747FF]">Choose file</span>
+                </label>
+                <label for="avatar" class="sm:hidden flex items-center gap-1">
+                  <CameraIcon />
+                  {{ $t("input.placeholders.upload_image_short") }}
+                  <span class="p-2 w-28 bg-[#9747FF] ml-10">Choose file</span>
                 </label>
                 <Field
                   name="avatar"
@@ -118,7 +123,7 @@
             <BaseButton
               type="submit"
               class="h-12 bg-[#E31221] w-full"
-              text="Edit movie"
+              :text="$t('movie.edit_movie')"
             />
           </form>
         </VeeForm>
@@ -137,7 +142,7 @@ import FormTextarea from "@/components/movie/FormTextarea.vue";
 import DropDown from "@/components/movie/AvailableCategories.vue";
 import CameraIcon from "@/assets/icons/movie/CameraIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
-import { onMounted, reactive, ref } from "vue";
+import { inject, onMounted, reactive, ref } from "vue";
 import useFetch from "@/hooks/useFetch";
 import { useRouter, useRoute } from "vue-router";
 
@@ -145,6 +150,7 @@ const store = useMovieStore();
 store.resetGenres();
 const router = useRouter();
 const route = useRoute();
+const movie = inject("movie");
 
 const avatar = ref(null);
 const handleImageChange = (e) => {
@@ -227,7 +233,9 @@ const onSubmit = async (values, actions) => {
     data: form,
   });
   if (state.status.value === 200) {
-    store.updateMovie(state.response.value.movie);
+    // store.updateMovie(state.response.value.movie);
+    movie.value = state.response.value.movie;
+    console.log(movie.value);
     router.push({ name: "movie", params: { id: route.params.id } });
   } else {
     const titleError = state.error.value.response.data.errors.title;
