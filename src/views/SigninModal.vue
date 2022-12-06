@@ -35,8 +35,8 @@
           <div
             class="flex flex-row-reverse items-center text-white gap-2 w-full justify-end"
           >
-            <label for="remember-me">{{ $t("signin.remember_me") }}</label>
-            <Field type="checkbox" :value="true" name="remember-me" />
+            <label for="remember_me">{{ $t("signin.remember_me") }}</label>
+            <Field type="checkbox" :value="true" name="remember_me" />
           </div>
           <RouterLink :to="{ name: 'forgot-password' }" class="w-full">
             <p class="w-full text-right text-[#0D6EFD] underline">
