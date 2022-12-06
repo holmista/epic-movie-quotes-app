@@ -5,7 +5,7 @@
   >
     <div class="flex items-center gap-4 py-2">
       <img
-        src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        :src="quote.user.avatar"
         class="h-[52px] w-[52px] rounded-full object-cover"
       />
       <p class="text-xl">{{ quote.user.name }}</p>
@@ -19,7 +19,7 @@
 
     <img :src="quote.avatar" class="h-[370px] w-full rounded-xl object-cover" />
     <CommentLikePanel :quote="quote" />
-    <div class="flex max-h-[300px] overflow-y-scroll flex-col gap-4">
+    <div class="flex max-h-[300px] overflow-y-auto flex-col gap-4">
       <QuoteComment
         v-for="comment in quote.comments"
         :comment="comment"
