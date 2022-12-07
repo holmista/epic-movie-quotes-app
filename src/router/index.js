@@ -109,6 +109,7 @@ const router = createRouter({
       path: "/profile",
       name: "profile",
       component: ProfilePage,
+      beforeEnter: isAuthenticated,
       children: [
         {
           path: "add-email",
@@ -121,6 +122,7 @@ const router = createRouter({
       path: "/movies",
       name: "movies",
       component: movies,
+      beforeEnter: isAuthenticated,
       children: [
         {
           path: "add",
@@ -133,6 +135,7 @@ const router = createRouter({
       path: "/movie/:id",
       name: "movie",
       component: () => import("@/views/MoviePage.vue"),
+      beforeEnter: isAuthenticated,
       children: [
         {
           path: "create-quote",

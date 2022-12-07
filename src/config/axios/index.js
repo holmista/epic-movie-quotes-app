@@ -23,6 +23,9 @@ axiosInstance.interceptors.response.use(
       authStore.setId(null);
       authStore.setAvatar(null);
     }
+    if (error.response.status == 403) {
+      router.push({ name: "forbidden" });
+    }
     return Promise.reject(error);
   }
 );
