@@ -3,6 +3,7 @@ import ProfilePage from "@/views/ProfilePage.vue";
 import movies from "@/views/MoviesPage.vue";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
+import { isAuthenticated } from "@/router/guards";
 
 axios.defaults.withCredentials = true;
 
@@ -90,6 +91,7 @@ const router = createRouter({
       path: "/feed",
       name: "feed",
       component: () => import("@/views/NewsFeedPage.vue"),
+      beforeEnter: isAuthenticated,
       children: [
         {
           path: "add-quote",
@@ -153,6 +155,16 @@ const router = createRouter({
           component: () => import("@/views/EditQuoteModal.vue"),
         },
       ],
+    },
+    {
+      path: "/forbidden",
+      name: "forbidden",
+      component: () => import("@/views/ForbiddenErrorPage.vue"),
+    },
+    {
+      path: "/:catchAll(.*)",
+      name: "not-found",
+      component: () => import("@/views/NotFoundErrorPage.vue"),
     },
   ],
 });
