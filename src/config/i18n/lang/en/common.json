@@ -11,5 +11,6 @@
   "search": "Search",
   "search_instructions": "Enter @ to search movies, Enter # to search quotes",
   "save_changes": "Save changes",
-  "choose_file": "Choose file"
+  "choose_file": "Choose file",
+  "return_home": "Return home"
 }

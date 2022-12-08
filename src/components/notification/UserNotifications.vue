@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-black w-[400px] sm:w-[750px] h-64 sm:h-[800px] text-white z-30 rounded-xl p-7 overflow-y-scroll"
+    class="bg-black w-[400px] sm:w-[750px] h-64 sm:h-[800px] text-white z-30 rounded-xl p-7 overflow-auto"
   >
     <div class="flex justify-between">
       <h1 class="text-xl sm:text-3xl">{{ $t("quote.notifications") }}</h1>

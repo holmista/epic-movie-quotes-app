@@ -1,5 +1,9 @@
 <template>
-  <div id="parent">
+  <div
+    id="parent"
+    class="min-h-screen"
+    :class="scroll ? '' : 'h-screen overflow-y-hidden'"
+  >
     <RouterView />
     <SideTopPanels :showSearch="true">
       <div class="flex flex-col gap-6">
@@ -20,9 +24,22 @@
 import QuoteCard from "@/components/news-feed/QuoteCard.vue";
 import SideTopPanels from "@/components/layouts/SideTopPanels.vue";
 import SearchPanel from "@/components/news-feed/SearchPanel.vue";
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, watchEffect } from "vue";
 import useFetch from "@/hooks/useFetch";
 import useNewsFeedStore from "@/stores/newsFeed";
+import { useRoute } from "vue-router";
+
+const scroll = ref(true);
+const route = useRoute();
+watchEffect(() => {
+  console.log(route.name);
+  if (route.name === "feed") {
+    scroll.value = true;
+  } else {
+    scroll.value = false;
+  }
+  console.log(scroll.value);
+});
 
 const newsFeedStore = useNewsFeedStore();
 const canLoad = ref(true);

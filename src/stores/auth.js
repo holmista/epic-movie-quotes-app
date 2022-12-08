@@ -5,6 +5,7 @@ export const useAuthStore = defineStore("auth", {
     authenticated: null,
     name: null,
     id: null,
+    avatar: null,
   }),
   actions: {
     setAuthenticated(payload) {
@@ -15,6 +16,9 @@ export const useAuthStore = defineStore("auth", {
     },
     setId(payload) {
       this.id = payload;
+    },
+    setAvatar(payload) {
+      this.avatar = payload;
     },
   },
 });

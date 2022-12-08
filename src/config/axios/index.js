@@ -21,7 +21,10 @@ axiosInstance.interceptors.response.use(
       authStore.setAuthenticated(false);
       authStore.setName(null);
       authStore.setId(null);
-      router.push("/");
+      authStore.setAvatar(null);
+    }
+    if (error.response.status == 403) {
+      router.push({ name: "forbidden" });
     }
     return Promise.reject(error);
   }

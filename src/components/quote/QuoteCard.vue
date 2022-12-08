@@ -2,11 +2,11 @@
   <div class="bg-[#11101A] max-w-[525px] h-[268px] rounded-xl p-6 text-white">
     <div class="flex gap-4 items-start h-4/6 border-b-2 border-[#EFEFEF]">
       <img :src="quote.avatar" class="h-[120px] object-cover max-w-[300px]" />
-      <div class="flex h-[120px] justify-center items-center overflow-y-scroll">
-        <p class="overflow-y-scroll h-[120px] break-words">
-          "{{ quote.title[localeStore.locale] }}"
-        </p>
-      </div>
+      <!-- <div class="flex h-[120px] justify-center items-center overflow-y-scroll"> -->
+      <p class="overflow-auto h-[120px] break-words">
+        "{{ quote.title[localeStore.locale] }}"
+      </p>
+      <!-- </div> -->
       <div class="flex justify-end h-full w-full">
         <ThreeDotsIcon
           class="hover:cursor-pointer"

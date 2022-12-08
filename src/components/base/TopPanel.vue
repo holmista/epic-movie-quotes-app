@@ -60,7 +60,6 @@ import { useAuthStore } from "@/stores/auth";
 import useNotificationStore from "@/stores/notification";
 import BurgerMenuIcon from "@/assets/icons/common/BurgerMenuIcon.vue";
 import SmallBellIcon from "@/assets/icons/common/SmallBellIcon.vue";
-import SmallSearchIcon from "@/assets/icons/common/SmallSearchIcon.vue";
 import BurgerMenu from "@/components/base/BurgerMenu.vue";
 
 defineProps({

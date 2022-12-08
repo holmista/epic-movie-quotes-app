@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
+        helventica: ["HELVENTICA", "sans-serif"],
       },
       backgroundImage: {
         interstellar: "url('/src/assets/landing/interstellar.png')",

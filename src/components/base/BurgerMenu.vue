@@ -6,13 +6,13 @@
     <RouterLink :to="{ name: 'profile' }">
       <div class="flex gap-6 hover:cursor-pointer">
         <img
-          :src="store.avatarSrc"
+          :src="authStore.avatar"
           class="w-[60px] h-[60px] rounded-full object-cover"
           alt=""
         />
 
         <div class="flex flex-col justify-between">
-          <p class="text-2xl">{{ store.name }}</p>
+          <p class="text-2xl">{{ authStore.name }}</p>
           <p class="text-base">{{ $t("sidePanel.edit_your_profile") }}</p>
         </div>
       </div>
@@ -35,8 +35,10 @@
 <script setup>
 import HouseIcon from "@/assets/icons/profile/HouseIcon.vue";
 import CameraIcon from "@/assets/icons/profile/CameraIcon.vue";
-import { useProfileStore } from "@/stores/profile";
+// import { useProfileStore } from "@/stores/profile";
 import CrossIcon from "@/assets/icons/quote/CrossIcon.vue";
+import { useAuthStore } from "@/stores/auth";
 
-const store = useProfileStore();
+// const store = useProfileStore();
+const authStore = useAuthStore();
 </script>

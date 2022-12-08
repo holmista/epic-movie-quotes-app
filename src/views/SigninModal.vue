@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute overflow-x-hidden bg-[#222030] max-w-[601px] max-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
+    class="absolute overflow-x-hidden bg-[#222030] max-w-[601px] min-h-[601px] w-full h-auto flex flex-col items-center rounded-lg left-0 right-0 ml-auto mr-auto top-[150px] z-10"
   >
     <header class="flex justify-center items-center flex-col pt-14 px-40 gap-3">
       <h1 class="w-96 text-center text-white text-3xl font-medium">
@@ -35,8 +35,8 @@
           <div
             class="flex flex-row-reverse items-center text-white gap-2 w-full justify-end"
           >
-            <label for="remember-me">{{ $t("signin.remember_me") }}</label>
-            <Field type="checkbox" :value="true" name="remember-me" />
+            <label for="remember_me">{{ $t("signin.remember_me") }}</label>
+            <Field type="checkbox" :value="true" name="remember_me" />
           </div>
           <RouterLink :to="{ name: 'forgot-password' }" class="w-full">
             <p class="w-full text-right text-[#0D6EFD] underline">
@@ -99,6 +99,7 @@ const onSubmit = async (values, actions) => {
     store.setAuthenticated(true);
     store.setName(res.data.name);
     store.setId(res.data.id);
+    store.setAvatar(res.data.avatar);
     router.push({ name: "feed" });
   } catch (error) {
     if (error.response.status === 401) {

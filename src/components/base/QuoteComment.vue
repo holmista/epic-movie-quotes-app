@@ -3,7 +3,7 @@
     class="grid grid-cols-4 gap-x-4 border-b-[1px] border-[#EFEFEF] pb-3 sm:grid-cols-8"
   >
     <img
-      src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      :src="comment.user.avatar"
       class="h-[60px] w-[60px] rounded-full object-cover"
     />
     <div class="flex items-center col-span-7">

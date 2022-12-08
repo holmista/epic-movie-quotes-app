@@ -9,6 +9,7 @@ import sidePanel from "./sidePanel.json";
 import profile from "./profile.json";
 import movie from "./movie.json";
 import quote from "./quote.json";
+import error from "./error.json";
 
 export default {
   landing,
@@ -22,4 +23,5 @@ export default {
   profile,
   movie,
   quote,
+  error,
 };

@@ -9,7 +9,7 @@
     <h1 class="text-2xl sm:block hidden">{{ $t("common.my_profile") }}</h1>
     <div class="flex flex-col items-center mt-10">
       <img
-        :src="store.avatarSrc"
+        :src="authStore.avatar"
         class="w-[188px] h-[188px] rounded-full object-cover absolute top-40"
         alt=""
         ref="avatarRef"
@@ -21,7 +21,7 @@
       >
         <form
           @submit="handleSubmit($event, onSubmit)"
-          class="flex flex-col gap-6 mt-14 sm:w-[998px] w-[428px] h-full sm:px-20 px-5"
+          class="flex flex-col gap-6 mt-14 sm:w-[780px] w-[428px] h-full sm:px-20 px-5"
           :class="
             blur
               ? 'bg-[#0D0B14] opacity-20 overflow-x-hidden overflow-y-hidden'
@@ -49,7 +49,7 @@
                 :label="$t('input.fields.name')"
                 type="text"
                 rules="required|min:3|max:15|lower"
-                :initialValue="store.name"
+                :initialValue="authStore.name"
                 class="sm:w-[360px] w-[200px]"
               />
             </template>
@@ -57,7 +57,7 @@
               <BaseButton :text="$t('profile.edit')" class="mt-7" />
             </template>
           </ProfileInput>
-          <div class="flex flex-col gap-8">
+          <div class="flex flex-col gap-8 sm:text-base text-xs">
             <div class="flex items-center">
               <div class="flex flex-col">
                 <label class="text-sm font-medium text-white mb-2"
@@ -69,7 +69,7 @@
                   :label="$t('input.fields.email')"
                   type="email"
                   :value="store.primaryEmail"
-                  class="sm:w-[360px] w-[200px] border-t-2 border-[#CED4DA] text-black rounded mt-1"
+                  class="sm:w-[360px] w-[200px] border-t-2 border-[#CED4DA] text-black rounded mt-1 sm:text-base text-xs"
                   readonly
                 />
               </div>
@@ -136,6 +136,7 @@ import { useRoute } from "vue-router";
 import { Form, Field } from "vee-validate";
 import useFetch from "@/hooks/useFetch";
 import { useProfileStore } from "@/stores/profile";
+import { useAuthStore } from "@/stores/auth";
 
 const imageInputTouched = ref(false);
 const avatarRef = ref(null);
@@ -149,6 +150,7 @@ const handleImageChange = (e) => {
   }
 };
 
+const authStore = useAuthStore();
 const store = useProfileStore();
 const showEditPassword = ref(false);
 const setShowEditPassword = (value) => {
@@ -162,7 +164,7 @@ const onSubmit = async (values) => {
     confirmPassword: values.confirmPassword,
     avatar: avatar.value,
   };
-  if (body.name === store.name) {
+  if (body.name === authStore.name) {
     delete body.name;
   }
   for (let [k, v] of Object.entries(body)) {
@@ -181,9 +183,9 @@ const onSubmit = async (values) => {
     data: form,
   });
   if (state.status.value === 200) {
-    store.setName(state.response.value.user.name);
+    authStore.setName(state.response.value.user.name);
     store.setEmail(state.response.value.user.email);
-    store.setAvatarSrc(state.response.value.user.avatar);
+    authStore.setAvatar(state.response.value.user.avatar);
   }
 };
 
@@ -194,11 +196,11 @@ const formValues = reactive({
 onMounted(async () => {
   const state = await useFetch({ method: "get", url: "/user" });
   if (state.status.value === 200) {
-    store.setName(state.response.value.name);
+    // store.setName(state.response.value.name);
     store.setSecondaryEmails(state.response.value.socondary_emails);
     store.setPrimaryEmail(state.response.value.email);
-    store.setAvatarSrc(state.response.value.avatar);
-    formValues.name = state.response.value.name;
+    // store.setAvatarSrc(state.response.value.avatar);
+    formValues.name = authStore.name;
   }
 });
 
