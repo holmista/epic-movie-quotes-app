@@ -49,5 +49,4 @@ const printToConsole = async (e) => {
     }
   }
 };
-// console.log(quote);
 </script>
