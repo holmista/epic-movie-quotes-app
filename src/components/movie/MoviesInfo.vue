@@ -1,5 +1,8 @@
 <template>
-  <div :class="blur ? 'opacity-20' : ''" class="w-full sm:mt-0 mt-4 sm:pr-20">
+  <div
+    :class="blur ? 'opacity-20' : ''"
+    class="w-full sm:mt-0 mt-4 sm:pr-20 min-h-screen"
+  >
     <div class="text-white flex items-center justify-between mb-14 w-full">
       <h1 class="sm:text-2xl text-xl font-medium">
         {{ $t("movie.my_movies", { amount: store.movies.length }) }}
