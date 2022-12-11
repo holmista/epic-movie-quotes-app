@@ -49,7 +49,6 @@ const store = useProfileStore();
 const authStore = useAuthStore();
 
 const fetchUserData = async () => {
-  console.log(route.path);
   const state = await useFetch({ url: "/user", method: "get" });
   if (state.status.value === 200) {
     authStore.setName(state.response.value.name);

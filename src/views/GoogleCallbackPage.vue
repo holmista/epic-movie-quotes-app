@@ -32,18 +32,15 @@ const success = ref(false);
 const store = useAuthStore();
 
 onMounted(async () => {
-  console.log(route.path);
   const queryString = new URLSearchParams(route.query).toString();
   const backUrl = `${
     import.meta.env.VITE_BACK_BASE_URL
   }/auth/callback?${queryString}`;
   const state = await useFetch({ method: "get", url: backUrl });
-  console.log(state.response.value);
   if (state.status.value === 200) {
     store.setAuthenticated(true);
     store.setName(state.response.value.name);
     store.setId(state.response.value.id);
-    // console.log(state.response.value);
     success.value = true;
   } else {
     store.authenticated = false;

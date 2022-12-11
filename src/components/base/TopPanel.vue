@@ -109,7 +109,6 @@ onMounted(() => {
   window.Echo.private("notifications." + authStore.id).listen(
     "NotificationCreated",
     (e) => {
-      console.log(e.notification);
       notificationStore.addNotification(e.notification);
     }
   );

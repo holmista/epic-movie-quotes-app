@@ -137,7 +137,6 @@ const showMovieLabel = ref(true);
 const movies = reactive({ value: [] });
 
 const onSubmit = async (values) => {
-  console.log(values);
   const form = new FormData();
   form.append(
     "title",

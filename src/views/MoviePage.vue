@@ -17,7 +17,6 @@ const overflow = ref(false);
 
 watchEffect(() => {
   if (route.fullPath.includes("quote") || route.fullPath.includes("edit")) {
-    console.log("includes quote");
     overflow.value = true;
   } else {
     overflow.value = false;

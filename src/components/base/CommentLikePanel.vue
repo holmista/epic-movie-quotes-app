@@ -30,13 +30,7 @@ import { inject } from "vue";
 const authStore = useAuthStore();
 
 const quote = inject("quote");
-// const props = defineProps({
-//   quote: {
-//     type: Object,
-//     required: true,
-//   },
-// });
-// console.log(quote.value.comments.length);
+
 const handleCreateLike = async () => {
   const state = await useFetch({
     url: `/like`,

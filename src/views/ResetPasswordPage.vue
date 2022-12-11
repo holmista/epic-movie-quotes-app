@@ -71,7 +71,6 @@ const onSubmit = async (values) => {
     url: backUrl,
     data: { ...values, token, email: route.query.email },
   });
-  console.log(state.response.value);
   if (state.response.value.message === "passwords.reset") {
     router.push("/reset-password-success");
   }
