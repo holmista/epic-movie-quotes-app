@@ -1,5 +1,5 @@
 <template>
-  <div id="parent" class="min-h-screen w-screen">
+  <div id="parent" class="min-h-screen">
     <SideTopPanels>
       <MovieInfo class="px-5 sm:px-0" />
     </SideTopPanels>
