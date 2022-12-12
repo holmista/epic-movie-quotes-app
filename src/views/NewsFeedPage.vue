@@ -32,13 +32,11 @@ import { useRoute } from "vue-router";
 const scroll = ref(true);
 const route = useRoute();
 watchEffect(() => {
-  console.log(route.name);
   if (route.name === "feed") {
     scroll.value = true;
   } else {
     scroll.value = false;
   }
-  console.log(scroll.value);
 });
 
 const newsFeedStore = useNewsFeedStore();
@@ -77,7 +75,6 @@ const handleScroll = () => {
     window.scrollY + window.innerHeight >= document.body.scrollHeight - 100
   ) {
     canLoad.value = false;
-    console.log("fetching");
     fetchMoreQuotes()
       .then(() => (canLoad.value = true))
       .catch(() => (canLoad.value = true));

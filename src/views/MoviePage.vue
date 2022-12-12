@@ -1,5 +1,5 @@
 <template>
-  <div id="parent" class="min-h-screen w-screen">
+  <div id="parent" class="min-h-screen">
     <SideTopPanels>
       <MovieInfo class="px-5 sm:px-0" />
     </SideTopPanels>
@@ -17,7 +17,6 @@ const overflow = ref(false);
 
 watchEffect(() => {
   if (route.fullPath.includes("quote") || route.fullPath.includes("edit")) {
-    console.log("includes quote");
     overflow.value = true;
   } else {
     overflow.value = false;

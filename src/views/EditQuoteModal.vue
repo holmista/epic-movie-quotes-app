@@ -141,7 +141,6 @@ const onSubmit = async (values) => {
     data: form,
   });
   if (state.status.value === 200) {
-    console.log(state.response.value);
     quotes.value = quotes.value.map((q) => {
       if (q.id === quote.value.id) {
         return state.response.value.quote;

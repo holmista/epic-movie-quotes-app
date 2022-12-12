@@ -86,7 +86,6 @@ onMounted(async () => {
   const notificationToUpdate = notificationStore.notifications.find(
     (notification) => notification.id == route.query.notificationId
   );
-  console.log(notificationToUpdate);
   notificationToUpdate.is_read = 1;
   const newNotifications = [];
   for (let i of notificationStore.notifications) {

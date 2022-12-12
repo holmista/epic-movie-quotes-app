@@ -237,7 +237,6 @@ const onSubmit = async (values, actions) => {
   if (state.status.value === 200) {
     // store.updateMovie(state.response.value.movie);
     movie.value = state.response.value.movie;
-    console.log(movie.value);
     router.push({ name: "movie", params: { id: route.params.id } });
   } else {
     const titleError = state.error.value.response.data.errors.title;

@@ -75,10 +75,8 @@ const authStore = useAuthStore();
 const notificationStore = useNotificationStore();
 const router = useRouter();
 const logout = async () => {
-  const state = await useFetch({ url: "/signout", method: "get" });
-  if (state.status.value === 200) {
-    router.push({ name: "landing" });
-  }
+  router.push({ name: "landing" });
+  await useFetch({ url: "/signout", method: "get" });
 };
 
 const getNotifications = async () => {
@@ -111,7 +109,6 @@ onMounted(() => {
   window.Echo.private("notifications." + authStore.id).listen(
     "NotificationCreated",
     (e) => {
-      console.log(e.notification);
       notificationStore.addNotification(e.notification);
     }
   );

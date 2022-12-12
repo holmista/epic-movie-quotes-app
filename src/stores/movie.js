@@ -41,8 +41,6 @@ export const useMovieStore = defineStore("movie", {
     },
     filterMovies(payload) {
       this.filteredMovies = this.movies.filter((movie) => {
-        // console.log(payload.toLowerCase());
-        // console.log(movie.title.en.includes(payload.toLowerCase));
         if (
           movie.title.en.toLowerCase().includes(payload.toLowerCase()) ||
           movie.title.ka.toLowerCase().includes(payload.toLowerCase())
