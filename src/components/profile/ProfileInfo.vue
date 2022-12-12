@@ -113,10 +113,13 @@
           >
             <BaseButton
               @click="showEditPassword = false"
-              text="Cancel"
+              :text="$t('common.cancel')"
               type="reset"
             />
-            <BaseButton text="Save changes" class="bg-[#E31221]" />
+            <BaseButton
+              :text="$t('common.save_changes')"
+              class="bg-[#E31221]"
+            />
           </div>
         </form>
       </Form>

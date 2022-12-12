@@ -27,22 +27,22 @@
           />
 
           <div class="flex justify-center pt-28">
-            <label for="actual-btn" class="hover:cursor-pointer"
-              >Upload new photo</label
-            >
+            <label for="actual-btn" class="hover:cursor-pointer">{{
+              $t("input.fields.upload_new_photo")
+            }}</label>
           </div>
           <ProfileInput class="">
             <template #input>
               <BaseInput
                 name="name"
-                label="Name"
+                :label="$t('input.fields.name')"
                 type="text"
                 class="sm:w-[360px] w-[300px]"
                 rules="required|min:3|max:15|lower"
               />
             </template>
             <template #button>
-              <BaseButton text="edit" class="mt-7" />
+              <BaseButton :text="$t('profile.edit')" class="mt-7" />
             </template>
           </ProfileInput>
           <div class="flex flex-col gap-8">
@@ -60,8 +60,11 @@
             v-if="meta.touched || imageInputTouched"
             class="flex justify-end"
           >
-            <BaseButton type="reset" text="Cancel" />
-            <BaseButton text="Save changes" class="bg-[#E31221]" />
+            <BaseButton type="reset" :text="$t('common.cancel')" />
+            <BaseButton
+              :text="$t('common.save_changes')"
+              class="bg-[#E31221]"
+            />
           </div>
         </form>
       </Form>
