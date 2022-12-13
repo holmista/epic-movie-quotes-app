@@ -3,7 +3,7 @@
     :class="`bg-no-repeat  bg-cover 
     w-full h-full bg-[100%] text-white font-bold text-5xl font-montserrat flex items-center`"
     :style="{
-      'background-image': `url(/src/assets/images/landing/${image}.png)`,
+      'background-image': `url(images/landing/${image}.png)`,
     }"
   >
     <div class="flex gap-3 ml-10 sm:ml-40 max-w-[800px]">
