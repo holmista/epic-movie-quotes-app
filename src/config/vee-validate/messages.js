@@ -9,6 +9,15 @@ configure({
       ...en,
       names: {
         ...en.names,
+        movie_title_en: "English movie title",
+        movie_title_ka: "Georgian movie title",
+        director_en: "English director name",
+        director_ka: "Georgian director name",
+        release_year: "Release year",
+        description_en: "English movie description",
+        description_ka: "Georgian movie description",
+        quote_ka: "Georgian quote",
+        quote_en: "English quote",
       },
       messages: {
         ...en.messages,
