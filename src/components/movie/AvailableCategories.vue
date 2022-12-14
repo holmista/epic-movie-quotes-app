@@ -1,7 +1,9 @@
 <template>
-  <div class="grid grid-cols-5">
+  <div
+    class="flex flex-col justify-center items-center divide-y-2 divide-gray-600 bg-slate-600 rounded"
+  >
     <p
-      class="text-gray-700 block px-4 py-1 text-sm hover:cursor-pointer"
+      class="text-white block px-4 py-1 text-lg hover:cursor-pointer hover:bg-slate-300 hover:text-black w-full"
       v-for="item in movieStore.availableCategories"
       :key="item.id"
       @click="movieStore.addToChosenCategories(item)"

@@ -3,7 +3,7 @@ import ProfilePage from "@/views/ProfilePage.vue";
 import movies from "@/views/MoviesPage.vue";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
-import { isAuthenticated } from "@/router/guards";
+import { isAuthenticated, redirectIfAuthenticated } from "@/router/guards";
 
 axios.defaults.withCredentials = true;
 
@@ -14,6 +14,7 @@ const router = createRouter({
       path: "/",
       name: "landing",
       component: () => import("@/views/LandingPage.vue"),
+      beforeEnter: redirectIfAuthenticated,
       children: [
         {
           path: "login",

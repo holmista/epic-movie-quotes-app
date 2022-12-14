@@ -9,7 +9,8 @@
   "delete": "Delete",
   "cancel": "Cancel",
   "search": "Search",
-  "search_instructions": "Enter @ to search movies, Enter # to search quotes",
+  "search_instructions_one": "Enter",
+  "search_instructions_two": "to search movies, Enter # to search quotes",
   "save_changes": "Save changes",
   "choose_file": "Choose file",
   "return_home": "Return home"

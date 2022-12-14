@@ -6,3 +6,10 @@ export const isAuthenticated = (to, from) => {
     return { name: "forbidden" };
   }
 };
+
+export const redirectIfAuthenticated = (to, from) => {
+  const store = useAuthStore();
+  if (store.authenticated) {
+    return { name: "feed" };
+  }
+};

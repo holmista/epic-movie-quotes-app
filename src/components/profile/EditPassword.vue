@@ -18,7 +18,7 @@
     <BaseInput
       name="confirmPassword"
       :label="$t('input.fields.confirm_new_password')"
-      type="text"
+      type="password"
       :rules="`required|same:${password}`"
       class="w-[360px] mt-8"
     />
