@@ -9,7 +9,8 @@
   "delete": "წაშლა",
   "cancel": "გაუქმება",
   "search": "ძიება",
-  "search_instructions": "შეიყვანე @ ფილმების მოსაძებნად, # ციტატების მოსაძებნად",
+  "search_instructions_one": "შეიყვანე",
+  "search_instructions_two": "ფილმების მოსაძებნად, # ციტატების მოსაძებნად",
   "save_changes": "შენახვა",
   "choose_file": "აირჩიე ფაილი",
   "return_home": "დაბრუნება"

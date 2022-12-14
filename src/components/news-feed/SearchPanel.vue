@@ -14,7 +14,11 @@
           class="text-white bg-transparent border-0"
           type="text"
           :placeholder="
-            focused ? $t('common.search_instructions') : $t('common.search')
+            focused
+              ? $t('common.search_instructions_one') +
+                ' @ ' +
+                $t('common.search_instructions_two')
+              : $t('common.search')
           "
           @focus="focused = true"
           @blur="focused = false"
@@ -29,7 +33,11 @@
         class="text-white bg-transparent border-0"
         type="text"
         :placeholder="
-          focused ? $t('common.search_instructions') : $t('common.search')
+          focused
+            ? $t('common.search_instructions_one') +
+              ' @ ' +
+              $t('common.search_instructions_two')
+            : $t('common.search')
         "
         @focus="focused = true"
         @blur="focused = false"
