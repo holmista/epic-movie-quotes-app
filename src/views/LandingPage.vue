@@ -35,10 +35,10 @@
           <BaseButton
             class="bg-[#E31221] border-[#E31221]"
             :text="$t('common.get_started')"
+            @click="signinClick"
           />
         </div>
       </div>
-
       <LandingImage
         image="interstellar"
         :quote="$t('landing.movie_texts.interstellar_quote')"
@@ -54,6 +54,7 @@
         :quote="$t('landing.movie_texts.lotr_quote')"
         :movie="$t('landing.movie_texts.lotr')"
       />
+
       <div class="bg-[#181623] text-[#DDCCAA]">
         <p class="py-4 px-16">© {{ $t("landing.rights_reserved") }}</p>
       </div>

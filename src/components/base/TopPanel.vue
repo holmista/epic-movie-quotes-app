@@ -75,8 +75,12 @@ const authStore = useAuthStore();
 const notificationStore = useNotificationStore();
 const router = useRouter();
 const logout = async () => {
-  router.push({ name: "landing" });
   await useFetch({ url: "/signout", method: "get" });
+  authStore.setAuthenticated(false);
+  authStore.setName(null);
+  authStore.setId(null);
+  authStore.setAvatar(null);
+  router.push({ name: "landing" });
 };
 
 const getNotifications = async () => {

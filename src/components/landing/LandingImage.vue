@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="`bg-no-repeat  bg-cover 
+    :class="`bg-no-repeat bg-fixed  bg-cover 
     w-full h-full bg-[100%] text-white font-bold text-5xl font-montserrat flex items-center`"
     :style="{
       'background-image': `url(images/landing/${image}.png)`,
