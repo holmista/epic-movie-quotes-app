@@ -28,7 +28,20 @@ onMounted(async () => {
     method: "get",
   });
   if (state.status.value === 200) {
-    movieStore.setAvailableCategories(state.response.value.categories);
+    const available = [];
+    if (movieStore.chosenCategories.length > 0) {
+      for (let i = 0; i < state.response.value.categories.length; i++) {
+        const element = state.response.value.categories[i];
+        if (
+          !movieStore.chosenCategories.find((item) => item.id === element.id)
+        ) {
+          available.push(element);
+        }
+      }
+      movieStore.setAvailableCategories(available);
+    } else {
+      movieStore.setAvailableCategories(state.response.value.categories);
+    }
   }
 });
 </script>

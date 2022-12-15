@@ -36,9 +36,9 @@
         />
         <FormInput
           type="text"
-          name="title_en"
+          name="title_ka"
           language="ქარ"
-          :placeholder="'&#8220;' + quote.value.title.en + '&#8221;'"
+          :placeholder="'&#8220;' + quote.value.title.ka + '&#8221;'"
           rules="required"
           :readonly="true"
         />
