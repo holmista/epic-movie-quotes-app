@@ -27,7 +27,7 @@
         <BaseInput
           name="confirmPassword"
           :label="$t('input.fields.repeat_password')"
-          type="text"
+          type="password"
           :rules="`required|same:${password}`"
           :placeholder="$t('input.placeholders.confirm_password')"
           class="max-w-96 w-full"
