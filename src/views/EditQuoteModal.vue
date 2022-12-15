@@ -18,7 +18,7 @@
       </div>
       <div class="flex items-center gap-4 text-xl px-8 py-2">
         <img
-          src="https://images.unsplash.com/photo-1668881233694-1825a663b2a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          :src="authStore.avatar"
           class="h-[60px] w-[60px] rounded-full object-cover"
         />
         <p>{{ quote.value.user.name }}</p>
@@ -86,6 +86,9 @@ import useFetch from "@/hooks/useFetch";
 import { useRoute, useRouter } from "vue-router";
 import { inject } from "vue";
 import { Form, Field } from "vee-validate";
+import { useAuthStore } from "@/stores/auth";
+
+const authStore = useAuthStore();
 
 const route = useRoute();
 const router = useRouter();
