@@ -51,7 +51,7 @@ import BaseButton from "@/components/base/BaseButton.vue";
 import UserNotifications from "@/components/notification/UserNotifications.vue";
 import RedBallIcon from "@/assets/icons/notification/RedBallIcon.vue";
 import { useRouter } from "vue-router";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, onUnmounted } from "vue";
 import useFetch from "@/hooks/useFetch";
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
@@ -116,5 +116,9 @@ onMounted(() => {
       notificationStore.addNotification(e.notification);
     }
   );
+});
+
+onUnmounted(() => {
+  window.Echo.leave("notifications." + authStore.id);
 });
 </script>
