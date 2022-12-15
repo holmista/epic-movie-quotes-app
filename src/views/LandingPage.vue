@@ -35,6 +35,7 @@
           <BaseButton
             class="bg-[#E31221] border-[#E31221]"
             :text="$t('common.get_started')"
+            @click="signinClick"
           />
         </div>
       </div>
