@@ -1,11 +1,9 @@
 <template>
   <RouterView />
   <div id="parent" class="min-h-screen">
-    <!-- <div class="min-h-screen"> -->
     <SideTopPanels>
       <MoviesInfo class="px-5 sm:px-0" />
     </SideTopPanels>
-    <!-- </div> -->
   </div>
 </template>
 

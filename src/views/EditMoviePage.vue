@@ -49,7 +49,6 @@
               placeholder="ფილმის სახელი"
             />
             <SelectedCategories />
-            <DropDown />
             <FormInput
               type="text"
               name="director_en"
@@ -139,7 +138,6 @@ import { Form as VeeForm, Field, ErrorMessage } from "vee-validate";
 import { useMovieStore } from "@/stores/movie";
 import FormInput from "@/components/movie/FormInput.vue";
 import FormTextarea from "@/components/movie/FormTextarea.vue";
-import DropDown from "@/components/movie/AvailableCategories.vue";
 import CameraIcon from "@/assets/icons/movie/CameraIcon.vue";
 import BaseButton from "@/components/base/BaseButton.vue";
 import { inject, onMounted, reactive, ref } from "vue";

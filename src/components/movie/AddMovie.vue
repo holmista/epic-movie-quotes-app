@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-xl w-full bg-[#11101A] text-white absolute left-0 right-0 ml-auto mr-auto z-10 top-16"
+    class="max-w-xl absolute w-full bg-[#11101A] text-white left-0 right-0 ml-auto mr-auto z-10 top-16"
   >
     <section
       class="flex items-center justify-between py-5 border-[#EFEFEF] border-b-2"
